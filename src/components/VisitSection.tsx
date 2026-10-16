@@ -86,7 +86,7 @@ const VisitSection = () => (
       </div>
     </div>
 
-    <div className="mx-auto mt-16 max-w-7xl px-5 md:px-10">
+    <div id="mapa" className="mx-auto mt-16 max-w-7xl scroll-mt-24 px-5 md:px-10">
       <div className="h-72 overflow-hidden md:h-96" style={tornClip(127, undefined, 1.2, 1.5)}>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.908346105353!2d1.72313757586994!3d41.22376777132122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a387915fb5626f%3A0xd7125a13c5d4ba64!2sRestart%20Coffee!5e0!3m2!1ses!2ses!4v1781360977596!5m2!1ses!2ses"

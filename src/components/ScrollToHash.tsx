@@ -1,8 +1,12 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+/**
+ * Baja hasta el ancla de la URL (/#mapa, /#horarios…) también al venir de otra página.
+ * Reintenta mientras la sección no existe y vuelve a ajustar cuando ya han cargado las fotos.
+ */
 const ScrollToHash = () => {
-const { pathname, hash } = useLocation();
+  const { pathname, hash, key } = useLocation();
 
   useEffect(() => {
     if (!hash) {
@@ -11,20 +15,29 @@ const { pathname, hash } = useLocation();
     }
 
     let attempts = 0;
-    const maxAttempts = 30; // ~3 segundos máximo
+    let timer: number | undefined;
+    const find = () => {
+      try {
+        return document.querySelector(decodeURIComponent(hash));
+      } catch {
+        return null;
+      }
+    };
 
     const tryScroll = () => {
-      const el = document.querySelector(hash);
+      const el = find();
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      } else if (attempts < maxAttempts) {
-        attempts++;
-        setTimeout(tryScroll, 100);
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        // Segundo ajuste por si algo de arriba ha cambiado de alto mientras bajaba
+        timer = window.setTimeout(() => find()?.scrollIntoView({ behavior: "smooth", block: "start" }), 700);
+      } else if (attempts++ < 30) {
+        timer = window.setTimeout(tryScroll, 100);
       }
     };
 
     tryScroll();
-}, [pathname, hash]);
+    return () => window.clearTimeout(timer);
+  }, [pathname, hash, key]);
 
   return null;
 };

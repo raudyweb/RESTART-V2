@@ -42,7 +42,7 @@ const HeroSection = () => (
           <a href="/Carta.pdf" target="_blank" rel="noopener noreferrer" className="btn-paper">
             Descubre nuestra carta <ArrowRight size={16} />
           </a>
-          <a href="#visita" className="btn-ghost-light">
+          <a href="#mapa" className="btn-ghost-light">
             Cómo llegar <MapPin size={16} />
           </a>
         </div>

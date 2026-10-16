@@ -7,7 +7,7 @@ const mainLinks = [
   { label: "Nosotros", href: "/sobre-nosotros" },
   { label: "Opiniones", href: "/#opiniones" },
   { label: "Horarios", href: "/#horarios" },
-  { label: "Cómo llegar", href: "/#visita" },
+  { label: "Cómo llegar", href: "/#mapa" },
 ];
 
 const extraLinks = [
@@ -26,10 +26,6 @@ const NavItem = ({
 }) =>
   l.external ? (
     <a href={l.href} target="_blank" rel="noopener noreferrer" className={className} onClick={onClick}>
-      {l.label}
-    </a>
-  ) : l.href.startsWith("/#") ? (
-    <a href={l.href} className={className} onClick={onClick}>
       {l.label}
     </a>
   ) : (
