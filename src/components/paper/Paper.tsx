@@ -38,6 +38,9 @@ export const tornClip = (
   return { clipPath: poly, WebkitClipPath: poly };
 };
 
+/** Solo el polígono, para usarlo desde una variable CSS (p. ej. únicamente en escritorio). */
+export const tornPolygon = (...args: Parameters<typeof tornClip>) => tornClip(...args).clipPath as string;
+
 /**
  * Borde rasgado para separar secciones. Se coloca dentro de una sección
  * con position:relative y toma su color con text-*.

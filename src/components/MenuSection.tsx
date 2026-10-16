@@ -1,16 +1,16 @@
 import { ArrowRight } from "lucide-react";
-import cafeCroissants from "@/assets/v2/cafe-croissants.jpg";
+import cafeImg from "@/assets/v2/cafe-latte.jpg";
 import bowlImg from "@/assets/v2/bowl-acai.jpg";
-import bakeryImg from "@/assets/v2/macu/pan-larga-fermentacion.jpg";
+import bakeryImg from "@/assets/v2/bolleria.jpg";
 import { Scribble, TornEdge, tornClip } from "@/components/paper/Paper";
 
 const categories = [
   {
     title: ["Specialty", "coffee"],
-    img: cafeCroissants,
-    pos: "50% 82%",
+    img: cafeImg,
+    pos: "55% 60%",
     zoom: 1,
-    alt: "Cappuccino con latte art sobre tabla de madera",
+    alt: "Café con latte art y vaso de agua sobre tabla de madera",
     tilt: "-rotate-[1.5deg]",
     seed: 11,
     items: [
@@ -42,9 +42,9 @@ const categories = [
   {
     title: ["Bakery"],
     img: bakeryImg,
-    pos: "50% 45%",
+    pos: "40% 50%",
     zoom: 1,
-    alt: "Hogaza de pan sin gluten recién horneada en el obrador de Macu",
+    alt: "Napolitanas de chocolate y cruasanes recién horneados",
     tilt: "-rotate-[1deg]",
     seed: 37,
     items: [

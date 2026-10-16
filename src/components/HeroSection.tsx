@@ -1,20 +1,20 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import heroImg from "@/assets/v2/hero-good-vibes.jpg";
 import { HandHeart, Scribble } from "@/components/paper/Paper";
+import HeroPhoto from "@/components/paper/HeroPhoto";
 
 const HeroSection = () => (
   <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-ink text-white">
-    <img
+    <HeroPhoto
       src={heroImg}
       alt="Pared de Re-Start Coffee con el neón Good Vibes Only"
-      className="absolute inset-0 -z-10 h-full w-full object-cover object-[50%_38%] md:object-[60%_38%]"
-      fetchPriority="high"
+      position="50% 38%"
+      desktopPosition="50% 35%"
+      seed={17}
     />
-    <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/75 via-black/40 to-transparent" />
-    <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/45 via-transparent to-black/25" />
 
     <div className="mx-auto w-full max-w-7xl px-5 pb-16 pt-28 md:px-10 md:pb-24 md:pt-24">
-      <div className="max-w-xl">
+      <div className="max-w-xl lg:max-w-[min(36rem,42vw)]">
         <h1>
           <span className="hand block -rotate-[6deg] text-[clamp(3.2rem,9vw,6.2rem)] tracking-wide">
             Re-Start

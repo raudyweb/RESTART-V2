@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 import { Scribble, TornEdge } from "@/components/paper/Paper";
+import HeroPhoto from "@/components/paper/HeroPhoto";
 
-/** Cabecera de página interior: foto a sangre, título manuscrito y borde rasgado. */
+/** Cabecera de página interior: foto (a sangre en móvil, a la derecha en escritorio), título manuscrito y borde rasgado. */
 const PageHero = ({
   img,
   alt,
@@ -20,18 +21,10 @@ const PageHero = ({
   children?: ReactNode;
 }) => (
   <section className="relative isolate flex min-h-[78svh] items-end bg-ink text-white">
-    <img
-      src={img}
-      alt={alt}
-      className="absolute inset-0 -z-10 h-full w-full object-cover"
-      style={{ objectPosition: imgPosition }}
-      fetchPriority="high"
-    />
-    <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/75 via-black/45 to-black/5" />
-    <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/55 via-transparent to-black/35" />
+    <HeroPhoto src={img} alt={alt} position={imgPosition} seed={23} />
 
     <div className="mx-auto w-full max-w-7xl px-5 pb-20 pt-28 md:px-10 md:pb-24">
-      <div className="max-w-xl">
+      <div className="max-w-xl lg:max-w-[min(36rem,42vw)]">
         <p className="label-type text-xs md:text-sm">{eyebrow}</p>
         <h1 className="hand mt-5 -rotate-[4deg] text-[clamp(3rem,8vw,5.6rem)] tracking-wide">{title}</h1>
         <Scribble className="ml-[12%] mt-1 w-[min(260px,55%)] -rotate-[3deg] text-white/90" />
