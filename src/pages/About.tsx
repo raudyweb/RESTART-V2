@@ -1,214 +1,364 @@
-import React, { useEffect, useRef, useState } from "react";
+import { ArrowRight, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import aboutImg from "@/assets/about.jpg";
-import terraceImg from "@/assets/v2/sala-arcos.jpg";
-import interiorImg from "@/assets/Acogedor2.jpg";
-import facadeImg from "@/assets/v2/fachada.jpg";
-import tableImg from "@/assets/Acogedor.jpg";
 import SEO from "@/components/SEO";
+import PageHero from "@/components/paper/PageHero";
+import Reveal from "@/components/paper/Reveal";
+import { HandHeart, Scribble, TornEdge, tornClip } from "@/components/paper/Paper";
+import heroImg from "@/assets/v2/arco-barra.jpg";
+import parejaImg from "@/assets/v2/nosotros/pareja.jpg";
+import latteImg from "@/assets/v2/nosotros/latte-art.jpg";
+import baristaImg from "@/assets/v2/nosotros/barista.jpg";
+import terrazaImg from "@/assets/v2/nosotros/terraza.jpg";
+import benedictImg from "@/assets/v2/benedict-mesa.jpg";
+import fachadaImg from "@/assets/v2/fachada.jpg";
+import salaImg from "@/assets/v2/sala-arcos.jpg";
+import truckImg from "@/assets/v2/foodtruck/truck-logo.jpg";
+import macuImg from "@/assets/v2/macu/rincon-gluten-free.jpg";
 
-const useInView = (threshold = 0.15) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } }, { threshold });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-  return { ref, inView };
-};
+/* ---------- Contenido ---------- */
 
-const FadeIn = ({ children, delay = 0, direction = "up" }: { children: React.ReactNode; delay?: number; direction?: "up" | "left" | "right" | "none" }) => {
-  const { ref, inView } = useInView();
-  const translate = direction === "up" ? "translate-y-8" : direction === "left" ? "-translate-x-8" : direction === "right" ? "translate-x-8" : "";
-  return (
-<div ref={ref}>
-  {children}
-</div>
-  );
-};
-
-const diferencias = [
-  { title: "El trato cercano", text: "Somos una empresa familiar y nos gusta conocer a nuestros clientes, escucharles y hacer que se sientan como en casa. La cercanía, la atención al detalle y el buen servicio forman parte de nuestra identidad." },
-  { title: "Una auténtica cultura del café", text: "El café es una de nuestras grandes pasiones. Ofrecemos una amplia selección de especialidades: Affogato, Shakerato, Iced Latte, Cold Brew y muchas más. También disponemos de café en grano y molido para disfrutar de la experiencia RE-START en casa." },
-  { title: "Mucho más que brunch", text: "Bowls de yogur y açaí, pokes, huevos Benedict, tostadas gourmet, bocadillos planchados, pancakes dulces y salados... Una propuesta pensada para cualquier momento del día, elaborada al momento con productos de calidad." },
-  { title: "Siempre evolucionando", text: "Nuestra historia no deja de crecer. Además de nuestra cafetería principal, contamos con nuestro obrador propio MACU BAKERY Gluten Free y dos puntos de venta en el Camping Vilanova Park, manteniendo siempre la misma filosofía." },
+const historia = [
+  {
+    when: "2022",
+    title: "Abrimos Re-Start",
+    text: "Una idea sencilla y mucha ilusión: un sitio en Vilanova para tomar café de especialidad, bowls de yogur y açaí, tostadas y desayunos hechos con buen producto.",
+    img: fachadaImg,
+    alt: "Fachada amarilla de Re-Start Coffee",
+  },
+  {
+    when: "Paso a paso",
+    title: "Crecemos con vosotros",
+    text: "Lo que empezó como una cafetería familiar fue creciendo gracias a nuestros clientes, a la pasión por la hostelería y a las ganas de mejorar cada día.",
+    img: salaImg,
+    alt: "Sala de Re-Start con arcos y farolillos",
+  },
+  {
+    when: "Al aire libre",
+    title: "Llegamos al camping",
+    text: "Dos puntos de venta en el Camping Vilanova Park: el food truck y la Food Station.",
+    img: truckImg,
+    alt: "Food truck turquesa de Re-Start",
+    link: { to: "/food-truck", label: "Ver Food Truck" },
+  },
+  {
+    when: "Sin gluten",
+    title: "Nace Macu Bakery",
+    text: "Nuestro propio obrador artesanal 100% sin gluten, de donde sale toda la repostería de Re-Start.",
+    img: macuImg,
+    alt: "Rincón Gluten Free de Macu Bakery con neón",
+    link: { to: "/macu-bakery", label: "Ver Macu Bakery" },
+  },
 ];
 
-const About = () => {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [heroLoaded, setHeroLoaded] = useState(false);
-  const images = [interiorImg, terraceImg, tableImg];
+const datos = [
+  { big: "2022", small: "abrimos en Vilanova" },
+  { big: "4.8 ★", small: "+300 reseñas en Google" },
+  { big: "3", small: "proyectos: café, camping y obrador" },
+  { big: "100%", small: "sin gluten en Macu" },
+];
 
-  useEffect(() => {
-    const t = setTimeout(() => setHeroLoaded(true), 100);
-    return () => clearTimeout(t);
-  }, []);
+const diferencias = [
+  {
+    title: "El trato cercano",
+    lead: "Somos una empresa familiar.",
+    text: "Nos gusta conocer a quien entra por la puerta, escucharle y que se sienta como en casa. La cercanía y el buen servicio son parte de lo que somos.",
+    img: baristaImg,
+    alt: "Barista de Re-Start preparando un café",
+    pos: "50% 30%",
+  },
+  {
+    title: "Cultura del café",
+    lead: "El café es nuestra gran pasión.",
+    text: "Una buena selección de especialidades y también café en grano y molido para llevarte la experiencia Re-Start a casa.",
+    chips: ["Affogato", "Shakerato", "Iced latte", "Cold brew", "Café en grano"],
+    img: latteImg,
+    alt: "Vertiendo leche para hacer latte art",
+    pos: "50% 45%",
+  },
+  {
+    title: "Mucho más que brunch",
+    lead: "Para cualquier momento del día.",
+    text: "Elaborado al momento y con productos de calidad.",
+    chips: ["Bowls de yogur y açaí", "Pokes", "Huevos benedict", "Tostadas gourmet", "Bocadillos planchados", "Pancakes dulces y salados"],
+    img: benedictImg,
+    alt: "Huevos benedict servidos en la mesa",
+    pos: "50% 55%",
+  },
+];
 
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-      <SEO
-  title="Sobre Nosotros | Restart Coffee"
-  description="Conoce la historia de Restart Coffee, nuestro café de especialidad, el proyecto Food Truck y el obrador artesanal MACU Bakery."
-/>
-      <Navbar />
+/* ---------- Página ---------- */
 
-      {/* HERO */}
-      <section className="relative h-[60vh] min-h-[400px] flex items-end overflow-hidden">
-        <img src={facadeImg} alt="Fachada Restart Coffee" className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[8000ms] ${heroLoaded ? "scale-105" : "scale-100"}`} />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
-        <div className="relative z-10 container px-6 pb-14">
-          <p className={`text-white/70 text-xs tracking-[0.35em] uppercase mb-3 font-medium transition-all duration-700 delay-300 ${heroLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>Conócenos más</p>
-          <h1 className={`font-display text-4xl md:text-6xl font-semibold text-white leading-tight max-w-2xl transition-all duration-700 delay-500 ${heroLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>Sobre Nosotros</h1>
-        </div>
-      </section>
+const About = () => (
+  <div className="min-h-screen overflow-x-clip">
+    <SEO
+      title="Sobre nosotros | Re-Start Coffee, cafetería familiar en Vilanova i la Geltrú"
+      description="Somos una cafetería familiar en Vilanova i la Geltrú desde 2022: café de especialidad, brunch, nuestro obrador sin gluten Macu Bakery y el food truck del Camping Vilanova Park."
+    />
+    <Navbar />
 
-      {/* QUIÉNES SOMOS */}
-      <section className="py-20 bg-background">
-        <div className="container px-6 max-w-3xl mx-auto text-center">
-          <FadeIn>
-            <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4 font-medium">Quiénes somos</p>
-            <p className="font-display text-xl md:text-2xl leading-relaxed text-foreground/80 italic mb-6">"Creemos en el trato cercano, en los productos elaborados con cariño y en la mejora continua."</p>
-            <div className="w-12 h-0.5 bg-primary mx-auto mb-8" />
-          </FadeIn>
-          <FadeIn delay={150}>
-            <p className="text-muted-foreground leading-relaxed mb-4">Somos una familia apasionada por la hostelería, convencida de que los pequeños detalles marcan la diferencia. Desde nuestros inicios, trabajamos cada día con la ilusión de seguir creciendo, mejorando y ofreciendo la mejor experiencia posible a quienes nos visitan.</p>
-            <p className="text-muted-foreground leading-relaxed">Nuestro objetivo es seguir evolucionando sin perder nuestra esencia: ser un lugar acogedor donde disfrutar de un buen café, una excelente propuesta gastronómica y un ambiente familiar que haga que nuestros clientes siempre quieran volver.</p>
-          </FadeIn>
-        </div>
-      </section>
+    <main>
+      <PageHero
+        img={heroImg}
+        alt="Barra de Re-Start vista a través del arco de entrada"
+        imgPosition="50% 60%"
+        eyebrow="Conócenos"
+        title={
+          <>
+            Sobre
+            <span className="block pl-[0.5em]">nosotros</span>
+          </>
+        }
+        subtitle={
+          <>
+            Una familia, una cafetería
+            <br />
+            y muchas ganas de crecer
+          </>
+        }
+      >
+        <a href="#quienes" className="btn-paper">
+          Nuestra historia <ArrowRight size={16} />
+        </a>
+      </PageHero>
 
-      {/* NUESTRA HISTORIA */}
-      <section className="py-16 bg-foreground">
-        <div className="container px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <FadeIn direction="left">
-              <div className="rounded-2xl overflow-hidden w-full md:max-w-md mx-auto aspect-[4/3]">
-                <img src={aboutImg} alt="Restart Coffee" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+      {/* Quiénes somos */}
+      <section id="quienes" className="scroll-mt-20 bg-paper pb-20 pt-16 md:pb-24 md:pt-20">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-2 md:gap-16 md:px-10">
+          <Reveal className="relative mb-6 md:mb-0">
+            <div className="-rotate-2 drop-shadow-[0_12px_20px_rgba(40,30,20,0.25)]">
+              <div className="aspect-[4/3] overflow-hidden" style={tornClip(701, undefined, 1.8, 2)}>
+                <img
+                  src={parejaImg}
+                  alt="Los responsables de Re-Start brindando con dos cafés en la barra"
+                  loading="lazy"
+                  className="h-full w-full object-cover object-[50%_35%]"
+                />
               </div>
-            </FadeIn>
-            <FadeIn direction="right" delay={150}>
-              <div>
-                <p className="text-xs tracking-[0.3em] uppercase text-white/50 mb-4 font-medium">Nuestra historia</p>
-                <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-6 leading-snug">Desde 2022, creciendo<br />sin perder la esencia</h2>
-                <p className="text-white/70 leading-relaxed mb-4">Nuestra historia comenzó en 2022 con una idea sencilla pero llena de ilusión: crear un espacio diferente en Vilanova i la Geltrú donde disfrutar de café de especialidad, bowls de yogur y açaí, tostadas y desayunos elaborados con productos de calidad.</p>
-                <p className="text-white/70 leading-relaxed mb-4">Lo que empezó como una humilde cafetería familiar fue creciendo gracias al apoyo de nuestros clientes, a nuestra pasión por la hostelería y a las ganas constantes de mejorar y evolucionar.</p>
-                <p className="text-white/70 leading-relaxed">Hoy, RE-START es mucho más que una cafetería. Con el tiempo hemos ampliado nuestra actividad con nuevos proyectos: dos puntos de venta en el Camping Vilanova Park y nuestro propio obrador artesanal, MACU BAKERY Gluten Free.</p>
-              </div>
-            </FadeIn>
-            <div className="flex flex-col sm:flex-row gap-3 mt-8">
-  <a href="/food-truck" className="px-6 py-3 rounded-full bg-white text-foreground font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 text-sm text-center">Food Truck Camping Vilanova Park</a>
-  <a href="/macu-bakery" className="px-6 py-3 rounded-full border border-white/30 text-white font-medium hover:border-white hover:scale-105 transition-all duration-300 text-sm text-center">MACU BAKERY Gluten Free</a>
-</div>
-          </div>
-        </div>
-      </section>
-
-      {/* UBICACIÓN */}
-      <section className="py-16 bg-background">
-        <div className="container px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <FadeIn direction="left" delay={150}>
-              <div className="order-2 md:order-1">
-                <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4 font-medium">Una ubicación privilegiada</p>
-                <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-6 leading-snug">En el corazón de<br />Vilanova i la Geltrú</h2>
-                <p className="text-muted-foreground leading-relaxed mb-4">Nos encontramos junto a la Plaza del Ayuntamiento de Vilanova i la Geltrú, en un entorno perfecto para disfrutar de un desayuno, un brunch o una pausa durante el día.</p>
-                <p className="text-muted-foreground leading-relaxed">Nuestra casa madre, RE-START Brunch & Coffee, sigue siendo el corazón del proyecto y el lugar donde nació nuestra filosofía de ofrecer una experiencia cercana, productos de calidad y un servicio cuidado al detalle.</p>
-                <a href="/#mapa" className="inline-block mt-8 px-6 py-3 rounded-full bg-foreground text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 text-sm">Cómo llegar</a>
-              </div>
-            </FadeIn>
-            <FadeIn direction="right">
-              <div className="order-1 md:order-2 rounded-2xl overflow-hidden w-full md:max-w-md mx-auto aspect-[4/3]">
-                <img src={terraceImg} alt="Terraza Restart Coffee" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-              </div>
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* QUÉ NOS HACE DIFERENTES */}
-      <section className="py-20 bg-foreground">
-        <div className="container px-6">
-          <FadeIn>
-            <div className="text-center mb-14">
-              <p className="text-xs tracking-[0.3em] uppercase text-white/50 mb-3 font-medium">Lo que nos define</p>
-              <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-4">¿Qué nos hace diferentes?</h2>
-              <p className="text-white/60 text-sm max-w-xl mx-auto">En RE-START COFFEE creemos que una cafetería es mucho más que un lugar donde tomar café. Queremos que cada visita sea una experiencia agradable, cercana y memorable.</p>
             </div>
-          </FadeIn>
-          <div className="grid sm:grid-cols-2 gap-6">
-            {diferencias.map((d, i) => (
-              <FadeIn key={d.title} delay={i * 100}>
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-300 h-full">
-                  <h3 className="font-display text-xl font-semibold text-white mb-3">{d.title}</h3>
-                  <p className="text-white/65 leading-relaxed text-sm">{d.text}</p>
+            <p className="hand absolute -bottom-8 right-2 rotate-[-6deg] text-[1.6rem] md:-right-4 md:text-[1.9rem]">
+              Somos familia <HandHeart className="h-[0.7em] w-[0.75em] -translate-y-1" />
+            </p>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <h2 className="label-type text-xl font-bold leading-snug md:text-2xl">Quiénes somos</h2>
+            <span aria-hidden="true" className="mt-5 block h-[2px] w-8 bg-ink" />
+            <p className="hand mt-7 -rotate-1 text-[1.5rem] leading-tight md:text-[1.75rem]">
+              “Creemos en el trato cercano, en lo hecho con cariño y en mejorar cada día”
+            </p>
+            <p className="mt-7 text-[16px] leading-[1.9] text-ink/85">
+              Somos una <strong>familia apasionada por la hostelería</strong>, convencida de que los pequeños detalles
+              marcan la diferencia.
+            </p>
+            <p className="mt-4 text-[16px] leading-[1.9] text-ink/85">
+              Queremos seguir creciendo sin perder la esencia: un lugar acogedor con buen café, buena comida y un
+              ambiente que dé ganas de volver.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Datos rápidos */}
+      <section aria-label="Re-Start en cifras" className="relative bg-sage py-12 md:py-14">
+        <TornEdge side="top" seed={709} className="text-sage" />
+        <ul className="mx-auto grid max-w-6xl grid-cols-2 gap-y-10 px-5 md:grid-cols-4 md:px-10">
+          {datos.map((d, i) => (
+            <Reveal as="li" key={d.small} delay={i * 90} className="text-center">
+              <p className="hand text-[2.4rem] leading-none md:text-[2.8rem]">{d.big}</p>
+              <p className="label-type mx-auto mt-3 max-w-[14rem] text-[12px] leading-snug md:text-[13px]">{d.small}</p>
+            </Reveal>
+          ))}
+        </ul>
+        <TornEdge side="bottom" seed={711} className="text-sage" />
+      </section>
+
+      {/* Nuestra historia: línea de tiempo */}
+      <section aria-labelledby="historia" className="bg-paper-light py-20 md:py-28">
+        <div className="mx-auto max-w-5xl px-5 md:px-10">
+          <div className="flex flex-col items-center text-center">
+            <h2 id="historia" className="hand text-[2.3rem] md:text-[2.8rem]">
+              Nuestra historia
+            </h2>
+            <Scribble className="mt-1 w-32 text-ink" />
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-ink/80">
+              Desde 2022, creciendo sin perder la esencia.
+            </p>
+          </div>
+
+          <ol className="relative mt-16">
+            {/* línea */}
+            <span
+              aria-hidden="true"
+              className="absolute bottom-6 left-[19px] top-6 w-0 border-l-2 border-dashed border-ink/25 md:left-1/2 md:-translate-x-px"
+            />
+            {historia.map((h, i) => {
+              const right = i % 2 === 1;
+              return (
+                <li key={h.title} className="relative pb-14 pl-14 last:pb-0 md:grid md:grid-cols-2 md:gap-16 md:pl-0">
+                  {/* punto */}
+                  <span
+                    aria-hidden="true"
+                    className="hand absolute left-0 top-1 flex h-10 w-10 items-center justify-center rounded-full bg-ink text-lg text-paper-light md:left-1/2 md:-translate-x-1/2"
+                  >
+                    {i + 1}
+                  </span>
+
+                  <Reveal className={`${right ? "md:col-start-2" : "md:col-start-1 md:text-right"}`}>
+                    <p className="label-type text-xs font-bold text-sage-deep">{h.when}</p>
+                    <h3 className="hand mt-2 text-[1.7rem] leading-tight md:text-[1.9rem]">{h.title}</h3>
+                    <p className="mt-3 text-[15px] leading-[1.85] text-ink/85">{h.text}</p>
+                    {h.link && (
+                      <Link
+                        to={h.link.to}
+                        className={`mt-4 inline-flex items-center gap-2 border-b border-ink/30 pb-0.5 text-sm font-bold hover:border-ink ${
+                          right ? "" : "md:flex-row-reverse"
+                        }`}
+                      >
+                        {h.link.label} <ArrowRight size={14} />
+                      </Link>
+                    )}
+                  </Reveal>
+
+                  <Reveal
+                    delay={120}
+                    className={`mt-6 md:row-start-1 md:mt-0 ${right ? "md:col-start-1" : "md:col-start-2"}`}
+                  >
+                    <div className={`${right ? "-rotate-2" : "rotate-2"} drop-shadow-[0_8px_14px_rgba(40,30,20,0.18)]`}>
+                      <div className="aspect-[4/3] overflow-hidden" style={tornClip(720 + i * 7)}>
+                        <img src={h.img} alt={h.alt} loading="lazy" className="h-full w-full object-cover" />
+                      </div>
+                    </div>
+                  </Reveal>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
+
+      {/* Qué nos hace diferentes */}
+      <section aria-labelledby="diferentes" className="bg-paper py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-5 md:px-10">
+          <div className="text-center">
+            <h2 id="diferentes" className="label-type text-xl font-bold md:text-2xl">
+              ¿Qué nos hace diferentes?
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-ink/80">
+              Una cafetería es mucho más que un sitio donde tomar café. Queremos que cada visita sea cercana y
+              agradable.
+            </p>
+          </div>
+
+          <div className="mt-16 space-y-20 md:space-y-24">
+            {diferencias.map((d, i) => {
+              const flip = i % 2 === 1;
+              return (
+                <div key={d.title} className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
+                  <Reveal className={flip ? "md:order-2" : ""}>
+                    <div className={`${flip ? "rotate-2" : "-rotate-2"} drop-shadow-[0_10px_16px_rgba(40,30,20,0.2)]`}>
+                      <div className="aspect-[4/3] overflow-hidden" style={tornClip(760 + i * 11, undefined, 1.8, 2)}>
+                        <img
+                          src={d.img}
+                          alt={d.alt}
+                          loading="lazy"
+                          style={{ objectPosition: d.pos }}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </Reveal>
+                  <Reveal delay={120} className={flip ? "md:order-1" : ""}>
+                    <h3 className="hand text-[2rem] leading-tight md:text-[2.3rem]">{d.title}</h3>
+                    <Scribble className="mt-1 w-24 text-ink" />
+                    <p className="mt-6 text-[16px] font-bold leading-relaxed">{d.lead}</p>
+                    <p className="mt-2 text-[16px] leading-[1.9] text-ink/85">{d.text}</p>
+                    {d.chips && (
+                      <ul className="mt-6 flex flex-wrap gap-2">
+                        {d.chips.map((c) => (
+                          <li
+                            key={c}
+                            className="rounded-full border border-ink/25 bg-paper-light px-3.5 py-1.5 text-[13px]"
+                          >
+                            {c}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </Reveal>
                 </div>
-              </FadeIn>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* EL ESPACIO — CARRUSEL */}
-      <section className="py-16 bg-foreground">
-        <div className="container px-6">
-          <FadeIn>
-            <div className="text-center mb-12">
-              <p className="text-xs tracking-[0.3em] uppercase text-white/50 mb-3 font-medium">El espacio</p>
-              <h2 className="font-display text-3xl md:text-4xl font-semibold text-white">Un espacio saludable y acogedor</h2>
-              <p className="text-white/60 mt-3 text-sm max-w-xl mx-auto">Un lugar luminoso, acogedor y pensado para que puedas disfrutar sin prisas de un gran café y de una oferta gastronómica cuidada al detalle.</p>
-            </div>
-          </FadeIn>
-          <FadeIn delay={100}>
-            <div className="max-w-3xl mx-auto">
-              <div
-                className="relative rounded-2xl overflow-hidden aspect-[16/9]"
-                onTouchStart={(e) => {
-                  (e.currentTarget as any)._touchStartX = e.touches[0].clientX;
-                }}
-                onTouchEnd={(e) => {
-                  const startX = (e.currentTarget as any)._touchStartX ?? 0;
-                  const diff = startX - e.changedTouches[0].clientX;
-                  if (Math.abs(diff) > 40) {
-                    if (diff > 0) setActiveSlide(i => (i === images.length - 1 ? 0 : i + 1));
-                    else setActiveSlide(i => (i === 0 ? images.length - 1 : i - 1));
-                  }
-                }}
-              >
-                {images.map((src, i) => (
-                  <img key={i} src={src} alt={`Espacio ${i + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${activeSlide === i ? "opacity-100" : "opacity-0"}`} />
-                ))}
-                <button onClick={() => setActiveSlide(i => (i === 0 ? images.length - 1 : i - 1))} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm text-lg hover:scale-110">&#8592;</button>
-                <button onClick={() => setActiveSlide(i => (i === images.length - 1 ? 0 : i + 1))} className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm text-lg hover:scale-110">&#8594;</button>
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                  {images.map((_, i) => (
-                    <button key={i} onClick={() => setActiveSlide(i)} className={`transition-all duration-300 rounded-full ${activeSlide === i ? "bg-white w-6 h-2" : "bg-white/40 w-2 h-2"}`} />
-                  ))}
-                </div>
+      {/* Ubicación */}
+      <section aria-labelledby="ubicacion" className="relative bg-sage-light py-20 md:py-24">
+        <TornEdge side="top" seed={791} className="text-sage-light" />
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-2 md:gap-16 md:px-10">
+          <Reveal className="md:order-2">
+            <div className="rotate-2 drop-shadow-[0_12px_20px_rgba(40,30,20,0.22)]">
+              <div className="aspect-[4/5] overflow-hidden" style={tornClip(797, undefined, 1.8, 2)}>
+                <img
+                  src={terrazaImg}
+                  alt="Terraza de Re-Start en la calle, con flores y gente desayunando"
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
-          </FadeIn>
+          </Reveal>
+          <Reveal delay={120} className="md:order-1">
+            <h2 id="ubicacion" className="label-type text-xl font-bold leading-snug md:text-2xl">
+              En el corazón
+              <br />
+              de Vilanova i la Geltrú
+            </h2>
+            <span aria-hidden="true" className="mt-5 block h-[2px] w-8 bg-ink" />
+            <p className="mt-7 text-[16px] leading-[1.9] text-ink/85">
+              Estamos junto a la <strong>Plaza del Ayuntamiento</strong>, un rincón perfecto para un desayuno, un brunch
+              o una pausa a media mañana. Con terraza y dog-friendly.
+            </p>
+            <p className="mt-4 text-[16px] leading-[1.9] text-ink/85">
+              Re-Start Brunch & Coffee es la casa madre: aquí nació nuestra forma de hacer las cosas, cercana y cuidada
+              al detalle.
+            </p>
+            <Link to="/#mapa" className="btn-paper mt-9 w-fit bg-ink text-paper-light">
+              Cómo llegar <MapPin size={16} />
+            </Link>
+          </Reveal>
         </div>
+        <TornEdge side="bottom" seed={799} className="text-sage-light" />
       </section>
 
-      {/* CTA FINAL */}
-      <section className="py-20 bg-background text-center">
-        <div className="container px-6 max-w-xl mx-auto">
-          <FadeIn>
-            <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-4">¿Te animás a venir?</h2>
-            <p className="text-muted-foreground mb-8">Estamos abiertos cada día. Sin reserva, sin protocolo. Solo ven.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/Carta.pdf" target="_blank" rel="noopener noreferrer" className="px-8 py-3.5 rounded-full bg-foreground text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 text-sm">Ver la carta</a>
-              <a href="/#mapa" className="px-8 py-3.5 rounded-full border border-foreground/30 text-foreground font-medium hover:border-foreground hover:scale-105 transition-all duration-300 text-sm">Cómo llegar</a>
-            </div>
-          </FadeIn>
-        </div>
+      {/* Cierre */}
+      <section className="bg-paper pb-24 pt-24 text-center">
+        <Reveal className="mx-auto max-w-xl px-5">
+          <h2 className="hand text-[2.4rem] leading-tight md:text-[2.9rem]">
+            ¿Te animas a{" "}
+            <span className="whitespace-nowrap">
+              venir? <HandHeart className="h-[0.65em] w-[0.7em] -translate-y-1" />
+            </span>
+          </h2>
+          <Scribble className="mx-auto mt-1 w-36 text-ink" />
+          <p className="mt-6 text-[16px] leading-relaxed text-ink/85">
+            Sin reserva y sin protocolo: solo ven. Abrimos de lunes a sábado.
+          </p>
+          <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
+            <a href="/Carta.pdf" target="_blank" rel="noopener noreferrer" className="btn-paper bg-ink text-paper-light">
+              Ver la carta <ArrowRight size={16} />
+            </a>
+            <Link to="/#horarios" className="btn-paper border border-ink/25 bg-transparent">
+              Ver horarios
+            </Link>
+          </div>
+        </Reveal>
       </section>
-
-      <Footer />
-    </div>
-  );
-};
+    </main>
+    <Footer />
+  </div>
+);
 
 export default About;
