@@ -41,6 +41,12 @@
     --sage-light: 82 20% 79%;
     --sage-deep: 86 14% 46%;
     --ink: 28 16% 14%;
+
+    /* Marcas hermanas */
+    --macu: 153 30% 26%;
+    --macu-light: 140 22% 86%;
+    --truck: 174 42% 42%;
+    --truck-light: 172 35% 84%;
   }
 }
 

@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import brunchImg from "@/assets/brunch.jpg";
+import brunchImg from "@/assets/v2/benedict.jpg";
 import { HandHeart, tornClip } from "@/components/paper/Paper";
 import { PalmSketch, SeafrontSketch } from "@/components/paper/Sketches";
 
@@ -12,9 +12,9 @@ const StorySection = () => (
         <div className="aspect-[5/4] overflow-hidden" style={tornClip(59, undefined, 1.8, 2)}>
           <img
             src={brunchImg}
-            alt="Plato de brunch con bocadillo caliente y ensalada"
+            alt="Huevos benedict con salmón sobre pan tostado"
             loading="lazy"
-            className="h-full w-full object-cover object-[50%_55%]"
+            className="h-full w-full object-cover object-[50%_62%]"
           />
         </div>
       </div>

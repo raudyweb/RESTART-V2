@@ -27,6 +27,14 @@ export default {
           deep: "hsl(var(--sage-deep))",
         },
         ink: "hsl(var(--ink))",
+        macu: {
+          DEFAULT: "hsl(var(--macu))",
+          light: "hsl(var(--macu-light))",
+        },
+        truck: {
+          DEFAULT: "hsl(var(--truck))",
+          light: "hsl(var(--truck-light))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

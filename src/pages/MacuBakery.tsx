@@ -1,186 +1,306 @@
-import React, { useEffect, useRef, useState } from "react";
+import { ArrowRight, Cake, HandHeart as HeartHand, Instagram, Mail, MapPin, Phone, ShoppingBag, Users, WheatOff } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import macuLogo from "@/assets/MACULOGO.png";
-import macuObrador1 from "@/assets/MACU-OBRADOR1.jpg";
-import macuObrador2 from "@/assets/MACU-OBRADOR2.jpg";
-import macuObrador3 from "@/assets/MACU-OBRADOR3.jpg";
-import macuLocal from "@/assets/MACU-LOCAL.jpg";
-import macuProd1 from "@/assets/MACU-PROD1.jpg";
 import SEO from "@/components/SEO";
+import PageHero from "@/components/paper/PageHero";
+import MoreProjects from "@/components/paper/MoreProjects";
+import VisitBlock from "@/components/paper/VisitBlock";
+import { HandHeart, Scribble, TornEdge, tornClip } from "@/components/paper/Paper";
+import macuLogo from "@/assets/MACULOGO.png";
+import heroImg from "@/assets/v2/macu/horno-barras.jpg";
+import panImg from "@/assets/v2/macu/pan-larga-fermentacion.jpg";
+import cookiesImg from "@/assets/v2/macu/cookies-bandeja.jpg";
+import tartaImg from "@/assets/v2/macu/tarta-envase.jpg";
+import barrasImg from "@/assets/v2/macu/barras.jpg";
+import amasandoImg from "@/assets/v2/macu/amasando.jpg";
+import formandoImg from "@/assets/v2/macu/formando.jpg";
+import sacandoImg from "@/assets/v2/macu/sacando-horno.jpg";
+import bolsitasImg from "@/assets/v2/macu/galletas-bolsitas.jpg";
+import fachadaImg from "@/assets/v2/macu/fachada-macu.jpg";
 
-const useInView = (threshold = 0.15) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } }, { threshold });
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-  return { ref, inView };
-};
+const SHOP = "https://macuglutenfree.com/tienda/";
+const ORDERS = "https://macuglutenfree.com/encargos/";
+const IG = "https://instagram.com/macubakery_glutenfree";
 
-const FadeIn = ({ children, delay = 0, direction = "up" }: { children: React.ReactNode; delay?: number; direction?: "up" | "left" | "right" | "none" }) => {
-  const { ref, inView } = useInView();
-  const translate = direction === "up" ? "translate-y-8" : direction === "left" ? "-translate-x-8" : direction === "right" ? "translate-x-8" : "";
-  return (
-<div ref={ref}>
-  {children}
-</div>
-  );
-};
-
-const valores = [
-  { title: "100% sin gluten", text: "Todo lo que sale de MACU BAKERY es libre de gluten, sin excepciones. No es una línea especial dentro de un obrador convencional — es un obrador dedicado exclusivamente a la repostería sin gluten." },
-  { title: "Elaboración artesanal", text: "Cada pieza se elabora a mano, con ingredientes seleccionados y recetas desarrolladas para que el resultado sea indistinguible de la repostería convencional en sabor y textura." },
-  { title: "El corazón de RE-START", text: "MACU BAKERY es nuestro obrador propio. Toda la repostería que se sirve en RE-START Brunch & Coffee sale de aquí, garantizando frescura y calidad en cada bocado." },
-  { title: "Para celíacos y no celíacos", text: "Nuestra repostería está pensada para que todo el mundo pueda disfrutarla. No hay que renunciar al sabor para cuidar la salud. Eso es lo que defendemos desde el primer día." },
+const productos = [
+  {
+    title: "Pan de larga fermentación",
+    text: "Hogazas y panes horneados cada día, con fermentaciones lentas para que tengan miga, corteza y sabor de verdad.",
+    img: panImg,
+    alt: "Hogaza de pan sin gluten recién horneada en el escaparate",
+    seed: 501,
+  },
+  {
+    title: "Cookies estilo New York",
+    text: "Gruesas, tiernas por dentro y cargadas: chocolate, pistacho, limón y amapola, caramelo salado…",
+    img: cookiesImg,
+    alt: "Bandeja de cookies sin gluten antes de hornear",
+    seed: 503,
+  },
+  {
+    title: "Tartas y bizcochos",
+    text: "Tartas, bizcochos, muffins y otras especialidades dulces, también por encargo para celebraciones.",
+    img: tartaImg,
+    alt: "Tarta individual sin gluten en su envase de Macu",
+    seed: 509,
+  },
+  {
+    title: "Barras y bollería",
+    text: "Barras, panets y bollería del día. Lo mismo que sirve Re-Start en su barra sale de este obrador.",
+    img: barrasImg,
+    alt: "Barras de pan sin gluten recién horneadas",
+    seed: 521,
+  },
 ];
 
-const MacuBakery = () => {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [heroLoaded, setHeroLoaded] = useState(false);
-  const images = [macuObrador1, macuObrador2, macuObrador3];
+const valores = [
+  {
+    icon: WheatOff,
+    title: "100% sin gluten",
+    text: "No es una línea especial dentro de un obrador convencional: aquí no entra el gluten. Así se evita la contaminación cruzada y las personas celíacas pueden comer tranquilas.",
+  },
+  {
+    icon: HeartHand,
+    title: "Hecho a mano",
+    text: "Cada pieza se elabora de forma artesanal, con ingredientes seleccionados y recetas pensadas para que el sabor y la textura no tengan nada que envidiar.",
+  },
+  {
+    icon: Cake,
+    title: "El obrador de Re-Start",
+    text: "Toda la repostería de Re-Start Brunch & Coffee sale de Macu. Frescura y control de la calidad desde el horno hasta la mesa.",
+  },
+  {
+    icon: Users,
+    title: "Para todo el mundo",
+    text: "Celíacos o no, la idea es la misma: que nadie tenga que renunciar a un buen pan o a un dulce, y que se pueda compartir mesa sin preocupaciones.",
+  },
+];
 
-  useEffect(() => {
-    const t = setTimeout(() => setHeroLoaded(true), 100);
-    return () => clearTimeout(t);
-  }, []);
+const hours = [
+  { days: "Lunes y martes", hours: "Cerrado", closed: true },
+  { days: "Miércoles a viernes", hours: "9:30 – 13:30" },
+  { days: "Sábado", hours: "10:00 – 13:00" },
+  { days: "Domingo", hours: "Cerrado", closed: true },
+];
 
-  return (
-    <div className="min-h-screen bg-background text-foreground">
-      <SEO
-  title="MACU Bakery | Obrador sin gluten"
-  description="Conoce MACU Bakery, nuestro obrador de repostería artesanal sin gluten elaborado con ingredientes de calidad y mucho mimo."
-/>
-      <Navbar />
+const contacts = [
+  {
+    icon: MapPin,
+    label: "Carrer del Col·legi, 35 · 08800 Vilanova i la Geltrú",
+    href: "https://maps.app.goo.gl/DHLKVEp9WPZuMdg8A",
+    external: true,
+  },
+  { icon: Phone, label: "+34 611 77 63 20", href: "tel:+34611776320" },
+  { icon: Mail, label: "macuglutenfree@gmail.com", href: "mailto:macuglutenfree@gmail.com" },
+  { icon: Instagram, label: "@macubakery_glutenfree", href: IG, external: true },
+];
 
-      {/* HERO */}
-      <section className="relative h-[60vh] min-h-[400px] flex items-end overflow-hidden">
-        <img src={macuLocal} alt="MACU BAKERY" className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[8000ms] ${heroLoaded ? "scale-105" : "scale-100"}`} />
-        <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
-        <div className="relative z-10 container px-6 pb-14">
-          <p className={`text-white/70 text-xs tracking-[0.35em] uppercase mb-3 font-medium transition-all duration-700 delay-300 ${heroLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>Nuestros proyectos</p>
-          <h1 className={`font-display text-4xl md:text-6xl font-semibold text-white leading-tight max-w-2xl transition-all duration-700 delay-500 ${heroLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>MACU BAKERY<br />Gluten Free</h1>
-        </div>
-      </section>
+const MacuBakery = () => (
+  <div className="min-h-screen overflow-x-clip">
+    <SEO
+      title="Macu Bakery | Obrador 100% sin gluten en Vilanova i la Geltrú"
+      description="Pan de larga fermentación, cookies estilo New York, tartas y bollería artesanal 100% sin gluten. El obrador de Re-Start en Vilanova i la Geltrú, con tienda online y encargos."
+      image="/preview.jpg"
+    />
+    <Navbar />
 
-      {/* INTRO CON LOGO */}
-      <section className="py-20 bg-background">
-        <div className="container px-6 max-w-3xl mx-auto text-center">
-          <FadeIn>
-            <img src={macuLogo} alt="MACU BAKERY Logo" className="w-24 h-24 object-contain mx-auto mb-6" />
-            <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4 font-medium">Nuestro obrador</p>
-            <p className="font-display text-xl md:text-2xl leading-relaxed text-foreground/80 italic mb-6">"Repostería artesanal sin gluten, elaborada con el mismo compromiso por la calidad que define a RE-START desde el primer día."</p>
-            <div className="w-12 h-0.5 bg-primary mx-auto mb-8" />
-          </FadeIn>
-          <FadeIn delay={150}>
-            <p className="text-muted-foreground leading-relaxed mb-4">MACU BAKERY es el obrador propio de RE-START y el corazón de nuestra propuesta de repostería. Un espacio dedicado exclusivamente a la elaboración artesanal de productos sin gluten, donde cada receta está pensada para demostrar que prescindir del gluten no significa renunciar al sabor.</p>
-            <p className="text-muted-foreground leading-relaxed">Toda la repostería que se sirve en RE-START Brunch & Coffee sale de MACU BAKERY, garantizando frescura, trazabilidad y un control total de la calidad desde el obrador hasta la mesa.</p>
-          </FadeIn>
-        </div>
-      </section>
+    <main>
+      <PageHero
+        img={heroImg}
+        alt="Barras de pan sin gluten dorándose en el horno de Macu"
+        imgPosition="50% 55%"
+        eyebrow="El obrador de Re-Start"
+        title={
+          <>
+            Macu
+            <span className="block pl-[0.5em]">Bakery</span>
+          </>
+        }
+        subtitle={
+          <>
+            Pan y repostería artesanal
+            <br />
+            100% sin gluten
+          </>
+        }
+      >
+        <a href={SHOP} target="_blank" rel="noopener noreferrer" className="btn-paper">
+          Tienda online <ShoppingBag size={16} />
+        </a>
+        <a href="#visita-macu" className="btn-ghost-light">
+          Visita el obrador <MapPin size={16} />
+        </a>
+      </PageHero>
 
-      {/* EL OBRADOR */}
-      <section className="py-16 bg-foreground">
-        <div className="container px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <FadeIn direction="left">
-              <div className="rounded-2xl overflow-hidden w-full md:max-w-md mx-auto aspect-[4/3]">
-                <img src={macuProd1} alt="Productos MACU BAKERY" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-              </div>
-            </FadeIn>
-            <FadeIn direction="right" delay={150}>
-              <div>
-                <p className="text-xs tracking-[0.3em] uppercase text-white/50 mb-4 font-medium">El obrador</p>
-                <h2 className="font-display text-3xl md:text-4xl font-semibold text-white mb-6 leading-snug">Donde nace toda<br />nuestra repostería</h2>
-                <p className="text-white/70 leading-relaxed mb-4">MACU BAKERY no es una línea especial dentro de un obrador convencional. Es un espacio dedicado en exclusiva a la repostería sin gluten, donde la contaminación cruzada no existe y donde cada proceso está diseñado para garantizar la seguridad de las personas celíacas.</p>
-                <p className="text-white/70 leading-relaxed mb-4">Cookies, panets, tartes, pancakes, muffins... Todo elaborado a mano, con ingredientes seleccionados y con el cuidado que merece quien tiene que vigilar lo que come.</p>
-                <p className="text-white/70 leading-relaxed">Creemos que la repostería sin gluten puede ser tan buena — o mejor — que la convencional. MACU BAKERY existe para demostrarlo.</p>
-              </div>
-            </FadeIn>
+      {/* Intro */}
+      <section className="bg-paper pb-20 pt-16 md:pt-20">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] md:gap-16 md:px-10">
+          <div className="mx-auto w-56 -rotate-3 drop-shadow-[0_10px_16px_rgba(40,30,20,0.22)] md:w-full md:max-w-xs">
+            <div className="aspect-[4/3] overflow-hidden" style={tornClip(531, undefined, 2.4, 3)}>
+              <img src={macuLogo} alt="Logo de Macu Gluten Free Bakery" className="h-full w-full object-cover" />
+            </div>
+          </div>
+          <div>
+            <p className="hand -rotate-2 text-[1.7rem] leading-tight md:text-[2rem]">
+              “Tus dulces favoritos, ahora sin gluten”
+            </p>
+            <p className="mt-7 text-[15px] leading-[1.9] text-ink/85">
+              Macu es el obrador propio de Re-Start y el corazón de nuestra repostería. Un espacio dedicado en exclusiva
+              a elaborar pan y dulces sin gluten, donde cada receta está pensada para demostrar que prescindir del
+              gluten no significa renunciar al sabor.
+            </p>
+            <p className="mt-4 text-[15px] leading-[1.9] text-ink/85">
+              Todo lo que se sirve en Re-Start Brunch & Coffee sale de aquí: frescura, trazabilidad y control total de
+              la calidad, del obrador a la mesa.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* VALORES */}
-      <section className="py-20 bg-background">
-        <div className="container px-6">
-          <FadeIn>
-            <div className="text-center mb-14">
-              <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-3 font-medium">Lo que nos define</p>
-              <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground">Por qué MACU es diferente</h2>
-            </div>
-          </FadeIn>
-          <div className="grid sm:grid-cols-2 gap-6">
-            {valores.map((v, i) => (
-              <FadeIn key={v.title} delay={i * 100}>
-                <div className="bg-foreground rounded-2xl p-8 hover:opacity-90 transition-all duration-300 h-full">
-                  <h3 className="font-display text-xl font-semibold text-white mb-3">{v.title}</h3>
-                  <p className="text-white/65 leading-relaxed text-sm">{v.text}</p>
+      {/* Productos */}
+      <section aria-labelledby="horno" className="relative bg-macu pb-20 pt-16 text-paper-light md:pb-24">
+        <TornEdge side="top" seed={541} className="text-macu" />
+        <div className="mx-auto max-w-7xl px-5 md:px-10">
+          <div className="flex flex-col items-center text-center">
+            <h2 id="horno" className="hand text-[2.3rem] md:text-[2.8rem]">
+              Lo que sale del horno
+            </h2>
+            <Scribble className="mt-1 w-32 text-paper-light" />
+          </div>
+
+          <ul className="mt-14 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+            {productos.map((p, i) => (
+              <li key={p.title} className="flex flex-col">
+                <div className={`${i % 2 ? "rotate-1" : "-rotate-1"} drop-shadow-[0_10px_16px_rgba(0,0,0,0.3)]`}>
+                  <div className="aspect-[4/3] overflow-hidden sm:aspect-[4/5]" style={tornClip(p.seed)}>
+                    <img src={p.img} alt={p.alt} loading="lazy" className="h-full w-full object-cover" />
+                  </div>
                 </div>
-              </FadeIn>
+                <h3 className="label-type mt-6 text-sm font-bold">{p.title}</h3>
+                <p className="mt-3 text-[14px] leading-[1.8] text-paper-light/85">{p.text}</p>
+              </li>
             ))}
+          </ul>
+        </div>
+        <TornEdge side="bottom" seed={547} className="text-macu" />
+      </section>
+
+      {/* El obrador */}
+      <section className="bg-paper py-20 md:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:grid-cols-2 md:px-10">
+          <div className="relative mx-auto h-[440px] w-full max-w-md md:h-[520px]">
+            <div className="absolute left-0 top-0 w-[58%] -rotate-3 drop-shadow-[0_10px_16px_rgba(40,30,20,0.22)]">
+              <div className="aspect-[3/4] overflow-hidden" style={tornClip(561)}>
+                <img src={amasandoImg} alt="Amasando masa sin gluten con la amasadora" loading="lazy" className="h-full w-full object-cover" />
+              </div>
+            </div>
+            <div className="absolute right-0 top-[14%] w-[52%] rotate-2 drop-shadow-[0_10px_16px_rgba(40,30,20,0.22)]">
+              <div className="aspect-[3/4] overflow-hidden" style={tornClip(563)}>
+                <img src={formandoImg} alt="Formando barras de pan a mano" loading="lazy" className="h-full w-full object-cover" />
+              </div>
+            </div>
+            <div className="absolute bottom-0 left-[18%] w-[50%] rotate-[4deg] drop-shadow-[0_10px_16px_rgba(40,30,20,0.22)]">
+              <div className="aspect-[4/3] overflow-hidden" style={tornClip(569)}>
+                <img src={sacandoImg} alt="Sacando una bandeja de barras del horno" loading="lazy" className="h-full w-full object-cover object-[50%_60%]" />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h2 className="label-type text-xl font-bold leading-snug md:text-2xl">
+              Donde nace toda
+              <br />
+              nuestra repostería
+            </h2>
+            <span aria-hidden="true" className="mt-5 block h-[2px] w-8 bg-ink" />
+            <p className="mt-7 text-[15px] leading-[1.9] text-ink/85">
+              Macu no es una línea especial dentro de un obrador convencional. Es un espacio dedicado en exclusiva a la
+              elaboración sin gluten, donde cada proceso está pensado para la seguridad de las personas celíacas.
+            </p>
+            <p className="mt-4 text-[15px] leading-[1.9] text-ink/85">
+              Cookies, panets, tartas, pancakes, muffins… Todo elaborado a mano, con ingredientes seleccionados y con el
+              cuidado que merece quien tiene que vigilar lo que come.
+            </p>
+            <p className="hand mt-9 -rotate-3 text-[1.6rem] leading-tight md:text-[1.9rem]">
+              Sin gluten puede ser
+              <br />
+              igual de bueno. O mejor <HandHeart className="h-[0.7em] w-[0.75em] -translate-y-1" />
+            </p>
           </div>
         </div>
       </section>
 
-      {/* CARRUSEL OBRADOR */}
-      <section className="py-16 bg-foreground">
-        <div className="container px-6">
-          <FadeIn>
-            <div className="text-center mb-12">
-              <p className="text-xs tracking-[0.3em] uppercase text-white/50 mb-3 font-medium">El espacio</p>
-              <h2 className="font-display text-3xl md:text-4xl font-semibold text-white">Nuestro obrador por dentro</h2>
-              <p className="text-white/60 mt-3 text-sm max-w-xl mx-auto">Un espacio pensado para elaborar con cuidado, limpieza y pasión por el producto sin gluten.</p>
-            </div>
-          </FadeIn>
-          <FadeIn delay={100}>
-            <div className="max-w-3xl mx-auto">
-              <div className="relative rounded-2xl overflow-hidden aspect-[16/9]" onTouchStart={(e) => { (e.currentTarget as any)._touchStartX = e.touches[0].clientX; }} onTouchEnd={(e) => { const diff = ((e.currentTarget as any)._touchStartX ?? 0) - e.changedTouches[0].clientX; if (Math.abs(diff) > 40) { if (diff > 0) setActiveSlide(i => (i === images.length - 1 ? 0 : i + 1)); else setActiveSlide(i => (i === 0 ? images.length - 1 : i - 1)); } }}>
-                {images.map((src, i) => (<img key={i} src={src} alt={`Obrador ${i + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${activeSlide === i ? "opacity-100" : "opacity-0"}`} />))}
-                <button onClick={() => setActiveSlide(i => (i === 0 ? images.length - 1 : i - 1))} className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm text-lg hover:scale-110">&#8592;</button>
-                <button onClick={() => setActiveSlide(i => (i === images.length - 1 ? 0 : i + 1))} className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-all duration-300 backdrop-blur-sm text-lg hover:scale-110">&#8594;</button>
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">{images.map((_, i) => (<button key={i} onClick={() => setActiveSlide(i)} className={`transition-all duration-300 rounded-full ${activeSlide === i ? "bg-white w-6 h-2" : "bg-white/40 w-2 h-2"}`} />))}</div>
-              </div>
-            </div>
-          </FadeIn>
+      {/* Por qué Macu */}
+      <section aria-labelledby="por-que" className="relative bg-macu-light py-16 md:py-20">
+        <TornEdge side="top" seed={577} className="text-macu-light" />
+        <div className="mx-auto max-w-6xl px-5 md:px-10">
+          <h2 id="por-que" className="label-type text-center text-xl font-bold md:text-2xl">
+            Por qué Macu es diferente
+          </h2>
+          <ul className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {valores.map(({ icon: Icon, title, text }) => (
+              <li key={title} className="text-center">
+                <Icon size={36} strokeWidth={1.25} className="mx-auto text-macu" aria-hidden="true" />
+                <h3 className="hand mt-4 text-[1.45rem]">{title}</h3>
+                <p className="mt-3 text-[14px] leading-[1.8] text-ink/80">{text}</p>
+              </li>
+            ))}
+          </ul>
         </div>
+        <TornEdge side="bottom" seed={579} className="text-macu-light" />
       </section>
 
-      {/* MAPA */}
-      <section className="py-16 bg-background">
-        <div className="container px-6">
-          <FadeIn>
-            <div className="text-center mb-12">
-              <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-3 font-medium">Dónde estamos</p>
-              <h2 className="font-display text-3xl md:text-4xl font-semibold text-foreground">Encuéntranos</h2>
-              <p className="text-muted-foreground mt-3 text-sm max-w-xl mx-auto">Visítanos en nuestro obrador y descubre de primera mano nuestra repostería sin gluten.</p>
+      {/* Tienda online y encargos */}
+      <section className="bg-paper-light py-20 md:py-24">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] md:px-10">
+          <div className="order-2 md:order-1">
+            <h2 className="hand text-[2.3rem] leading-none md:text-[2.7rem]">Llévate Macu a casa</h2>
+            <Scribble className="mt-1 w-36 text-ink" />
+            <p className="mt-7 max-w-lg text-[15px] leading-[1.9] text-ink/85">
+              Las cookies y las MACU BOX se pueden pedir desde la tienda online, con envío a toda la península. Y si
+              tienes una celebración, el obrador prepara tartas y bandejas por encargo.
+            </p>
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+              <a href={SHOP} target="_blank" rel="noopener noreferrer" className="btn-paper bg-macu text-paper-light">
+                Tienda online <ShoppingBag size={16} />
+              </a>
+              <a href={ORDERS} target="_blank" rel="noopener noreferrer" className="btn-paper border border-ink/25 bg-transparent">
+                Hacer un encargo <ArrowRight size={16} />
+              </a>
             </div>
-          </FadeIn>
-          <FadeIn delay={100}>
-            <div className="rounded-2xl overflow-hidden shadow-lg h-80 md:h-96 max-w-4xl mx-auto">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.9201476357885!2d1.7255711999999996!3d41.2235106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a387fb6cf6d883%3A0xf1f199113b8424a2!2sMACU%20Gluten%20Free%20Bakery!5e0!3m2!1ses!2ses!4v1782665049933!5m2!1ses!2ses"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
+          </div>
+          <div className="order-1 mx-auto w-full max-w-sm rotate-2 drop-shadow-[0_10px_18px_rgba(40,30,20,0.22)] md:order-2">
+            <div className="aspect-[4/5] overflow-hidden" style={tornClip(587)}>
+              <img
+                src={bolsitasImg}
+                alt="Bolsitas de galletas sin gluten con la etiqueta de Macu"
                 loading="lazy"
-                referrerPolicy="strict-origin-when-cross-origin"
-                title="Ubicación MACU BAKERY"
+                className="h-full w-full object-cover"
               />
             </div>
-            <div className="text-center mt-6">
-              <a href="https://maps.app.goo.gl/DHLKVEp9WPZuMdg8A" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 text-sm">Cómo llegar</a>
-            </div>
-          </FadeIn>
+          </div>
         </div>
       </section>
 
-      <Footer />
-    </div>
-  );
-};
+      <VisitBlock
+        id="visita-macu"
+        title="Ven al obrador"
+        intro="La tienda está a un par de calles de Re-Start. Pásate a por pan del día, cookies o a recoger tu encargo."
+        img={fachadaImg}
+        imgAlt="Fachada de Macu Gluten Free Bakery con su rótulo verde"
+        hours={hours}
+        hoursNote="Horario publicado en macuglutenfree.com. Puede variar en festivos."
+        contacts={contacts}
+        mapsUrl="https://maps.app.goo.gl/DHLKVEp9WPZuMdg8A"
+        mapEmbed="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.9201476357885!2d1.7255711999999996!3d41.2235106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a387fb6cf6d883%3A0xf1f199113b8424a2!2sMACU%20Gluten%20Free%20Bakery!5e0!3m2!1ses!2ses!4v1782665049933!5m2!1ses!2ses"
+        mapTitle="Mapa de Macu Gluten Free Bakery"
+        buttonClass="bg-macu text-paper-light"
+      />
+
+      <MoreProjects current="macu" />
+    </main>
+    <Footer />
+  </div>
+);
 
 export default MacuBakery;

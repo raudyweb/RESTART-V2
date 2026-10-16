@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import cafeCroissants from "@/assets/v2/cafe-croissants.jpg";
 import bowlImg from "@/assets/v2/bowl-acai.jpg";
+import bakeryImg from "@/assets/v2/macu/pan-larga-fermentacion.jpg";
 import { Scribble, TornEdge, tornClip } from "@/components/paper/Paper";
 
 const categories = [
@@ -40,10 +41,10 @@ const categories = [
   },
   {
     title: ["Bakery"],
-    img: cafeCroissants,
-    pos: "50% 0%",
-    zoom: 1.75,
-    alt: "Cruasanes y napolitanas de chocolate recién horneados",
+    img: bakeryImg,
+    pos: "50% 45%",
+    zoom: 1,
+    alt: "Hogaza de pan sin gluten recién horneada en el obrador de Macu",
     tilt: "-rotate-[1deg]",
     seed: 37,
     items: [
