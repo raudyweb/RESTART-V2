@@ -1,3 +1,4 @@
+import type React from "react";
 import type { LucideIcon } from "lucide-react";
 import { MapPin } from "lucide-react";
 import type { ReactNode } from "react";
@@ -36,13 +37,13 @@ const VisitBlock = ({
 }) => (
   <section id={id} className="scroll-mt-20 bg-paper pb-24 pt-20 md:pt-24">
     <div className="mx-auto grid max-w-7xl gap-14 px-5 md:grid-cols-2 md:gap-16 md:px-10">
-      <div className="rotate-[1.5deg] drop-shadow-[0_10px_18px_rgba(40,30,20,0.2)]">
+      <div data-reveal="" className="rotate-[1.5deg] drop-shadow-[0_10px_18px_rgba(40,30,20,0.2)]">
         <div className="aspect-[4/5] overflow-hidden" style={tornClip(413, undefined, 1.8, 2.5)}>
           <img src={img} alt={imgAlt} loading="lazy" className="h-full w-full object-cover" />
         </div>
       </div>
 
-      <div className="flex flex-col justify-center">
+      <div data-reveal="" style={{ "--reveal-delay": "120ms" } as React.CSSProperties} className="flex flex-col justify-center">
         <h2 className="hand text-[2.4rem] leading-none md:text-[2.8rem]">
           {title} <HandHeart className="h-[0.65em] w-[0.7em] -translate-y-2" />
         </h2>

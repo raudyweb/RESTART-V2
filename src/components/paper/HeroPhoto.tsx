@@ -28,7 +28,7 @@ const HeroPhoto = ({
       <img
         src={src}
         alt={alt}
-        fetchPriority="high"
+        {...{ fetchpriority: "high" }}
         decoding="async"
         className="h-full w-full object-cover [object-position:var(--pos)] lg:[object-position:var(--pos-lg)]"
         style={{ "--pos": position, "--pos-lg": desktopPosition ?? position } as CSSProperties}

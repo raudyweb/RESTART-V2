@@ -1,7 +1,7 @@
-import salaImg from "@/assets/v2/sala-arcos.jpg";
-import tropicalImg from "@/assets/v2/rincon-tropical.jpg";
-import arcoImg from "@/assets/v2/arco-barra.jpg";
-import barraImg from "@/assets/v2/barra-madera.jpg";
+import salaImg from "@/assets/v2/sala-arcos.webp";
+import tropicalImg from "@/assets/v2/rincon-tropical.webp";
+import arcoImg from "@/assets/v2/arco-barra.webp";
+import barraImg from "@/assets/v2/barra-madera.webp";
 import { Scribble, tornClip } from "@/components/paper/Paper";
 
 const photos = [
@@ -25,7 +25,7 @@ const GallerySection = () => (
       </div>
     </div>
 
-    <ul className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-6 md:mx-auto md:grid md:max-w-7xl md:grid-cols-4 md:overflow-visible md:px-10">
+    <ul data-reveal="" className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-6 md:mx-auto md:grid md:max-w-7xl md:grid-cols-4 md:overflow-visible md:px-10">
       {photos.map((p) => (
         <li
           key={p.seed}

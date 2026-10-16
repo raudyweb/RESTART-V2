@@ -1,6 +1,6 @@
 import { Instagram, Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import logoImg from "@/assets/logo-invert.png";
+import logoImg from "@/assets/logo-invert.webp";
 import { TornEdge } from "@/components/paper/Paper";
 
 const Footer = () => (

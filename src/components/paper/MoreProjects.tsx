@@ -1,8 +1,9 @@
+import type React from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import cafeImg from "@/assets/v2/barra-iluminada.jpg";
-import macuImg from "@/assets/v2/macu/rincon-gluten-free.jpg";
-import truckImg from "@/assets/v2/foodtruck/truck-logo.jpg";
+import cafeImg from "@/assets/v2/barra-iluminada.webp";
+import macuImg from "@/assets/v2/macu/rincon-gluten-free.webp";
+import truckImg from "@/assets/v2/foodtruck/truck-logo.webp";
 import { Scribble, tornClip } from "@/components/paper/Paper";
 
 const projects = [
@@ -25,7 +26,7 @@ const MoreProjects = ({ current }: { current: "macu" | "truck" }) => (
         {projects
           .filter((p) => p.key !== current)
           .map((p, i) => (
-            <li key={p.key}>
+            <li key={p.key} data-reveal="" style={{ "--reveal-delay": `${i * 120}ms` } as React.CSSProperties}>
               <Link to={p.to} className="group block">
                 <div className={`${i % 2 ? "rotate-1" : "-rotate-1"} drop-shadow-[0_8px_14px_rgba(40,30,20,0.18)]`}>
                   <div className="aspect-[4/3] overflow-hidden" style={tornClip(300 + i * 7)}>

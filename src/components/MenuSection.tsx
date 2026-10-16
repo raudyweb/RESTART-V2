@@ -1,7 +1,8 @@
+import type React from "react";
 import { ArrowRight } from "lucide-react";
-import cafeImg from "@/assets/v2/cafe-latte.jpg";
-import bowlImg from "@/assets/v2/bowl-acai.jpg";
-import bakeryImg from "@/assets/v2/bolleria.jpg";
+import cafeImg from "@/assets/v2/cafe-latte.webp";
+import bowlImg from "@/assets/v2/bowl-acai.webp";
+import bakeryImg from "@/assets/v2/bolleria.webp";
 import { Scribble, TornEdge, tornClip } from "@/components/paper/Paper";
 
 const categories = [
@@ -62,8 +63,8 @@ const MenuSection = () => (
     <TornEdge side="top" seed={3} className="text-paper" />
     <div className="mx-auto max-w-7xl px-5 md:px-10">
       <div className="grid gap-12 md:grid-cols-3 md:gap-8">
-        {categories.map((c) => (
-          <article key={c.title.join(" ")} className="flex flex-col">
+        {categories.map((c, idx) => (
+          <article key={c.title.join(" ")} className="flex flex-col" data-reveal="" style={{ "--reveal-delay": `${idx * 110}ms` } as React.CSSProperties}>
             <div className={`${c.tilt} drop-shadow-[0_8px_14px_rgba(40,30,20,0.18)]`}>
               <div className="aspect-[4/3.3] overflow-hidden bg-muted" style={tornClip(c.seed)}>
                 <div className="h-full w-full" style={{ transform: `scale(${c.zoom})`, transformOrigin: "50% 0%" }}>

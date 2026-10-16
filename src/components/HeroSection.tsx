@@ -1,5 +1,5 @@
 import { ArrowRight, MapPin } from "lucide-react";
-import heroImg from "@/assets/v2/hero-good-vibes.jpg";
+import heroImg from "@/assets/v2/hero-good-vibes.webp";
 import { HandHeart, Scribble } from "@/components/paper/Paper";
 import HeroPhoto from "@/components/paper/HeroPhoto";
 

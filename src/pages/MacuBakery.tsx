@@ -1,22 +1,24 @@
+import type React from "react";
 import { ArrowRight, Cake, HandHeart as HeartHand, Instagram, Mail, MapPin, Phone, ShoppingBag, Users, WheatOff } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import { SITE_URL, abs, breadcrumb } from "@/lib/site";
 import PageHero from "@/components/paper/PageHero";
 import MoreProjects from "@/components/paper/MoreProjects";
 import VisitBlock from "@/components/paper/VisitBlock";
 import { HandHeart, Scribble, TornEdge, tornClip } from "@/components/paper/Paper";
-import macuLogo from "@/assets/MACULOGO.png";
-import heroImg from "@/assets/v2/macu/horno-barras.jpg";
-import panImg from "@/assets/v2/macu/pan-larga-fermentacion.jpg";
-import cookiesImg from "@/assets/v2/macu/cookies-bandeja.jpg";
-import tartaImg from "@/assets/v2/macu/tarta-envase.jpg";
-import barrasImg from "@/assets/v2/macu/barras.jpg";
-import amasandoImg from "@/assets/v2/macu/amasando.jpg";
-import formandoImg from "@/assets/v2/macu/formando.jpg";
-import sacandoImg from "@/assets/v2/macu/sacando-horno.jpg";
-import bolsitasImg from "@/assets/v2/macu/galletas-bolsitas.jpg";
-import fachadaImg from "@/assets/v2/macu/fachada-macu.jpg";
+import macuLogo from "@/assets/MACULOGO.webp";
+import heroImg from "@/assets/v2/macu/horno-barras.webp";
+import panImg from "@/assets/v2/macu/pan-larga-fermentacion.webp";
+import cookiesImg from "@/assets/v2/macu/cookies-bandeja.webp";
+import tartaImg from "@/assets/v2/macu/tarta-envase.webp";
+import barrasImg from "@/assets/v2/macu/barras.webp";
+import amasandoImg from "@/assets/v2/macu/amasando.webp";
+import formandoImg from "@/assets/v2/macu/formando.webp";
+import sacandoImg from "@/assets/v2/macu/sacando-horno.webp";
+import bolsitasImg from "@/assets/v2/macu/galletas-bolsitas.webp";
+import fachadaImg from "@/assets/v2/macu/fachada-macu.webp";
 
 const SHOP = "https://macuglutenfree.com/tienda/";
 const ORDERS = "https://macuglutenfree.com/encargos/";
@@ -98,9 +100,45 @@ const contacts = [
 const MacuBakery = () => (
   <div className="min-h-screen overflow-x-clip">
     <SEO
+      path="/macu-bakery"
       title="Macu Bakery | Obrador 100% sin gluten en Vilanova i la Geltrú"
-      description="Pan de larga fermentación, cookies estilo New York, tartas y bollería artesanal 100% sin gluten. El obrador de Re-Start en Vilanova i la Geltrú, con tienda online y encargos."
-      image="/preview.jpg"
+      description="Pan de larga fermentación, cookies estilo New York, tartas y bollería artesanal 100% sin gluten en Vilanova i la Geltrú. Tienda online con envío y pasteles por encargo."
+      image="/og/macu-bakery.jpg"
+      imageAlt="Barras de pan sin gluten en el horno de Macu Bakery"
+      preloadImage={heroImg}
+      jsonLd={[
+        {
+          "@context": "https://schema.org",
+          "@type": "Bakery",
+          "@id": `${SITE_URL}/macu-bakery#bakery`,
+          name: "Macu Gluten Free Bakery",
+          url: abs("/macu-bakery"),
+          image: [abs("/og/macu-bakery.jpg")],
+          description: "Obrador artesanal 100% sin gluten: pan de larga fermentación, cookies estilo New York, tartas y bollería.",
+          telephone: "+34 611 77 63 20",
+          email: "macuglutenfree@gmail.com",
+          servesCuisine: ["Panadería sin gluten", "Repostería sin gluten"],
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Carrer del Col·legi, 35",
+            postalCode: "08800",
+            addressLocality: "Vilanova i la Geltrú",
+            addressRegion: "Barcelona",
+            addressCountry: "ES",
+          },
+          geo: { "@type": "GeoCoordinates", latitude: 41.2235, longitude: 1.7256 },
+          openingHoursSpecification: [
+            { "@type": "OpeningHoursSpecification", dayOfWeek: ["Wednesday", "Thursday", "Friday"], opens: "09:30", closes: "13:30" },
+            { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "10:00", closes: "13:00" },
+          ],
+          sameAs: ["https://macuglutenfree.com/", "https://instagram.com/macubakery_glutenfree"],
+          parentOrganization: { "@id": `${SITE_URL}/#cafe` },
+        },
+        breadcrumb([
+          { name: "Inicio", path: "/" },
+          { name: "Macu Bakery", path: "/macu-bakery" },
+        ]),
+      ]}
     />
     <Navbar />
 
@@ -170,7 +208,7 @@ const MacuBakery = () => (
 
           <ul className="mt-14 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
             {productos.map((p, i) => (
-              <li key={p.title} className="flex flex-col">
+              <li key={p.title} className="flex flex-col" data-reveal="" style={{ "--reveal-delay": `${i * 100}ms` } as React.CSSProperties}>
                 <div className={`${i % 2 ? "rotate-1" : "-rotate-1"} drop-shadow-[0_10px_16px_rgba(0,0,0,0.3)]`}>
                   <div className="aspect-[4/3] overflow-hidden sm:aspect-[4/5]" style={tornClip(p.seed)}>
                     <img src={p.img} alt={p.alt} loading="lazy" className="h-full w-full object-cover" />
@@ -238,8 +276,8 @@ const MacuBakery = () => (
             Por qué Macu es diferente
           </h2>
           <ul className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {valores.map(({ icon: Icon, title, text }) => (
-              <li key={title} className="text-center">
+            {valores.map(({ icon: Icon, title, text }, i) => (
+              <li key={title} className="text-center" data-reveal="" style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}>
                 <Icon size={36} strokeWidth={1.25} className="mx-auto text-macu" aria-hidden="true" />
                 <h3 className="hand mt-4 text-[1.45rem]">{title}</h3>
                 <p className="mt-3 text-[14px] leading-[1.8] text-ink/80">{text}</p>

@@ -1,3 +1,4 @@
+import type React from "react";
 import { Star } from "lucide-react";
 import { TornEdge, tornClip } from "@/components/paper/Paper";
 
@@ -33,10 +34,10 @@ const ReviewsSection = () => (
       </div>
 
       <ul className="mt-14 grid gap-8 md:grid-cols-3">
-        {reviews.map((r) => (
-          <li key={r.author} className={`${r.tilt} drop-shadow-[0_6px_10px_rgba(40,30,20,0.15)]`}>
+        {reviews.map((r, idx) => (
+          <li key={r.author} className={`${r.tilt} drop-shadow-[0_6px_10px_rgba(40,30,20,0.15)]`} data-reveal="" style={{ "--reveal-delay": `${idx * 110}ms` } as React.CSSProperties}>
             <figure className="h-full bg-paper-light px-7 pb-8 pt-9" style={tornClip(r.seed, undefined, 1.6, 4)}>
-              <div className="flex gap-1" aria-label="5 de 5 estrellas">
+              <div className="flex gap-1" role="img" aria-label="5 de 5 estrellas">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} size={15} className="fill-ink text-ink" aria-hidden="true" />
                 ))}

@@ -10,7 +10,8 @@ const ScrollToHash = () => {
 
   useEffect(() => {
     if (!hash) {
-      window.scrollTo(0, 0);
+      // Al cambiar de página, arriba del todo al instante (sin el desplazamiento suave por toda la página)
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
       return;
     }
 

@@ -88,6 +88,32 @@
   .animate-fade-up {
     animation: fadeUp 0.8s ease-out forwards;
   }
+  /* Fundido al cambiar de página */
+  .animate-page-in {
+    animation: pageIn 0.42s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+}
+
+/* Aparición suave al hacer scroll (ver PageTransition) */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeUp {
@@ -104,6 +130,10 @@
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
   }
   *,
   *::before,

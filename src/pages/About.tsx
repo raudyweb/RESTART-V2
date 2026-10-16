@@ -3,19 +3,20 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import { SITE_URL, abs, breadcrumb } from "@/lib/site";
 import PageHero from "@/components/paper/PageHero";
 import Reveal from "@/components/paper/Reveal";
 import { HandHeart, Scribble, TornEdge, tornClip } from "@/components/paper/Paper";
-import heroImg from "@/assets/v2/arco-barra.jpg";
-import parejaImg from "@/assets/v2/nosotros/pareja.jpg";
-import latteImg from "@/assets/v2/nosotros/latte-art.jpg";
-import baristaImg from "@/assets/v2/nosotros/barista.jpg";
-import terrazaImg from "@/assets/v2/nosotros/terraza.jpg";
-import benedictImg from "@/assets/v2/benedict-mesa.jpg";
-import fachadaImg from "@/assets/v2/fachada.jpg";
-import truckImg from "@/assets/v2/foodtruck/truck-logo.jpg";
-import macuImg from "@/assets/v2/macu/rincon-gluten-free.jpg";
-import tropicalImg from "@/assets/v2/rincon-tropical.jpg";
+import heroImg from "@/assets/v2/arco-barra.webp";
+import parejaImg from "@/assets/v2/nosotros/pareja.webp";
+import latteImg from "@/assets/v2/nosotros/latte-art.webp";
+import baristaImg from "@/assets/v2/nosotros/barista.webp";
+import terrazaImg from "@/assets/v2/nosotros/terraza.webp";
+import benedictImg from "@/assets/v2/benedict-mesa.webp";
+import fachadaImg from "@/assets/v2/fachada.webp";
+import truckImg from "@/assets/v2/foodtruck/truck-logo.webp";
+import macuImg from "@/assets/v2/macu/rincon-gluten-free.webp";
+import tropicalImg from "@/assets/v2/rincon-tropical.webp";
 
 /* ---------- Contenido ---------- */
 
@@ -101,8 +102,25 @@ const diferencias = [
 const About = () => (
   <div className="min-h-screen overflow-x-clip">
     <SEO
-      title="Sobre nosotros | Re-Start Coffee, cafetería familiar en Vilanova i la Geltrú"
-      description="Somos una cafetería familiar en Vilanova i la Geltrú: café de especialidad, brunch, nuestro obrador sin gluten Macu Bakery y el food truck del Camping Vilanova Park."
+      path="/sobre-nosotros"
+      title="Sobre nosotros | Re-Start Coffee, cafetería familiar en Vilanova"
+      description="Somos una familia apasionada por la hostelería: café de especialidad y brunch en Vilanova i la Geltrú, nuestro obrador sin gluten Macu Bakery y dos puntos en el Camping Vilanova Park."
+      image="/og/sobre-nosotros.jpg"
+      imageAlt="Barra de Re-Start Coffee vista desde el arco de entrada"
+      preloadImage={heroImg}
+      jsonLd={[
+        {
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "Sobre nosotros",
+          url: abs("/sobre-nosotros"),
+          about: { "@id": `${SITE_URL}/#cafe` },
+        },
+        breadcrumb([
+          { name: "Inicio", path: "/" },
+          { name: "Sobre nosotros", path: "/sobre-nosotros" },
+        ]),
+      ]}
     />
     <Navbar />
 

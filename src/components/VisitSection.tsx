@@ -1,5 +1,6 @@
+import type React from "react";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
-import fachadaImg from "@/assets/v2/fachada.jpg";
+import fachadaImg from "@/assets/v2/fachada.webp";
 import { HandHeart, Scribble, tornClip } from "@/components/paper/Paper";
 
 const schedule = [
@@ -25,7 +26,7 @@ const contacts = [
 const VisitSection = () => (
   <section id="visita" className="scroll-mt-20 bg-paper pb-24 pt-24 md:pt-28">
     <div className="mx-auto grid max-w-7xl gap-14 px-5 md:grid-cols-2 md:gap-16 md:px-10">
-      <div className="rotate-[1.5deg] drop-shadow-[0_10px_18px_rgba(40,30,20,0.2)]">
+      <div data-reveal="" className="rotate-[1.5deg] drop-shadow-[0_10px_18px_rgba(40,30,20,0.2)]">
         <div className="aspect-[4/5] overflow-hidden" style={tornClip(113, undefined, 1.8, 2.5)}>
           <img
             src={fachadaImg}
@@ -36,7 +37,7 @@ const VisitSection = () => (
         </div>
       </div>
 
-      <div className="flex flex-col justify-center">
+      <div data-reveal="" style={{ "--reveal-delay": "120ms" } as React.CSSProperties} className="flex flex-col justify-center">
         <h2 className="hand text-[2.4rem] leading-none md:text-[2.8rem]">
           Te esperamos <HandHeart className="h-[0.65em] w-[0.7em] -translate-y-2" />
         </h2>

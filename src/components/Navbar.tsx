@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import logoDark from "@/assets/v2/logo-dark.png";
+import logoDark from "@/assets/v2/logo-dark.webp";
 import { Instagram, Phone, X } from "lucide-react";
 
 const mainLinks = [
@@ -50,17 +50,32 @@ const Navbar = () => {
   useEffect(() => {
     // La barra se queda transparente mientras estás sobre la foto de cabecera,
     // para no tapar el título; se vuelve sólida al pasar a la siguiente sección.
-    const onScroll = () => {
-      const hero = document.querySelector("section");
-      const limit = hero ? hero.getBoundingClientRect().height - 80 : 40;
-      setScrolled(window.scrollY > Math.max(40, limit));
+    // Altura de la cabecera medida solo al cargar/redimensionar; en cada scroll solo se compara un número
+    let limit = 40;
+    let frame = 0;
+    const measure = () => {
+      const hero = document.querySelector("main section, section");
+      limit = Math.max(40, hero ? (hero as HTMLElement).offsetHeight - 80 : 40);
     };
-    onScroll();
+    const update = () => {
+      frame = 0;
+      setScrolled(window.scrollY > limit);
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    const onResize = () => {
+      measure();
+      onScroll();
+    };
+    measure();
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    window.addEventListener("resize", onResize);
     return () => {
+      cancelAnimationFrame(frame);
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("resize", onResize);
     };
   }, []);
 

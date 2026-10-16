@@ -1,10 +1,10 @@
-import barraImg from "@/assets/v2/barra-iluminada.jpg";
+import barraImg from "@/assets/v2/barra-iluminada.webp";
 import { HandHeart } from "@/components/paper/Paper";
 
 const AboutSection = () => (
   <section id="nosotros" className="relative bg-paper-light">
     <div className="mx-auto grid max-w-7xl md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-      <div className="flex flex-col justify-center px-5 py-16 md:px-10 md:py-20 lg:pl-10 lg:pr-16">
+      <div data-reveal="" className="flex flex-col justify-center px-5 py-16 md:px-10 md:py-20 lg:pl-10 lg:pr-16">
         <h2 className="label-type text-xl font-bold leading-snug md:text-2xl">
           Mucho más
           <br />

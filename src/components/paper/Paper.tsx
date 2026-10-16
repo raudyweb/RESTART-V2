@@ -28,14 +28,15 @@ export const tornClip = (
   step = 2.5,
 ): CSSProperties => {
   const r = rng(seed);
-  const j = (on?: boolean) => (on ? r() * depth : 0);
+  // Redondeado a 1 decimal: el mismo efecto con muchos menos caracteres en el HTML
+  const j = (on?: boolean) => (on ? Math.round(r() * depth * 10) / 10 : 0);
   const pts: string[] = [];
-  for (let x = 0; x <= 100; x += step) pts.push(`${x}% ${j(edges.top)}%`);
-  for (let y = step; y <= 100; y += step) pts.push(`${100 - j(edges.right)}% ${y}%`);
-  for (let x = 100 - step; x >= 0; x -= step) pts.push(`${x}% ${100 - j(edges.bottom)}%`);
-  for (let y = 100 - step; y > 0; y -= step) pts.push(`${j(edges.left)}% ${y}%`);
+  for (let x = 0; x <= 100; x += step) pts.push(`${+x.toFixed(1)}% ${j(edges.top)}%`);
+  for (let y = step; y <= 100; y += step) pts.push(`${+(100 - j(edges.right)).toFixed(1)}% ${+y.toFixed(1)}%`);
+  for (let x = 100 - step; x >= 0; x -= step) pts.push(`${+x.toFixed(1)}% ${+(100 - j(edges.bottom)).toFixed(1)}%`);
+  for (let y = 100 - step; y > 0; y -= step) pts.push(`${j(edges.left)}% ${+y.toFixed(1)}%`);
   const poly = `polygon(${pts.join(",")})`;
-  return { clipPath: poly, WebkitClipPath: poly };
+  return { clipPath: poly };
 };
 
 /** Solo el polígono, para usarlo desde una variable CSS (p. ej. únicamente en escritorio). */

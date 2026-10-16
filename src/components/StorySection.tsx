@@ -1,6 +1,7 @@
+import type React from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import brunchImg from "@/assets/v2/benedict.jpg";
+import brunchImg from "@/assets/v2/benedict.webp";
 import { HandHeart, tornClip } from "@/components/paper/Paper";
 import { PalmSketch, SeafrontSketch } from "@/components/paper/Sketches";
 
@@ -8,7 +9,7 @@ const StorySection = () => (
   <section className="relative overflow-hidden bg-paper pb-8 pt-16 md:pt-20">
     <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 md:grid-cols-2 md:gap-0 md:px-10">
       {/* Foto rasgada */}
-      <div className="relative z-10 -rotate-[1.5deg] drop-shadow-[0_10px_18px_rgba(40,30,20,0.2)] md:-mr-10">
+      <div data-reveal="" className="relative z-10 -rotate-[1.5deg] drop-shadow-[0_10px_18px_rgba(40,30,20,0.2)] md:-mr-10">
         <div className="aspect-[5/4] overflow-hidden" style={tornClip(59, undefined, 1.8, 2)}>
           <img
             src={brunchImg}
@@ -20,7 +21,7 @@ const StorySection = () => (
       </div>
 
       {/* Panel verde */}
-      <div className="relative">
+      <div data-reveal="" style={{ "--reveal-delay": "120ms" } as React.CSSProperties} className="relative">
         <div
           className="relative bg-sage-light px-7 pb-14 pt-12 md:pl-20 md:pr-28"
           style={tornClip(61, undefined, 1.6, 2)}

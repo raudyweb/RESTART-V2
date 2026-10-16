@@ -1,16 +1,18 @@
+import type React from "react";
 import { ArrowDown, Coffee, MapPin, Sandwich, Store, Sun } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import { breadcrumb } from "@/lib/site";
 import PageHero from "@/components/paper/PageHero";
 import MoreProjects from "@/components/paper/MoreProjects";
 import { HandHeart, Scribble, TornEdge, tornClip } from "@/components/paper/Paper";
 import { PalmSketch } from "@/components/paper/Sketches";
-import heroImg from "@/assets/v2/foodtruck/truck-noche.jpg";
-import truckImg from "@/assets/v2/foodtruck/truck-dia.jpg";
-import logoImg from "@/assets/v2/foodtruck/truck-logo.jpg";
-import stationImg from "@/assets/v2/foodtruck/food-station.jpg";
-import parkImg from "@/assets/v2/foodtruck/vilanova-park.jpg";
+import heroImg from "@/assets/v2/foodtruck/truck-noche.webp";
+import truckImg from "@/assets/v2/foodtruck/truck-dia.webp";
+import logoImg from "@/assets/v2/foodtruck/truck-logo.webp";
+import stationImg from "@/assets/v2/foodtruck/food-station.webp";
+import parkImg from "@/assets/v2/foodtruck/vilanova-park.webp";
 
 const MAPS = "https://www.google.com/maps/search/?api=1&query=Camping+Vilanova+Park";
 
@@ -60,8 +62,16 @@ const detalles = [
 const FoodTruck = () => (
   <div className="min-h-screen overflow-x-clip">
     <SEO
-      title="Food Truck Re-Start | Café de especialidad en el Camping Vilanova Park"
+      path="/food-truck"
+      title="Food Truck Re-Start | Café y desayunos en el Camping Vilanova Park"
       description="Re-Start también está en el Camping Vilanova Park: food truck y Food Station con café de especialidad, desayunos, bowls y snacks al aire libre en Vilanova i la Geltrú."
+      image="/og/food-truck.jpg"
+      imageAlt="Food truck de Re-Start iluminado de noche en el Camping Vilanova Park"
+      preloadImage={heroImg}
+      jsonLd={breadcrumb([
+        { name: "Inicio", path: "/" },
+        { name: "Food Truck", path: "/food-truck" },
+      ])}
     />
     <Navbar />
 
@@ -134,8 +144,8 @@ const FoodTruck = () => (
             <Scribble className="mt-1 w-32 text-paper-light" />
           </div>
           <ul className="mt-14 grid gap-14 md:grid-cols-2 md:gap-12">
-            {puntos.map((p) => (
-              <li key={p.title}>
+            {puntos.map((p, i) => (
+              <li key={p.title} data-reveal="" style={{ "--reveal-delay": `${i * 120}ms` } as React.CSSProperties}>
                 <div className={`${p.tilt} drop-shadow-[0_10px_16px_rgba(0,0,0,0.28)]`}>
                   <div className="aspect-[4/3.4] overflow-hidden" style={tornClip(p.seed)}>
                     <img src={p.img} alt={p.alt} loading="lazy" className="h-full w-full object-cover object-[50%_60%]" />
@@ -163,8 +173,8 @@ const FoodTruck = () => (
           </div>
 
           <ul className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {detalles.map(({ icon: Icon, title, text }) => (
-              <li key={title} className="text-center">
+            {detalles.map(({ icon: Icon, title, text }, i) => (
+              <li key={title} className="text-center" data-reveal="" style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}>
                 <Icon size={36} strokeWidth={1.25} className="mx-auto text-truck" aria-hidden="true" />
                 <h3 className="hand mt-4 text-[1.4rem]">{title}</h3>
                 <p className="mt-3 text-[14px] leading-[1.8] text-ink/80">{text}</p>
