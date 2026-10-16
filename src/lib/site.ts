@@ -40,7 +40,7 @@ export const cafeSchema = {
   "@id": `${SITE_URL}/#cafe`,
   name: BUSINESS.name,
   url: `${SITE_URL}/`,
-  image: [abs("/og/inicio.jpg")],
+  image: [abs("/og/inicio-v2.jpg")],
   logo: abs("/logo.png"),
   description:
     "Café de especialidad, brunch y repostería artesanal sin gluten en el centro de Vilanova i la Geltrú, junto a la Plaza del Ayuntamiento. Terraza dog-friendly.",

@@ -20,7 +20,7 @@ const SEO = ({
   title,
   description,
   path,
-  image = "/og/inicio.jpg",
+  image = "/og/inicio-v2.jpg",
   imageAlt = "Re-Start Coffee en Vilanova i la Geltrú",
   preloadImage,
   jsonLd,
@@ -45,6 +45,8 @@ const SEO = ({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={img} />
+      <meta property="og:image:secure_url" content={img} />
+      <meta property="og:image:type" content="image/jpeg" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={imageAlt} />

@@ -105,7 +105,7 @@ const About = () => (
       path="/sobre-nosotros"
       title="Sobre nosotros | Re-Start Coffee, cafetería familiar en Vilanova"
       description="Somos una familia apasionada por la hostelería: café de especialidad y brunch en Vilanova i la Geltrú, nuestro obrador sin gluten Macu Bakery y dos puntos en el Camping Vilanova Park."
-      image="/og/sobre-nosotros.jpg"
+      image="/og/sobre-nosotros-v2.jpg"
       imageAlt="Barra de Re-Start Coffee vista desde el arco de entrada"
       preloadImage={heroImg}
       jsonLd={[

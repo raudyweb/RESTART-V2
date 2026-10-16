@@ -65,7 +65,7 @@ const FoodTruck = () => (
       path="/food-truck"
       title="Food Truck Re-Start | Café y desayunos en el Camping Vilanova Park"
       description="Re-Start también está en el Camping Vilanova Park: food truck y Food Station con café de especialidad, desayunos, bowls y snacks al aire libre en Vilanova i la Geltrú."
-      image="/og/food-truck.jpg"
+      image="/og/food-truck-v2.jpg"
       imageAlt="Food truck de Re-Start iluminado de noche en el Camping Vilanova Park"
       preloadImage={heroImg}
       jsonLd={breadcrumb([

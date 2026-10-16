@@ -103,7 +103,7 @@ const MacuBakery = () => (
       path="/macu-bakery"
       title="Macu Bakery | Obrador 100% sin gluten en Vilanova i la Geltrú"
       description="Pan de larga fermentación, cookies estilo New York, tartas y bollería artesanal 100% sin gluten en Vilanova i la Geltrú. Tienda online con envío y pasteles por encargo."
-      image="/og/macu-bakery.jpg"
+      image="/og/macu-bakery-v2.jpg"
       imageAlt="Barras de pan sin gluten en el horno de Macu Bakery"
       preloadImage={heroImg}
       jsonLd={[
@@ -113,7 +113,7 @@ const MacuBakery = () => (
           "@id": `${SITE_URL}/macu-bakery#bakery`,
           name: "Macu Gluten Free Bakery",
           url: abs("/macu-bakery"),
-          image: [abs("/og/macu-bakery.jpg")],
+          image: [abs("/og/macu-bakery-v2.jpg")],
           description: "Obrador artesanal 100% sin gluten: pan de larga fermentación, cookies estilo New York, tartas y bollería.",
           telephone: "+34 611 77 63 20",
           email: "macuglutenfree@gmail.com",

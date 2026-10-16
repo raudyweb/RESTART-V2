@@ -18,7 +18,7 @@ const Index = () => (
       path="/"
       title="Re-Start Coffee | Café de especialidad y brunch en Vilanova i la Geltrú"
       description="Café de especialidad, brunch y repostería sin gluten junto a la Plaza del Ayuntamiento de Vilanova i la Geltrú. Terraza dog-friendly. Good coffee, good food, good vibes."
-      image="/og/inicio.jpg"
+      image="/og/inicio-v2.jpg"
       imageAlt="Interior de Re-Start Coffee con el neón Good Vibes Only"
       preloadImage={heroImg}
       jsonLd={[{ ...cafeSchema, "@id": `${SITE_URL}/#cafe` }]}
