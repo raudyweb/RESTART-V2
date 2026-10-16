@@ -144,11 +144,7 @@ const About = () => (
             y muchas ganas de crecer
           </>
         }
-      >
-        <a href="#quienes" className="btn-paper">
-          Conócenos <ArrowRight size={16} />
-        </a>
-      </PageHero>
+      />
 
       {/* Quiénes somos */}
       <section id="quienes" className="scroll-mt-20 bg-paper pb-20 pt-16 md:pb-24 md:pt-20">
