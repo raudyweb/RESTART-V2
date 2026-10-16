@@ -18,6 +18,7 @@ const HeroSection = () => (
         <h1>
           <span className="hand block -rotate-[6deg] text-[clamp(3.2rem,9vw,6.2rem)] tracking-wide">
             Re-Start
+            {" "}
             <span className="block pl-[0.4em]">Coffee</span>
           </span>
           <Scribble className="-mt-1 ml-[18%] w-[min(300px,62%)] -rotate-[4deg] text-white/90" />

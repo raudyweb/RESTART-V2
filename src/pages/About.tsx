@@ -133,6 +133,7 @@ const About = () => (
         title={
           <>
             Sobre
+            {" "}
             <span className="block pl-[0.5em]">nosotros</span>
           </>
         }

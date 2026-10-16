@@ -151,6 +151,7 @@ const MacuBakery = () => (
         title={
           <>
             Macu
+            {" "}
             <span className="block pl-[0.5em]">Bakery</span>
           </>
         }

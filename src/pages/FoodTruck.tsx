@@ -84,6 +84,7 @@ const FoodTruck = () => (
         title={
           <>
             Food
+            {" "}
             <span className="block pl-[0.5em]">Truck</span>
           </>
         }
