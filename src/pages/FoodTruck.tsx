@@ -11,9 +11,6 @@ import truckImg from "@/assets/v2/foodtruck/truck-dia.jpg";
 import logoImg from "@/assets/v2/foodtruck/truck-logo.jpg";
 import stationImg from "@/assets/v2/foodtruck/food-station.jpg";
 import parkImg from "@/assets/v2/foodtruck/vilanova-park.jpg";
-import cafeImg from "@/assets/v2/foodtruck/cafe-latte.jpg";
-import zumoImg from "@/assets/v2/foodtruck/zumo.jpg";
-import pokeImg from "@/assets/v2/foodtruck/poke.jpg";
 
 const MAPS = "https://www.google.com/maps/search/?api=1&query=Camping+Vilanova+Park";
 
@@ -59,11 +56,6 @@ const detalles = [
   },
 ];
 
-const productos = [
-  { img: cafeImg, alt: "Café con latte art y vaso de agua", seed: 641, tilt: "-rotate-2", pos: "50% 50%" },
-  { img: zumoImg, alt: "Zumo natural de mango servido en tarro", seed: 643, tilt: "rotate-1", pos: "50% 40%" },
-  { img: pokeImg, alt: "Poke bowl con salmón, edamame y rabanito", seed: 647, tilt: "-rotate-1", pos: "50% 50%" },
-];
 
 const FoodTruck = () => (
   <div className="min-h-screen overflow-x-clip">
@@ -179,22 +171,6 @@ const FoodTruck = () => (
               </li>
             ))}
           </ul>
-
-          <ul className="mt-16 grid grid-cols-3 gap-3 md:gap-8">
-            {productos.map((p) => (
-              <li key={p.seed} className={`${p.tilt} drop-shadow-[0_8px_12px_rgba(40,30,20,0.18)]`}>
-                <div className="aspect-square overflow-hidden" style={tornClip(p.seed, undefined, 2.4, 3)}>
-                  <img
-                    src={p.img}
-                    alt={p.alt}
-                    loading="lazy"
-                    style={{ objectPosition: p.pos }}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
@@ -225,7 +201,7 @@ const FoodTruck = () => (
             <p className="hand mt-9 -rotate-3 text-[1.7rem] md:text-[2rem]">
               Camping good vibes <HandHeart className="h-[0.7em] w-[0.75em] -translate-y-1" />
             </p>
-            <PalmSketch className="pointer-events-none absolute -right-2 -top-20 hidden h-56 text-ink/50 lg:block" />
+            <PalmSketch className="pointer-events-none absolute -right-20 -top-32 hidden h-48 text-ink/45 xl:block" />
           </div>
         </div>
         <TornEdge side="bottom" seed={639} className="text-truck-light" />
