@@ -15,6 +15,7 @@ import benedictImg from "@/assets/v2/benedict-mesa.jpg";
 import fachadaImg from "@/assets/v2/fachada.jpg";
 import truckImg from "@/assets/v2/foodtruck/truck-logo.jpg";
 import macuImg from "@/assets/v2/macu/rincon-gluten-free.jpg";
+import tropicalImg from "@/assets/v2/rincon-tropical.jpg";
 
 /* ---------- Contenido ---------- */
 
@@ -22,23 +23,23 @@ const proyectos = [
   {
     tag: "La casa madre",
     title: "Re-Start Brunch & Coffee",
-    text: "Donde nació todo y donde seguimos cada día: café de especialidad, bowls, tostadas y brunch hechos con buen producto, en el centro de Vilanova.",
+    text: "Junto a la Plaza del Ayuntamiento de Vilanova i la Geltrú. Sigue siendo el corazón del proyecto y el lugar donde nació nuestra filosofía: una experiencia cercana, productos de calidad y un servicio cuidado al detalle.",
     img: fachadaImg,
     alt: "Fachada amarilla de Re-Start Coffee",
     link: { to: "/#mapa", label: "Cómo llegar" },
   },
   {
-    tag: "Obrador sin gluten",
-    title: "Macu Bakery",
-    text: "Nuestro obrador artesanal 100% sin gluten. De aquí sale toda la repostería de Re-Start.",
+    tag: "Obrador propio",
+    title: "Macu Bakery Gluten Free",
+    text: "Nuestro obrador artesanal, donde elaboramos repostería sin gluten con el mismo compromiso por la calidad que nos ha acompañado desde el primer día.",
     img: macuImg,
     alt: "Rincón Gluten Free de Macu Bakery con neón",
     link: { to: "/macu-bakery", label: "Ver Macu Bakery" },
   },
   {
     tag: "Al aire libre",
-    title: "Food Truck",
-    text: "Dos puntos de venta en el Camping Vilanova Park, el food truck y la Food Station, con la misma filosofía.",
+    title: "Camping Vilanova Park",
+    text: "Dos puntos de venta dentro del camping, con la misma filosofía: calidad, cercanía y una experiencia única a cada cliente.",
     img: truckImg,
     alt: "Food truck turquesa de Re-Start",
     link: { to: "/food-truck", label: "Ver Food Truck" },
@@ -55,28 +56,43 @@ const diferencias = [
   {
     title: "El trato cercano",
     lead: "Somos una empresa familiar.",
-    text: "Nos gusta conocer a quien entra por la puerta, escucharle y que se sienta como en casa. La cercanía y el buen servicio son parte de lo que somos.",
+    text: "Nos gusta conocer a nuestros clientes, escucharles y hacer que se sientan como en casa. La cercanía, la atención al detalle y el buen servicio forman parte de nuestra identidad.",
     img: baristaImg,
     alt: "Barista de Re-Start preparando un café",
     pos: "50% 30%",
   },
   {
-    title: "Cultura del café",
-    lead: "El café es nuestra gran pasión.",
-    text: "Una buena selección de especialidades y también café en grano y molido para llevarte la experiencia Re-Start a casa.",
-    chips: ["Affogato", "Shakerato", "Iced latte", "Cold brew", "Café en grano"],
+    title: "Una auténtica cultura del café",
+    lead: "El café es una de nuestras grandes pasiones.",
+    text: "Además de una amplia selección de cafés de especialidad, tenemos café en grano y molido para que disfrutes de la experiencia Re-Start en casa. En la carta, desde los clásicos imprescindibles hasta propuestas más innovadoras:",
+    chips: ["Affogato", "Shakerato", "Iced latte", "Cold brew", "…y muchas más"],
     img: latteImg,
     alt: "Vertiendo leche para hacer latte art",
     pos: "50% 45%",
   },
   {
     title: "Mucho más que brunch",
-    lead: "Para cualquier momento del día.",
-    text: "Elaborado al momento y con productos de calidad.",
-    chips: ["Bowls de yogur y açaí", "Pokes", "Huevos benedict", "Tostadas gourmet", "Bocadillos planchados", "Pancakes dulces y salados"],
+    lead: "Una propuesta pensada para cualquier momento del día.",
+    text: "Opciones frescas y equilibradas, elaboradas al momento:",
+    chips: [
+      "Bowls de yogur y açaí",
+      "Pokes",
+      "Huevos benedict",
+      "Tostadas gourmet",
+      "Bocadillos planchados",
+      "Pancakes dulces y salados",
+    ],
     img: benedictImg,
     alt: "Huevos benedict servidos en la mesa",
     pos: "50% 55%",
+  },
+  {
+    title: "Un espacio saludable y acogedor",
+    lead: "Calidad, comodidad y bienestar de la mano.",
+    text: "Un lugar luminoso y acogedor, pensado para que disfrutes sin prisas de un gran café y de una oferta gastronómica cuidada al detalle.",
+    img: tropicalImg,
+    alt: "Rincón luminoso con pared amarilla, papel tropical y mesas de madera",
+    pos: "50% 60%",
   },
 ];
 
@@ -138,15 +154,21 @@ const About = () => (
             <h2 className="label-type text-xl font-bold leading-snug md:text-2xl">Quiénes somos</h2>
             <span aria-hidden="true" className="mt-5 block h-[2px] w-8 bg-ink" />
             <p className="hand mt-7 -rotate-1 text-[1.5rem] leading-tight md:text-[1.75rem]">
-              “Creemos en el trato cercano, en lo hecho con cariño y en mejorar cada día”
+              “Creemos en el trato cercano, en los productos elaborados con cariño y en la mejora continua”
             </p>
             <p className="mt-7 text-[16px] leading-[1.9] text-ink/85">
               Somos una <strong>familia apasionada por la hostelería</strong>, convencida de que los pequeños detalles
-              marcan la diferencia.
+              marcan la diferencia. Desde nuestros inicios trabajamos cada día con la ilusión de seguir creciendo,
+              mejorando y ofreciendo la mejor experiencia posible a quienes nos visitan.
             </p>
             <p className="mt-4 text-[16px] leading-[1.9] text-ink/85">
-              Queremos seguir creciendo sin perder la esencia: un lugar acogedor con buen café, buena comida y un
-              ambiente que dé ganas de volver.
+              Cada café que servimos, cada brunch que preparamos y cada receta que sale de nuestro obrador refleja
+              nuestro <strong>compromiso con la calidad</strong> y nuestra pasión por este oficio.
+            </p>
+            <p className="mt-4 text-[16px] leading-[1.9] text-ink/85">
+              Queremos seguir evolucionando sin perder nuestra esencia: ser un lugar acogedor donde disfrutar de un buen
+              café, una excelente propuesta gastronómica y un <strong>ambiente familiar</strong> que haga que siempre
+              quieras volver.
             </p>
           </Reveal>
         </div>
@@ -175,12 +197,14 @@ const About = () => (
             </h2>
             <Scribble className="mt-1 w-32 text-ink" />
             <p className="mt-6 text-[16px] leading-[1.9] text-ink/85">
-              Empezó con una idea sencilla y mucha ilusión: un sitio en Vilanova para tomar{" "}
-              <strong>café de especialidad y desayunar bien</strong>. Gracias a quienes nos visitáis, a la pasión por la
-              hostelería y a las ganas de mejorar, esa cafetería familiar ha crecido.
+              Empezó con una idea sencilla pero llena de ilusión: crear un espacio diferente en Vilanova i la Geltrú
+              donde disfrutar de <strong>café de especialidad, bowls de yogur y açaí, tostadas y desayunos</strong>{" "}
+              elaborados con productos de calidad.
             </p>
             <p className="mt-4 text-[16px] leading-[1.9] text-ink/85">
-              Hoy Re-Start es <strong>mucho más que una cafetería</strong>:
+              Lo que empezó como una humilde cafetería familiar fue creciendo gracias al apoyo de nuestros clientes, a
+              nuestra pasión por la hostelería y a las ganas constantes de mejorar. Hoy, Re-Start es{" "}
+              <strong>mucho más que una cafetería</strong>:
             </p>
           </Reveal>
 
@@ -204,6 +228,17 @@ const About = () => (
               </Reveal>
             ))}
           </ul>
+
+          <Reveal className="mx-auto mt-16 max-w-2xl text-center">
+            <p className="hand -rotate-1 text-[1.5rem] leading-tight md:text-[1.8rem]">
+              Siempre evolucionando, con la misma ilusión del primer día{" "}
+              <HandHeart className="h-[0.7em] w-[0.75em] -translate-y-1" />
+            </p>
+            <p className="mt-5 text-[16px] leading-[1.9] text-ink/85">
+              Agradecidos por la confianza de quienes nos acompañan en este camino y con ganas de seguir creando
+              experiencias únicas alrededor del café, el brunch y la repostería artesanal.
+            </p>
+          </Reveal>
         </div>
       </section>
 
@@ -215,8 +250,8 @@ const About = () => (
               ¿Qué nos hace diferentes?
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-ink/80">
-              Una cafetería es mucho más que un sitio donde tomar café. Queremos que cada visita sea cercana y
-              agradable.
+              Creemos que una cafetería es mucho más que un lugar donde tomar café. Queremos que cada visita sea una
+              experiencia agradable, cercana y memorable.
             </p>
           </div>
 
@@ -281,19 +316,16 @@ const About = () => (
           </Reveal>
           <Reveal delay={120} className="md:order-1">
             <h2 id="ubicacion" className="label-type text-xl font-bold leading-snug md:text-2xl">
-              En el corazón
+              Una ubicación
               <br />
-              de Vilanova i la Geltrú
+              privilegiada
             </h2>
             <span aria-hidden="true" className="mt-5 block h-[2px] w-8 bg-ink" />
             <p className="mt-7 text-[16px] leading-[1.9] text-ink/85">
-              Estamos junto a la <strong>Plaza del Ayuntamiento</strong>, un rincón perfecto para un desayuno, un brunch
-              o una pausa a media mañana. Con terraza y dog-friendly.
+              Estamos en pleno corazón de Vilanova i la Geltrú, junto a la <strong>Plaza del Ayuntamiento</strong>: un
+              entorno perfecto para disfrutar de un desayuno, un brunch o una pausa durante el día.
             </p>
-            <p className="mt-4 text-[16px] leading-[1.9] text-ink/85">
-              Re-Start Brunch & Coffee es la casa madre: aquí nació nuestra forma de hacer las cosas, cercana y cuidada
-              al detalle.
-            </p>
+            <p className="mt-4 text-[16px] leading-[1.9] text-ink/85">Con terraza y dog-friendly.</p>
             <Link to="/#mapa" className="btn-paper mt-9 w-fit bg-ink text-paper-light">
               Cómo llegar <MapPin size={16} />
             </Link>
