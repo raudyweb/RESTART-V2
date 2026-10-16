@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Papel crema, tinta marrón casi negra y verde salvia */
+    --background: 38 42% 91%;
+    --foreground: 28 16% 14%;
+
+    --card: 38 45% 94%;
+    --card-foreground: 28 16% 14%;
+
+    --popover: 38 45% 94%;
+    --popover-foreground: 28 16% 14%;
+
+    --primary: 28 16% 14%;
+    --primary-foreground: 38 42% 93%;
+
+    --secondary: 84 17% 72%;
+    --secondary-foreground: 28 16% 14%;
+
+    --muted: 38 30% 86%;
+    --muted-foreground: 28 10% 34%;
+
+    --accent: 84 17% 72%;
+    --accent-foreground: 28 16% 14%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 34 18% 74%;
+    --input: 34 18% 74%;
+    --ring: 28 16% 14%;
+
+    --radius: 0.5rem;
+
+    --paper: 38 42% 91%;
+    --paper-light: 40 50% 95%;
+    --sage: 84 17% 72%;
+    --sage-light: 82 20% 79%;
+    --sage-deep: 86 14% 46%;
+    --ink: 28 16% 14%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    /* Grano de papel muy sutil */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .28 0 0 0 0 .2 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  h1, h2, h3, h4 {
+    @apply font-body;
+  }
+}
+
+@layer components {
+  /* Rótulo en máquina de escribir: mayúsculas espaciadas */
+  .label-type {
+    @apply font-body uppercase tracking-[0.18em];
+  }
+  /* Texto manuscrito tipo rotulador */
+  .hand {
+    @apply font-hand uppercase leading-[0.95];
+  }
+  .btn-paper {
+    @apply inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full bg-[hsl(var(--paper-light))] px-6 md:px-7 py-3.5 text-[12px] font-bold uppercase tracking-[0.1em] md:text-[13px] md:tracking-[0.14em] text-[hsl(var(--ink))] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current;
+  }
+  .btn-ghost-light {
+    @apply inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full border border-white/80 px-6 md:px-7 py-3.5 text-[12px] font-bold uppercase tracking-[0.1em] md:text-[13px] md:tracking-[0.14em] text-white transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease-out forwards;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
