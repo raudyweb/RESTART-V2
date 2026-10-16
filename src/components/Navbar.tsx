@@ -47,10 +47,20 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    // La barra se queda transparente mientras estás sobre la foto de cabecera,
+    // para no tapar el título; se vuelve sólida al pasar a la siguiente sección.
+    const onScroll = () => {
+      const hero = document.querySelector("section");
+      const limit = hero ? hero.getBoundingClientRect().height - 72 : 40;
+      setScrolled(window.scrollY > Math.max(40, limit));
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   useEffect(() => {

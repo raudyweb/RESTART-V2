@@ -13,7 +13,7 @@ const HeroSection = () => (
     <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/75 via-black/40 to-transparent" />
     <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/45 via-transparent to-black/25" />
 
-    <div className="mx-auto w-full max-w-7xl px-5 pb-16 pt-24 md:px-10 md:pb-24">
+    <div className="mx-auto w-full max-w-7xl px-5 pb-16 pt-28 md:px-10 md:pb-24 md:pt-24">
       <div className="max-w-xl">
         <h1>
           <span className="hand block -rotate-[6deg] text-[clamp(3.2rem,9vw,6.2rem)] tracking-wide">
