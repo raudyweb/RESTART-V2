@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import logoDark from "@/assets/v2/logo-dark.png";
+import logoLight from "@/assets/v2/logo-light.png";
 import { Instagram, Phone, X } from "lucide-react";
 
 const mainLinks = [
@@ -51,7 +53,7 @@ const Navbar = () => {
     // para no tapar el título; se vuelve sólida al pasar a la siguiente sección.
     const onScroll = () => {
       const hero = document.querySelector("section");
-      const limit = hero ? hero.getBoundingClientRect().height - 72 : 40;
+      const limit = hero ? hero.getBoundingClientRect().height - 80 : 40;
       setScrolled(window.scrollY > Math.max(40, limit));
     };
     onScroll();
@@ -74,6 +76,17 @@ const Navbar = () => {
   }, [open]);
 
   const solid = scrolled;
+  const { pathname } = useLocation();
+
+  // Si ya estás en la portada, el logo sube arriba del todo en vez de recargar
+  const goHome = (e: React.MouseEvent) => {
+    setOpen(false);
+    if (pathname === "/") {
+      e.preventDefault();
+      if (window.location.hash) window.history.replaceState(null, "", "/");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <>
@@ -82,16 +95,26 @@ const Navbar = () => {
           solid ? "bg-paper/95 text-ink shadow-[0_1px_0_hsl(var(--border))] backdrop-blur" : "bg-transparent text-white"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-10">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-10">
           <Link
             to="/"
-            className={`hand text-xl tracking-wide transition-opacity md:text-2xl ${
-              solid ? "opacity-100" : "pointer-events-none opacity-0"
-            }`}
-            aria-label="Re-Start Coffee, inicio"
-            tabIndex={solid ? 0 : -1}
+            onClick={goHome}
+            aria-label="Re-Start Coffee, ir al inicio"
+            className="-my-1 block shrink-0 rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
           >
-            Re-Start Coffee
+            {/* Logo blanco sobre la foto, logo oscuro sobre la barra crema */}
+            <span className="relative block h-14 w-[45px] md:h-16 md:w-[52px]">
+              <img
+                src={logoLight}
+                alt=""
+                className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-300 ${solid ? "opacity-0" : "opacity-100"}`}
+              />
+              <img
+                src={logoDark}
+                alt=""
+                className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-300 ${solid ? "opacity-100" : "opacity-0"}`}
+              />
+            </span>
           </Link>
 
           <div className="flex items-center gap-8">
