@@ -13,47 +13,39 @@ import baristaImg from "@/assets/v2/nosotros/barista.jpg";
 import terrazaImg from "@/assets/v2/nosotros/terraza.jpg";
 import benedictImg from "@/assets/v2/benedict-mesa.jpg";
 import fachadaImg from "@/assets/v2/fachada.jpg";
-import salaImg from "@/assets/v2/sala-arcos.jpg";
 import truckImg from "@/assets/v2/foodtruck/truck-logo.jpg";
 import macuImg from "@/assets/v2/macu/rincon-gluten-free.jpg";
 
 /* ---------- Contenido ---------- */
 
-const historia = [
+const proyectos = [
   {
-    when: "2022",
-    title: "Abrimos Re-Start",
-    text: "Una idea sencilla y mucha ilusión: un sitio en Vilanova para tomar café de especialidad, bowls de yogur y açaí, tostadas y desayunos hechos con buen producto.",
+    tag: "La casa madre",
+    title: "Re-Start Brunch & Coffee",
+    text: "Donde nació todo y donde seguimos cada día: café de especialidad, bowls, tostadas y brunch hechos con buen producto, en el centro de Vilanova.",
     img: fachadaImg,
     alt: "Fachada amarilla de Re-Start Coffee",
+    link: { to: "/#mapa", label: "Cómo llegar" },
   },
   {
-    when: "Paso a paso",
-    title: "Crecemos con vosotros",
-    text: "Lo que empezó como una cafetería familiar fue creciendo gracias a nuestros clientes, a la pasión por la hostelería y a las ganas de mejorar cada día.",
-    img: salaImg,
-    alt: "Sala de Re-Start con arcos y farolillos",
-  },
-  {
-    when: "Al aire libre",
-    title: "Llegamos al camping",
-    text: "Dos puntos de venta en el Camping Vilanova Park: el food truck y la Food Station.",
-    img: truckImg,
-    alt: "Food truck turquesa de Re-Start",
-    link: { to: "/food-truck", label: "Ver Food Truck" },
-  },
-  {
-    when: "Sin gluten",
-    title: "Nace Macu Bakery",
-    text: "Nuestro propio obrador artesanal 100% sin gluten, de donde sale toda la repostería de Re-Start.",
+    tag: "Obrador sin gluten",
+    title: "Macu Bakery",
+    text: "Nuestro obrador artesanal 100% sin gluten. De aquí sale toda la repostería de Re-Start.",
     img: macuImg,
     alt: "Rincón Gluten Free de Macu Bakery con neón",
     link: { to: "/macu-bakery", label: "Ver Macu Bakery" },
   },
+  {
+    tag: "Al aire libre",
+    title: "Food Truck",
+    text: "Dos puntos de venta en el Camping Vilanova Park, el food truck y la Food Station, con la misma filosofía.",
+    img: truckImg,
+    alt: "Food truck turquesa de Re-Start",
+    link: { to: "/food-truck", label: "Ver Food Truck" },
+  },
 ];
 
 const datos = [
-  { big: "2022", small: "abrimos en Vilanova" },
   { big: "4.8 ★", small: "+300 reseñas en Google" },
   { big: "3", small: "proyectos: café, camping y obrador" },
   { big: "100%", small: "sin gluten en Macu" },
@@ -94,7 +86,7 @@ const About = () => (
   <div className="min-h-screen overflow-x-clip">
     <SEO
       title="Sobre nosotros | Re-Start Coffee, cafetería familiar en Vilanova i la Geltrú"
-      description="Somos una cafetería familiar en Vilanova i la Geltrú desde 2022: café de especialidad, brunch, nuestro obrador sin gluten Macu Bakery y el food truck del Camping Vilanova Park."
+      description="Somos una cafetería familiar en Vilanova i la Geltrú: café de especialidad, brunch, nuestro obrador sin gluten Macu Bakery y el food truck del Camping Vilanova Park."
     />
     <Navbar />
 
@@ -119,7 +111,7 @@ const About = () => (
         }
       >
         <a href="#quienes" className="btn-paper">
-          Nuestra historia <ArrowRight size={16} />
+          Conócenos <ArrowRight size={16} />
         </a>
       </PageHero>
 
@@ -163,78 +155,55 @@ const About = () => (
       {/* Datos rápidos */}
       <section aria-label="Re-Start en cifras" className="relative bg-sage py-12 md:py-14">
         <TornEdge side="top" seed={709} className="text-sage" />
-        <ul className="mx-auto grid max-w-6xl grid-cols-2 gap-y-10 px-5 md:grid-cols-4 md:px-10">
+        <ul className="mx-auto grid max-w-4xl grid-cols-3 gap-x-4 px-5 md:px-10">
           {datos.map((d, i) => (
             <Reveal as="li" key={d.small} delay={i * 90} className="text-center">
-              <p className="hand text-[2.4rem] leading-none md:text-[2.8rem]">{d.big}</p>
-              <p className="label-type mx-auto mt-3 max-w-[14rem] text-[12px] leading-snug md:text-[13px]">{d.small}</p>
+              <p className="hand text-[2rem] leading-none sm:text-[2.4rem] md:text-[2.8rem]">{d.big}</p>
+              <p className="label-type mx-auto mt-3 max-w-[14rem] text-[11px] leading-snug sm:text-[12px] md:text-[13px]">{d.small}</p>
             </Reveal>
           ))}
         </ul>
         <TornEdge side="bottom" seed={711} className="text-sage" />
       </section>
 
-      {/* Nuestra historia: línea de tiempo */}
+      {/* Nuestra historia: lo que somos hoy */}
       <section aria-labelledby="historia" className="bg-paper-light py-20 md:py-28">
-        <div className="mx-auto max-w-5xl px-5 md:px-10">
-          <div className="flex flex-col items-center text-center">
+        <div className="mx-auto max-w-6xl px-5 md:px-10">
+          <Reveal className="mx-auto flex max-w-2xl flex-col items-center text-center">
             <h2 id="historia" className="hand text-[2.3rem] md:text-[2.8rem]">
               Nuestra historia
             </h2>
             <Scribble className="mt-1 w-32 text-ink" />
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-ink/80">
-              Desde 2022, creciendo sin perder la esencia.
+            <p className="mt-6 text-[16px] leading-[1.9] text-ink/85">
+              Empezó con una idea sencilla y mucha ilusión: un sitio en Vilanova para tomar{" "}
+              <strong>café de especialidad y desayunar bien</strong>. Gracias a quienes nos visitáis, a la pasión por la
+              hostelería y a las ganas de mejorar, esa cafetería familiar ha crecido.
             </p>
-          </div>
+            <p className="mt-4 text-[16px] leading-[1.9] text-ink/85">
+              Hoy Re-Start es <strong>mucho más que una cafetería</strong>:
+            </p>
+          </Reveal>
 
-          <ol className="relative mt-16">
-            {/* línea */}
-            <span
-              aria-hidden="true"
-              className="absolute bottom-6 left-[19px] top-6 w-0 border-l-2 border-dashed border-ink/25 md:left-1/2 md:-translate-x-px"
-            />
-            {historia.map((h, i) => {
-              const right = i % 2 === 1;
-              return (
-                <li key={h.title} className="relative pb-14 pl-14 last:pb-0 md:grid md:grid-cols-2 md:gap-16 md:pl-0">
-                  {/* punto */}
-                  <span
-                    aria-hidden="true"
-                    className="hand absolute left-0 top-1 flex h-10 w-10 items-center justify-center rounded-full bg-ink text-lg text-paper-light md:left-1/2 md:-translate-x-1/2"
-                  >
-                    {i + 1}
-                  </span>
-
-                  <Reveal className={`${right ? "md:col-start-2" : "md:col-start-1 md:text-right"}`}>
-                    <p className="label-type text-xs font-bold text-sage-deep">{h.when}</p>
-                    <h3 className="hand mt-2 text-[1.7rem] leading-tight md:text-[1.9rem]">{h.title}</h3>
-                    <p className="mt-3 text-[15px] leading-[1.85] text-ink/85">{h.text}</p>
-                    {h.link && (
-                      <Link
-                        to={h.link.to}
-                        className={`mt-4 inline-flex items-center gap-2 border-b border-ink/30 pb-0.5 text-sm font-bold hover:border-ink ${
-                          right ? "" : "md:flex-row-reverse"
-                        }`}
-                      >
-                        {h.link.label} <ArrowRight size={14} />
-                      </Link>
-                    )}
-                  </Reveal>
-
-                  <Reveal
-                    delay={120}
-                    className={`mt-6 md:row-start-1 md:mt-0 ${right ? "md:col-start-1" : "md:col-start-2"}`}
-                  >
-                    <div className={`${right ? "-rotate-2" : "rotate-2"} drop-shadow-[0_8px_14px_rgba(40,30,20,0.18)]`}>
-                      <div className="aspect-[4/3] overflow-hidden" style={tornClip(720 + i * 7)}>
-                        <img src={h.img} alt={h.alt} loading="lazy" className="h-full w-full object-cover" />
-                      </div>
-                    </div>
-                  </Reveal>
-                </li>
-              );
-            })}
-          </ol>
+          <ul className="mt-14 grid gap-14 md:grid-cols-3 md:gap-8">
+            {proyectos.map((p, i) => (
+              <Reveal as="li" key={p.title} delay={i * 120} className="flex flex-col">
+                <div className={`${i % 2 ? "rotate-2" : "-rotate-2"} drop-shadow-[0_8px_14px_rgba(40,30,20,0.18)]`}>
+                  <div className="aspect-[4/3] overflow-hidden" style={tornClip(720 + i * 7)}>
+                    <img src={p.img} alt={p.alt} loading="lazy" className="h-full w-full object-cover" />
+                  </div>
+                </div>
+                <p className="label-type mt-7 text-xs font-bold text-sage-deep">{p.tag}</p>
+                <h3 className="hand mt-2 text-[1.8rem] leading-tight">{p.title}</h3>
+                <p className="mt-3 text-[15px] leading-[1.85] text-ink/85">{p.text}</p>
+                <Link
+                  to={p.link.to}
+                  className="mt-4 inline-flex w-fit items-center gap-2 border-b border-ink/30 pb-0.5 text-sm font-bold hover:border-ink"
+                >
+                  {p.link.label} <ArrowRight size={14} />
+                </Link>
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
 
