@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logoDark from "@/assets/v2/logo-dark.png";
-import logoLight from "@/assets/v2/logo-light.png";
 import { Instagram, Phone, X } from "lucide-react";
 
 const mainLinks = [
@@ -100,21 +99,14 @@ const Navbar = () => {
             to="/"
             onClick={goHome}
             aria-label="Re-Start Coffee, ir al inicio"
-            className="-my-1 block shrink-0 rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
+            tabIndex={solid ? 0 : -1}
+            aria-hidden={!solid}
+            className={`-my-1 block shrink-0 rounded-full transition-opacity duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current ${
+              solid ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
           >
-            {/* Logo blanco sobre la foto, logo oscuro sobre la barra crema */}
-            <span className="relative block h-14 w-[45px] md:h-16 md:w-[52px]">
-              <img
-                src={logoLight}
-                alt=""
-                className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-300 ${solid ? "opacity-0" : "opacity-100"}`}
-              />
-              <img
-                src={logoDark}
-                alt=""
-                className={`absolute inset-0 h-full w-full object-contain transition-opacity duration-300 ${solid ? "opacity-100" : "opacity-0"}`}
-              />
-            </span>
+            {/* El logo aparece junto con la barra crema; sobre la foto no se muestra */}
+            <img src={logoDark} alt="" className="h-14 w-[45px] object-contain md:h-16 md:w-[52px]" />
           </Link>
 
           <div className="flex items-center gap-8">
