@@ -1,0 +1,3 @@
+# Cloudflare Pages: mismas redirecciones que vercel.json
+/carta  /Carta.pdf  302
+/index  /           301
