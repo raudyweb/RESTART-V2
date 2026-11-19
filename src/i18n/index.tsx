@@ -58,6 +58,9 @@ export const usePick = () => {
 /** Textos compartidos por varias secciones. */
 export const COMMON = {
   es: {
+    workshop: "Taller barista",
+    beans: "Café en grano",
+    call: "Llamar",
     menu: "Carta",
     about: "Nosotros",
     reviews: "Opiniones",
@@ -73,6 +76,9 @@ export const COMMON = {
     allergens: "En caso de alergias, consulta con el personal.",
   },
   ca: {
+    workshop: "Taller barista",
+    beans: "Cafè en gra",
+    call: "Trucar",
     menu: "Carta",
     about: "Nosaltres",
     reviews: "Opinions",
@@ -88,6 +94,9 @@ export const COMMON = {
     allergens: "En cas d'al·lèrgies, consulta-ho amb el personal.",
   },
   en: {
+    workshop: "Barista workshop",
+    beans: "Coffee beans",
+    call: "Call",
     menu: "Menu",
     about: "About us",
     reviews: "Reviews",
@@ -103,6 +112,9 @@ export const COMMON = {
     allergens: "If you have any allergies, please ask our staff.",
   },
   fr: {
+    workshop: "Atelier barista",
+    beans: "Café en grains",
+    call: "Appeler",
     menu: "Carte",
     about: "À propos",
     reviews: "Avis",

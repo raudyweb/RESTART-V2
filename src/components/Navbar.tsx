@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logoDark from "@/assets/v2/logo-dark.webp";
+import logoLight from "@/assets/logo-invert.webp";
 import { Instagram, Phone, X } from "lucide-react";
 import { LANGS, LANG_LABEL, LANG_SHORT, href, useCommon, useLang, usePage } from "@/i18n";
 
@@ -22,7 +23,7 @@ const LangSwitcher = ({ className = "", onPick }: { className?: string; onPick?:
             lang={l}
             aria-label={LANG_LABEL[l]}
             aria-current={l === lang ? "true" : undefined}
-            className={`label-type rounded px-1 py-1 text-[12px] underline-offset-[5px] ${
+            className={`label-type relative rounded px-1 py-1 text-[12px] underline-offset-[5px] before:absolute before:left-1/2 before:top-1/2 before:h-11 before:w-11 before:-translate-x-1/2 before:-translate-y-1/2 before:content-[''] ${
               l === lang ? "font-bold underline" : "opacity-70 hover:opacity-100"
             }`}
           >
@@ -75,6 +76,8 @@ const Navbar = () => {
     { label: c.directions, href: href("home", lang, "mapa") },
   ];
   const extraLinks = [
+    { label: c.workshop, href: href("home", lang, "taller") },
+    { label: c.beans, href: href("home", lang, "cafe-en-grano") },
     { label: "Food Truck", href: href("truck", lang) },
     { label: "Macu Bakery", href: href("macu", lang) },
   ];
@@ -147,14 +150,14 @@ const Navbar = () => {
             to={home}
             onClick={goHome}
             aria-label={c.goHome}
-            tabIndex={solid ? 0 : -1}
-            aria-hidden={!solid}
-            className={`-my-1 block shrink-0 rounded-full transition-opacity duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current ${
-              solid ? "opacity-100" : "pointer-events-none opacity-0"
-            }`}
+            className="-my-1 block shrink-0 rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
           >
-            {/* El logo aparece junto con la barra crema; sobre la foto no se muestra */}
-            <img src={logoDark} alt="Re-Start Coffee" className="h-14 w-[45px] object-contain md:h-16 md:w-[52px]" />
+            {/* Logo claro sobre la foto; oscuro cuando la barra se vuelve crema */}
+            <img
+              src={solid ? logoDark : logoLight}
+              alt="Re-Start Coffee"
+              className="h-14 w-[45px] object-contain md:h-16 md:w-[52px]"
+            />
           </Link>
 
           <div className="flex items-center gap-4 lg:gap-8">

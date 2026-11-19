@@ -54,6 +54,19 @@ export const formatDays = (days: number[], lang: Lang) => {
 
 export const dayName = (day: number, lang: Lang) => DAY_NAMES[lang][day];
 
+const DAY_SHORT: Record<Lang, string[]> = {
+  es: ["", "L", "M", "X", "J", "V", "S", "D"],
+  ca: ["", "Dl", "Dt", "Dc", "Dj", "Dv", "Ds", "Dg"],
+  en: ["", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+  fr: ["", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"],
+};
+
+/** Versión corta para el pie: "L–J", "Mon–Thu", "V"… */
+export const formatDaysShort = (days: number[], lang: Lang) =>
+  days.length === 1
+    ? DAY_SHORT[lang][days[0]]
+    : `${DAY_SHORT[lang][days[0]]}–${DAY_SHORT[lang][days[days.length - 1]]}`;
+
 /* ---------- Datos para Google (schema.org) ---------- */
 
 const SCHEMA_DAYS = ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
