@@ -1,10 +1,13 @@
 import { openingHoursSchema } from "@/lib/hours";
 /**
  * Datos del sitio para SEO.
- * Cuando la web tenga dominio propio, basta con cambiar SITE_URL
- * (o definir VITE_SITE_URL en Vercel) y volver a desplegar.
+ * URL PÚBLICA DE LA WEB: único sitio donde se define.
+ * La usan canonical, Open Graph, hreflang, JSON-LD, sitemap.xml y robots.txt.
+ * TODO: cuando tengamos dominio propio, cambiar DEFAULT_SITE_URL (o definir VITE_SITE_URL
+ * en Cloudflare/Vercel) y volver a publicar.
  */
-export const SITE_URL = (import.meta.env.VITE_SITE_URL || "https://restart-v2.vercel.app").replace(/\/$/, "");
+export const DEFAULT_SITE_URL = "https://restart-v2.vercel.app";
+export const SITE_URL = (import.meta.env.VITE_SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, "");
 
 export const SITE_NAME = "Re-Start Coffee";
 

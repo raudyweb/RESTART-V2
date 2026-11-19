@@ -19,3 +19,4 @@ export function render(url: string) {
 }
 
 export { ROUTES, LANGS, href, LEGAL_PAGES } from "./i18n";
+export { SITE_URL } from "./lib/site";
