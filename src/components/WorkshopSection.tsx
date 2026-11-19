@@ -82,8 +82,8 @@ const ICONS = [EspressoMachineDoodle, LatteDoodle, MilkJugDoodle];
 const WorkshopSection = () => {
   const t = usePick()(T);
   return (
-    <section id="taller" aria-labelledby="taller-titulo" className="scroll-mt-20 bg-paper py-20 md:py-28">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-2 md:gap-16 md:px-10">
+    <section id="taller" aria-labelledby="taller-titulo" className="scroll-mt-20 bg-paper py-14 md:py-28">
+      <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 md:grid-cols-2 md:gap-16 md:px-10">
         <div data-reveal="" className="-rotate-1 drop-shadow-[0_10px_18px_rgba(40,30,20,0.2)]">
           <div className="aspect-[7/4] overflow-hidden md:aspect-[4/3.4]" style={tornClip(811, undefined, 1.8, 2)}>
             <img src={tallerImg} alt={t.alt} loading="lazy" className="h-full w-full object-cover object-[50%_45%]" />
@@ -126,7 +126,7 @@ const WorkshopSection = () => {
       </div>
 
       {/* Qué harás */}
-      <ul className="mx-auto mt-14 grid max-w-5xl gap-10 px-5 sm:grid-cols-3 sm:gap-0 md:px-10">
+      <ul className="mx-auto mt-10 grid max-w-md gap-5 px-5 sm:mt-14 sm:max-w-5xl sm:grid-cols-3 sm:gap-0 md:px-10">
         {t.items.map((item, i) => {
           const Icon = ICONS[i];
           return (
@@ -134,27 +134,27 @@ const WorkshopSection = () => {
               key={item}
               data-reveal=""
               style={{ "--reveal-delay": `${i * 100}ms` } as React.CSSProperties}
-              className={`flex flex-col items-center px-6 text-center ${i ? "sm:border-l sm:border-ink/20" : ""}`}
+              className={`flex items-center gap-4 text-left sm:flex-col sm:gap-0 sm:px-6 sm:text-center ${i ? "sm:border-l sm:border-ink/20" : ""}`}
             >
-              <Sparks className="h-14">
-                <Icon className="h-14 w-14" />
+              <Sparks className="h-12 shrink-0 px-5 sm:h-14 sm:px-6">
+                <Icon className="h-11 w-11 sm:h-14 sm:w-14" />
               </Sparks>
-              <p className="mt-4 max-w-[15rem] text-[14px] leading-[1.7] text-ink/85">{item}</p>
+              <p className="text-[14px] leading-[1.6] text-ink/85 sm:mt-4 sm:max-w-[15rem] sm:leading-[1.7]">{item}</p>
             </li>
           );
         })}
       </ul>
 
       {/* Notas manuscritas y reserva */}
-      <div className="mx-auto mt-14 flex max-w-5xl flex-col items-center gap-8 px-5 md:flex-row md:justify-between md:px-10">
-        <p className="hand -rotate-3 text-center text-[1.55rem] normal-case leading-tight md:text-left md:text-[1.8rem]">
+      <div className="mx-auto mt-10 flex max-w-5xl flex-col items-center gap-5 px-5 sm:mt-14 sm:gap-8 md:flex-row md:justify-between md:px-10">
+        <p className="hand -rotate-3 text-center text-[1.35rem] normal-case leading-tight sm:text-[1.55rem] md:text-left md:text-[1.8rem]">
           <Brush>
             {t.share} <HandHeart className="h-[0.8em] w-[0.85em] -translate-y-1" />
           </Brush>
         </p>
         <div className="flex items-end gap-2">
           <CurvedArrow className="hidden h-10 w-14 text-ink/70 md:block" />
-          <p className="hand max-w-[15rem] rotate-[-6deg] text-center text-[1.25rem] normal-case leading-snug">
+          <p className="hand max-w-[17rem] rotate-[-4deg] text-center text-[1.15rem] normal-case leading-snug sm:max-w-[15rem] sm:rotate-[-6deg] sm:text-[1.25rem]">
             <KeepLast text={t.gift}>
               {" "}
               <HandHeart className="h-[0.8em] w-[0.85em] -translate-y-0.5" />
@@ -163,7 +163,7 @@ const WorkshopSection = () => {
         </div>
       </div>
 
-      <div className="mt-10 flex justify-center px-5">
+      <div className="mt-8 flex justify-center px-5 sm:mt-10">
         <a href="tel:+34621306720" className="btn-paper bg-macu text-paper-light">
           <Phone size={16} /> {t.cta}
         </a>

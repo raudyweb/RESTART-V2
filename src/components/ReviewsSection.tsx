@@ -1,7 +1,9 @@
 import type React from "react";
-import { Star } from "lucide-react";
+import { ExternalLink, PenLine, Star } from "lucide-react";
 import { TornEdge, tornClip } from "@/components/paper/Paper";
+import { CarouselNav, useSnapCarousel } from "@/components/paper/Carousel";
 import { usePick } from "@/i18n";
+import { GOOGLE_REVIEWS_URL, GOOGLE_WRITE_REVIEW_URL } from "@/lib/site";
 
 const META = [
   { author: "Marta G.", tilt: "-rotate-1", seed: 101 },
@@ -12,7 +14,10 @@ const META = [
 const T = {
   es: {
     title: "Lo que dicen de nosotros",
-    rating: "4.8 ★ en Google",
+    score: "4.8",
+    all: "Ver todas las reseñas",
+    write: "Deja tu reseña",
+    item: "reseña",
     count: "Más de 300 reseñas",
     stars: "5 de 5 estrellas",
     quotes: [
@@ -23,7 +28,10 @@ const T = {
   },
   ca: {
     title: "El que diuen de nosaltres",
-    rating: "4.8 ★ a Google",
+    score: "4.8",
+    all: "Veure totes les ressenyes",
+    write: "Deixa la teva ressenya",
+    item: "ressenya",
     count: "Més de 300 ressenyes",
     stars: "5 de 5 estrelles",
     quotes: [
@@ -34,7 +42,10 @@ const T = {
   },
   en: {
     title: "What people say",
-    rating: "4.8 ★ on Google",
+    score: "4.8",
+    all: "See all reviews",
+    write: "Leave a review",
+    item: "review",
     count: "More than 300 reviews",
     stars: "5 out of 5 stars",
     quotes: [
@@ -45,7 +56,10 @@ const T = {
   },
   fr: {
     title: "Ce qu'ils en disent",
-    rating: "4,8 ★ sur Google",
+    score: "4,8",
+    all: "Voir tous les avis",
+    write: "Laisser un avis",
+    item: "avis",
     count: "Plus de 300 avis",
     stars: "5 étoiles sur 5",
     quotes: [
@@ -58,21 +72,31 @@ const T = {
 
 const ReviewsSection = () => {
   const t = usePick()(T);
+  const { ref, index, count, go } = useSnapCarousel();
   return (
     <section id="opiniones" className="relative scroll-mt-20 bg-sage py-20 md:py-24">
       <TornEdge side="top" seed={97} className="text-sage" />
       <div className="mx-auto max-w-6xl px-5 md:px-10">
         <div className="text-center">
           <h2 className="label-type text-xl font-bold md:text-2xl">{t.title}</h2>
-          <p className="hand mt-4 text-[2rem]">{t.rating}</p>
+          <p className="mt-4 flex items-center justify-center gap-3">
+            <span className="hand text-[2rem]">{t.score} ★</span>
+            <span className="rounded-full border border-ink/25 bg-paper-light px-3 py-1 text-[13px] font-bold tracking-wide">
+              Google
+            </span>
+          </p>
           <p className="mt-1 text-sm text-ink/75">{t.count}</p>
         </div>
 
-        <ul className="mx-auto mt-14 grid max-w-xl gap-8 lg:max-w-none lg:grid-cols-3">
+        {/* Móvil y tablet: carrusel deslizable; escritorio: las 3 en fila */}
+        <ul
+          ref={ref}
+          className="no-scrollbar relative -mx-5 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-[9vw] py-4 md:-mx-10 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0"
+        >
           {META.map((r, idx) => (
             <li
               key={r.author}
-              className={`${r.tilt} drop-shadow-[0_6px_10px_rgba(40,30,20,0.15)]`}
+              className={`w-[82vw] max-w-sm shrink-0 snap-center lg:w-auto lg:max-w-none ${r.tilt} drop-shadow-[0_6px_10px_rgba(40,30,20,0.15)]`}
               data-reveal=""
               style={{ "--reveal-delay": `${idx * 110}ms` } as React.CSSProperties}
             >
@@ -88,6 +112,21 @@ const ReviewsSection = () => {
             </li>
           ))}
         </ul>
+        <CarouselNav index={index} count={count} go={go} label={t.item} className="mt-4 lg:hidden" />
+
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="btn-paper bg-ink text-paper-light">
+            {t.all} <ExternalLink size={15} />
+          </a>
+          <a
+            href={GOOGLE_WRITE_REVIEW_URL || GOOGLE_REVIEWS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-paper border border-ink/25 bg-transparent"
+          >
+            {t.write} <PenLine size={15} />
+          </a>
+        </div>
       </div>
       <TornEdge side="bottom" seed={99} className="text-sage" />
     </section>

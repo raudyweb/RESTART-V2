@@ -10,6 +10,14 @@ export const SITE_NAME = "Re-Start Coffee";
 
 export const abs = (path: string) => (path.startsWith("http") ? path : `${SITE_URL}${path.startsWith("/") ? "" : "/"}${path}`);
 
+/** Enlaces de reseñas de Google. */
+// TODO: confirmar que este enlace abre la ficha de Re-Start Coffee con sus reseñas (es el mismo de "Cómo llegar").
+export const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/BL8ZWwjTquyxNPD16";
+// TODO: poner el enlace "Pedir reseñas" de Google Business Profile
+// (formato https://g.page/r/XXXX/review o https://search.google.com/local/writereview?placeid=XXXX).
+// Mientras esté vacío, "Deja tu reseña" abre la ficha de Google.
+export const GOOGLE_WRITE_REVIEW_URL = "";
+
 export const BUSINESS = {
   name: "Re-Start Coffee",
   phone: "+34 621 30 67 20",

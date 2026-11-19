@@ -199,7 +199,7 @@ const MenuSection = () => {
                 <span lang="en" className="block">
                   Bakery <HandHeart className="h-[0.6em] w-[0.65em] -translate-y-3" />
                 </span>{" "}
-                <Brush className="mt-1 text-[0.72em]">
+                <Brush underline className="mt-1 text-[0.72em]">
                   <span lang="en">Gluten free</span>
                 </Brush>
               </>

@@ -2,6 +2,7 @@ import salaImg from "@/assets/v2/sala-arcos.webp";
 import barraImg from "@/assets/v2/barra-iluminada.webp";
 import { nueva } from "@/assets/v2/nuevas";
 import { Scribble, tornClip } from "@/components/paper/Paper";
+import { CarouselNav, useSnapCarousel } from "@/components/paper/Carousel";
 import { usePick } from "@/i18n";
 
 const PHOTOS = [
@@ -12,6 +13,7 @@ const PHOTOS = [
 
 const T = {
   es: {
+    photo: "foto",
     title: "Nuestro rincón",
     text: "Arcos, farolillos, madera y mucha luz. Un sitio para quedarse un rato más.",
     alts: [
@@ -21,6 +23,7 @@ const T = {
     ],
   },
   ca: {
+    photo: "foto",
     title: "El nostre racó",
     text: "Arcs, fanalets, fusta i molta llum. Un lloc per quedar-s'hi una estona més.",
     alts: [
@@ -30,6 +33,7 @@ const T = {
     ],
   },
   en: {
+    photo: "photo",
     title: "Our space",
     text: "Arches, lanterns, wood and lots of light. A place to stay a little longer.",
     alts: [
@@ -39,6 +43,7 @@ const T = {
     ],
   },
   fr: {
+    photo: "photo",
     title: "Notre coin",
     text: "Des arches, des lanternes, du bois et beaucoup de lumière. Un endroit où l'on a envie de rester un peu plus.",
     alts: [
@@ -51,6 +56,7 @@ const T = {
 
 const GallerySection = () => {
   const t = usePick()(T);
+  const { ref, index, count, go } = useSnapCarousel();
   return (
     <section
       id="espacio"
@@ -72,9 +78,11 @@ const GallerySection = () => {
         </div>
       </div>
 
+      {/* Móvil: carrusel deslizable con puntos; desde tablet, las 3 fotos en fila */}
       <ul
+        ref={ref}
         data-reveal=""
-        className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 pb-6 md:mx-auto md:grid md:max-w-6xl md:grid-cols-3 md:gap-8 md:overflow-visible md:px-10"
+        className="no-scrollbar relative mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-[16vw] py-4 md:mx-auto md:grid md:max-w-6xl md:grid-cols-3 md:gap-8 md:overflow-visible md:px-10"
       >
         {PHOTOS.map((p, i) =>
           !p.src ? null : (
@@ -97,6 +105,7 @@ const GallerySection = () => {
           ),
         )}
       </ul>
+      <CarouselNav index={index} count={count} go={go} label={t.photo} className="mt-4 md:hidden" />
     </section>
   );
 };

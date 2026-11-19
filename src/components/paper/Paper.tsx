@@ -128,20 +128,25 @@ export const HandHeart = ({ className = "" }: { className?: string }) => (
   </svg>
 );
 
-/* Trazo de pincel detrás de una palabra (como "Gluten free" o "en grano") */
+/* Trazo de pincel detrás de una palabra (como "Gluten free" o "en grano").
+   underline: el trazo va en la mitad inferior, como un subrayado, para que no parezca tachado. */
 export const Brush = ({
   children,
   className = "",
+  underline = false,
 }: {
   children: React.ReactNode;
   className?: string;
+  underline?: boolean;
 }) => (
   <span className={`relative isolate inline-block px-[0.35em] ${className}`}>
     <svg
       aria-hidden="true"
       viewBox="0 0 300 60"
       preserveAspectRatio="none"
-      className="absolute inset-x-0 top-[12%] -z-10 h-[86%] w-full text-sage-light"
+      className={`absolute inset-x-0 -z-10 w-full text-sage-light ${
+        underline ? "bottom-[-8%] h-[48%]" : "top-[12%] h-[86%]"
+      }`}
     >
       <path
         d="M6 18c40-9 98-12 160-11 48 1 86 3 128 8 4 1 5 6 1 8-6 3-3 6 1 9 4 4 1 9-5 10-46 6-104 8-162 7-42-1-82-3-122-8-5-1-6-6-2-8 5-3 3-7-1-10-4-3-3-4 2-5Z"

@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import MenuSection from "@/components/MenuSection";
+import FeaturedDishes from "@/components/FeaturedDishes";
 import AboutSection from "@/components/AboutSection";
 import FeaturesBand from "@/components/FeaturesBand";
 import StorySection from "@/components/StorySection";
@@ -62,6 +63,8 @@ const Index = () => {
     <main>
       <HeroSection />
       <MenuSection />
+      {/* Platos estrella: preparado, se muestra solo cuando haya platos en src/config/featured-dishes.ts */}
+      <FeaturedDishes />
       <AboutSection />
       <FeaturesBand />
       <WorkshopSection />

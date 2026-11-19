@@ -157,3 +157,11 @@
     transform-origin: 20% 0%;
   }
 }
+
+/* Carruseles: se deslizan con el dedo pero sin barra de scroll visible */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
