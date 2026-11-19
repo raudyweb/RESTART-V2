@@ -132,7 +132,7 @@ const About = () => {
               {t.who.map((p, i) => (
                 <p
                   key={i}
-                  className={`${i ? "mt-4" : "mt-7"} text-[16px] leading-[1.9] text-ink/85`}
+                  className={`${i ? "mt-4" : "mt-7"} font-prose text-[16px] leading-[1.9] text-ink/85`}
                 >
                   {p}
                 </p>
@@ -181,7 +181,7 @@ const About = () => {
               {t.story.map((p, i) => (
                 <p
                   key={i}
-                  className={`${i ? "mt-4" : "mt-6"} text-[16px] leading-[1.9] text-ink/85`}
+                  className={`${i ? "mt-4" : "mt-6"} font-prose text-[16px] leading-[1.9] text-ink/85`}
                 >
                   {p}
                 </p>
@@ -217,7 +217,7 @@ const About = () => {
                   <h3 className="hand mt-2 text-[1.8rem] leading-tight">
                     {p.title}
                   </h3>
-                  <p className="mt-3 text-[15px] leading-[1.85] text-ink/85">
+                  <p className="font-prose mt-3 text-[15px] leading-[1.85] text-ink/85">
                     {p.text}
                   </p>
                   <Link
@@ -239,7 +239,7 @@ const About = () => {
                 {t.evolving}{" "}
                 <HandHeart className="h-[0.7em] w-[0.75em] -translate-y-1" />
               </p>
-              <p className="mt-5 text-[16px] leading-[1.9] text-ink/85">
+              <p className="font-prose mt-5 text-[16px] leading-[1.9] text-ink/85">
                 {t.thanks}
               </p>
             </Reveal>
@@ -298,7 +298,7 @@ const About = () => {
                       <p className="mt-6 text-[16px] font-bold leading-relaxed">
                         {d.lead}
                       </p>
-                      <p className="mt-2 text-[16px] leading-[1.9] text-ink/85">
+                      <p className="font-prose mt-2 text-[16px] leading-[1.9] text-ink/85">
                         {d.text}
                       </p>
                       {"chips" in d && d.chips && (
@@ -356,10 +356,10 @@ const About = () => {
                 aria-hidden="true"
                 className="mt-5 block h-[2px] w-8 bg-ink"
               />
-              <p className="mt-7 text-[16px] leading-[1.9] text-ink/85">
+              <p className="font-prose mt-7 text-[16px] leading-[1.9] text-ink/85">
                 {t.place}
               </p>
-              <p className="mt-4 text-[16px] leading-[1.9] text-ink/85">
+              <p className="font-prose mt-4 text-[16px] leading-[1.9] text-ink/85">
                 {t.terrace}
               </p>
               <Link

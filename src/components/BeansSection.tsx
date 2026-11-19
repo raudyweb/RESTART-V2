@@ -101,7 +101,7 @@ const BeansSection = () => {
             <GlobeDoodle className="h-10 w-10 shrink-0 text-macu" />
             <Brush>{t.world}</Brush>
           </p>
-          <p className="mt-5 max-w-md text-[14.5px] leading-[1.8] text-ink/80">{t.origins}</p>
+          <p className="font-prose mt-5 max-w-md text-[14.5px] leading-[1.8] text-ink/80">{t.origins}</p>
           <p className="mt-4 text-xs text-muted-foreground">{t.ask}</p>
         </div>
       </div>

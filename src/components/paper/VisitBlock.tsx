@@ -78,7 +78,7 @@ const VisitBlock = ({
           </h2>
           <Scribble className="mt-1 w-36 text-ink" />
           {intro && (
-            <p className="mt-6 max-w-md text-[15px] leading-[1.85] text-ink/85">
+            <p className="font-prose mt-6 max-w-md text-[15px] leading-[1.85] text-ink/85">
               {intro}
             </p>
           )}

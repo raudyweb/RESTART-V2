@@ -339,10 +339,10 @@ const FoodTruck = () => {
               <p className="hand -rotate-2 text-[1.7rem] leading-tight md:text-[2rem]">
                 {t.quote}
               </p>
-              <p className="mt-7 text-[15px] leading-[1.9] text-ink/85">
+              <p className="font-prose mt-7 text-[15px] leading-[1.9] text-ink/85">
                 {t.intro1}
               </p>
-              <p className="mt-4 text-[15px] leading-[1.9] text-ink/85">
+              <p className="font-prose mt-4 text-[15px] leading-[1.9] text-ink/85">
                 {t.intro2}
               </p>
             </div>
@@ -404,7 +404,7 @@ const FoodTruck = () => {
                     </div>
                   </div>
                   <h3 className="hand mt-7 text-[1.9rem]">{p.title}</h3>
-                  <p className="mt-3 max-w-md text-[15px] leading-[1.85] text-paper-light/90">
+                  <p className="font-prose mt-3 max-w-md text-[15px] leading-[1.85] text-paper-light/90">
                     {p.text}
                   </p>
                 </li>
@@ -451,7 +451,7 @@ const FoodTruck = () => {
                       aria-hidden="true"
                     />
                     <h3 className="hand mt-4 text-[1.4rem]">{title}</h3>
-                    <p className="mt-3 text-[14px] leading-[1.8] text-ink/80">
+                    <p className="font-prose mt-3 text-[14px] leading-[1.8] text-ink/80">
                       {text}
                     </p>
                   </li>
@@ -488,10 +488,10 @@ const FoodTruck = () => {
                 aria-hidden="true"
                 className="mt-5 block h-[2px] w-8 bg-ink"
               />
-              <p className="mt-7 text-[15px] leading-[1.9] text-ink/85">
+              <p className="font-prose mt-7 text-[15px] leading-[1.9] text-ink/85">
                 {t.park1}
               </p>
-              <p className="mt-4 text-[15px] leading-[1.9] text-ink/85">
+              <p className="font-prose mt-4 text-[15px] leading-[1.9] text-ink/85">
                 {t.park2}
               </p>
               <p className="hand mt-9 -rotate-3 text-[1.7rem] md:text-[2rem]">

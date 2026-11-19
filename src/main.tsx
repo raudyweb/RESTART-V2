@@ -6,6 +6,9 @@ import App from "./App.tsx";
 import "@fontsource/courier-prime/400.css";
 import "@fontsource/courier-prime/700.css";
 import "@fontsource/permanent-marker/400.css";
+// Lora: letra legible para los párrafos largos
+import "@fontsource/lora/400.css";
+import "@fontsource/lora/700.css";
 import "./index.css";
 
 const tree = (

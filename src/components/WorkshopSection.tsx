@@ -102,7 +102,7 @@ const WorkshopSection = () => {
             {t.title}
           </h2>
           <span aria-hidden="true" className="mt-3 block h-[2px] w-40 rounded bg-macu" />
-          <p className="mt-6 max-w-md text-[15px] leading-[1.85] text-ink/85">{t.text}</p>
+          <p className="font-prose mt-6 max-w-md text-[15px] leading-[1.85] text-ink/85">{t.text}</p>
 
           {/* Duración y mínimo */}
           <dl className="mt-8 flex w-full max-w-md items-stretch justify-center">
@@ -139,7 +139,7 @@ const WorkshopSection = () => {
               <Sparks className="h-12 shrink-0 px-5 sm:h-14 sm:px-6">
                 <Icon className="h-11 w-11 sm:h-14 sm:w-14" />
               </Sparks>
-              <p className="text-[14px] leading-[1.6] text-ink/85 sm:mt-4 sm:max-w-[15rem] sm:leading-[1.7]">{item}</p>
+              <p className="font-prose text-[14px] leading-[1.6] text-ink/85 sm:mt-4 sm:max-w-[15rem] sm:leading-[1.7]">{item}</p>
             </li>
           );
         })}

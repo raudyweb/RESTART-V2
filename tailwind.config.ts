@@ -15,6 +15,8 @@ export default {
         display: ['"Courier Prime"', '"Courier New"', 'monospace'],
         body: ['"Courier Prime"', '"Courier New"', 'monospace'],
         hand: ['"Permanent Marker"', '"Marker Felt"', 'cursive'],
+        // Párrafos largos (la máquina de escribir se queda para etiquetas, botones y textos cortos)
+        prose: ['Lora', 'Georgia', '"Times New Roman"', 'serif'],
       },
       colors: {
         paper: {

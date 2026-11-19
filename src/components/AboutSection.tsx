@@ -42,7 +42,7 @@ const AboutSection = () => {
           </h2>
           <span aria-hidden="true" className="mt-5 block h-[2px] w-8 bg-ink" />
 
-          <p className="mt-7 max-w-md text-[15px] leading-[1.9] text-ink/85">{t.p2}</p>
+          <p className="font-prose mt-7 max-w-md text-[15px] leading-[1.9] text-ink/85">{t.p2}</p>
 
           <p className="hand mt-10 -rotate-[5deg] text-[2rem] md:text-[2.3rem]">
             <span lang="en">Good vibes only</span> <HandHeart className="h-[0.75em] w-[0.8em] -translate-y-3 rotate-12" />

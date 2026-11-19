@@ -169,8 +169,8 @@ const MenuSection = () => {
             }
           >
             <p className="mx-auto max-w-sm text-[15px] font-bold leading-relaxed">{t.coffeeQ}</p>
-            <p className="mx-auto mt-4 max-w-sm text-[14.5px] leading-[1.8] text-ink/80">{t.coffee1}</p>
-            {t.coffee2 && <p className="mx-auto mt-3 max-w-sm text-[14.5px] leading-[1.8] text-ink/80">{t.coffee2}</p>}
+            <p className="font-prose mx-auto mt-4 max-w-sm text-[14.5px] leading-[1.8] text-ink/80">{t.coffee1}</p>
+            {t.coffee2 && <p className="font-prose mx-auto mt-3 max-w-sm text-[14.5px] leading-[1.8] text-ink/80">{t.coffee2}</p>}
             <p className="hand mx-auto mt-6 max-w-xs -rotate-2 text-[1.35rem] normal-case leading-tight">
               {t.coffeeHand[0]}
               <br />
@@ -209,7 +209,7 @@ const MenuSection = () => {
             }
           >
             <p className="label-type mx-auto max-w-xs text-[13.5px] font-bold leading-relaxed">{t.bakeryLead}</p>
-            <p className="mx-auto mt-3 max-w-xs text-[14.5px] leading-[1.8] text-ink/80">
+            <p className="font-prose mx-auto mt-3 max-w-xs text-[14.5px] leading-[1.8] text-ink/80">
               {t.bakeryBy}{" "}
               <Link to={href("macu", lang)} className="whitespace-nowrap underline underline-offset-4 hover:text-ink">
                 Macu Bakery Gluten Free

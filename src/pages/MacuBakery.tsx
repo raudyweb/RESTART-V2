@@ -172,10 +172,10 @@ const MacuBakery = () => {
               <p className="hand -rotate-2 text-[1.7rem] leading-tight md:text-[2rem]">
                 {t.quote}
               </p>
-              <p className="mt-7 text-[15px] leading-[1.9] text-ink/85">
+              <p className="font-prose mt-7 text-[15px] leading-[1.9] text-ink/85">
                 {t.intro1}
               </p>
-              <p className="mt-4 text-[15px] leading-[1.9] text-ink/85">
+              <p className="font-prose mt-4 text-[15px] leading-[1.9] text-ink/85">
                 {t.intro2}
               </p>
             </div>
@@ -224,7 +224,7 @@ const MacuBakery = () => {
                   <h3 className="label-type mt-6 text-sm font-bold">
                     {p.title}
                   </h3>
-                  <p className="mt-3 text-[14px] leading-[1.8] text-paper-light/85">
+                  <p className="font-prose mt-3 text-[14px] leading-[1.8] text-paper-light/85">
                     {p.text}
                   </p>
                 </li>
@@ -289,10 +289,10 @@ const MacuBakery = () => {
                 aria-hidden="true"
                 className="mt-5 block h-[2px] w-8 bg-ink"
               />
-              <p className="mt-7 text-[15px] leading-[1.9] text-ink/85">
+              <p className="font-prose mt-7 text-[15px] leading-[1.9] text-ink/85">
                 {t.work1}
               </p>
-              <p className="mt-4 text-[15px] leading-[1.9] text-ink/85">
+              <p className="font-prose mt-4 text-[15px] leading-[1.9] text-ink/85">
                 {t.work2}
               </p>
               <p className="hand mt-9 -rotate-3 text-[1.6rem] leading-tight md:text-[1.9rem]">
@@ -337,7 +337,7 @@ const MacuBakery = () => {
                       aria-hidden="true"
                     />
                     <h3 className="hand mt-4 text-[1.45rem]">{title}</h3>
-                    <p className="mt-3 text-[14px] leading-[1.8] text-ink/80">
+                    <p className="font-prose mt-3 text-[14px] leading-[1.8] text-ink/80">
                       {text}
                     </p>
                   </li>
@@ -356,7 +356,7 @@ const MacuBakery = () => {
                 {t.homeTitle}
               </h2>
               <Scribble className="mt-1 w-36 text-ink" />
-              <p className="mt-7 max-w-lg text-[15px] leading-[1.9] text-ink/85">
+              <p className="font-prose mt-7 max-w-lg text-[15px] leading-[1.9] text-ink/85">
                 {t.homeText}
               </p>
               <div className="mt-9 flex flex-col gap-4 sm:flex-row">

@@ -106,7 +106,7 @@ const ReviewsSection = () => {
                     <Star key={i} size={15} className="fill-ink text-ink" aria-hidden="true" />
                   ))}
                 </div>
-                <blockquote className="mt-5 text-[15px] leading-[1.85] text-ink/90">“{t.quotes[idx]}”</blockquote>
+                <blockquote className="font-prose mt-5 text-[15px] leading-[1.85] text-ink/90">“{t.quotes[idx]}”</blockquote>
                 <figcaption className="hand mt-6 text-xl">{r.author}</figcaption>
               </figure>
             </li>

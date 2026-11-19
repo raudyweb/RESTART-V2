@@ -62,7 +62,7 @@ const StorySection = () => {
             {t.title}
           </h2>
           <span aria-hidden="true" className="mt-5 block h-[2px] w-8 bg-ink" />
-          <p className="mt-6 max-w-sm text-[15px] leading-[1.9] text-ink/85">
+          <p className="font-prose mt-6 max-w-sm text-[15px] leading-[1.9] text-ink/85">
             {t.text}
           </p>
           <a href="#espacio" className="btn-paper mt-8">
