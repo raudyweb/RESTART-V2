@@ -2,12 +2,22 @@ import { ArrowRight, MapPin } from "lucide-react";
 import heroImg from "@/assets/v2/hero-good-vibes.webp";
 import { HandHeart, Scribble } from "@/components/paper/Paper";
 import HeroPhoto from "@/components/paper/HeroPhoto";
+import { useCommon, usePick } from "@/i18n";
 
-const HeroSection = () => (
+const T = {
+  es: { alt: "Pared de Re-Start Coffee con el neón Good Vibes Only", cta: "Descubre nuestra carta" },
+  ca: { alt: "Paret de Re-Start Coffee amb el neó Good Vibes Only", cta: "Descobreix la nostra carta" },
+  en: { alt: "Re-Start Coffee wall with the Good Vibes Only neon sign", cta: "See our menu" },
+};
+
+const HeroSection = () => {
+  const t = usePick()(T);
+  const c = useCommon();
+  return (
   <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-ink text-white">
     <HeroPhoto
       src={heroImg}
-      alt="Pared de Re-Start Coffee con el neón Good Vibes Only"
+      alt={t.alt}
       position="50% 38%"
       desktopPosition="50% 35%"
       seed={17}
@@ -41,15 +51,16 @@ const HeroSection = () => (
 
         <div className="mt-9 flex w-full max-w-[300px] flex-col gap-4">
           <a href="/Carta.pdf" target="_blank" rel="noopener noreferrer" className="btn-paper">
-            Descubre nuestra carta <ArrowRight size={16} />
+            {t.cta} <ArrowRight size={16} />
           </a>
           <a href="#mapa" className="btn-ghost-light">
-            Cómo llegar <MapPin size={16} />
+            {c.directions} <MapPin size={16} />
           </a>
         </div>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default HeroSection;

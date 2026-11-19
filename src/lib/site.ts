@@ -54,8 +54,7 @@ export const cafeSchema = {
   geo: { "@type": "GeoCoordinates", latitude: BUSINESS.lat, longitude: BUSINESS.lng },
   hasMap: BUSINESS.maps,
   openingHoursSpecification: [
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Monday", opens: "08:30", closes: "13:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday", "Wednesday", "Thursday"], opens: "08:30", closes: "16:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "08:30", closes: "16:00" },
     { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "08:30", closes: "19:30" },
     { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "15:00" },
   ],

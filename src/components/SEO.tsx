@@ -1,11 +1,10 @@
 import { Helmet } from "react-helmet-async";
 import { SITE_NAME, abs } from "@/lib/site";
+import { LANGS, OG_LOCALE, href, useLang, usePage } from "@/i18n";
 
 type SEOProps = {
   title: string;
   description: string;
-  /** Ruta de la página, p. ej. "/macu-bakery". Sirve para la URL canónica. */
-  path: string;
   /** Imagen para WhatsApp, Facebook, etc. (1200x630). */
   image?: string;
   imageAlt?: string;
@@ -16,31 +15,44 @@ type SEOProps = {
   noindex?: boolean;
 };
 
+/** Metadatos de la página. La URL canónica y las versiones en otros idiomas salen de la página e idioma actuales. */
 const SEO = ({
   title,
   description,
-  path,
   image = "/og/inicio-v2.jpg",
-  imageAlt = "Re-Start Coffee en Vilanova i la Geltrú",
+  imageAlt = "Re-Start Coffee, Vilanova i la Geltrú",
   preloadImage,
   jsonLd,
   noindex = false,
 }: SEOProps) => {
-  const url = abs(path);
+  const lang = useLang();
+  const page = usePage();
+  const real = page === "notFound" ? null : page;
+  const indexable = !noindex && real !== null;
+  const url = real ? abs(href(real, lang)) : abs("/404");
   const img = abs(image);
   const ld = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
   return (
     <Helmet prioritizeSeoTags>
-      <html lang="es" />
+      <html lang={lang} />
       <title>{title}</title>
       <meta name="description" content={description} />
-      {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={url} />}
-      {!noindex && <meta name="robots" content="index, follow, max-image-preview:large" />}
+      {indexable ? <link rel="canonical" href={url} /> : <meta name="robots" content="noindex, follow" />}
+      {indexable && <meta name="robots" content="index, follow, max-image-preview:large" />}
+
+      {/* La misma página en los otros idiomas */}
+      {indexable &&
+        real &&
+        LANGS.map((l) => <link key={l} rel="alternate" hrefLang={l} href={abs(href(real, l))} />)}
+      {indexable && real && <link rel="alternate" hrefLang="x-default" href={abs(href(real, "es"))} />}
 
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={SITE_NAME} />
-      <meta property="og:locale" content="es_ES" />
+      <meta property="og:locale" content={OG_LOCALE[lang]} />
+      {LANGS.filter((l) => l !== lang).map((l) => (
+        <meta key={l} property="og:locale:alternate" content={OG_LOCALE[l]} />
+      ))}
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />

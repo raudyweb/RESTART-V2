@@ -2,14 +2,50 @@ import type React from "react";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import fachadaImg from "@/assets/v2/fachada.webp";
 import { HandHeart, Scribble, tornClip } from "@/components/paper/Paper";
+import { useCommon, usePick } from "@/i18n";
 
-const schedule = [
-  { days: "Lunes", hours: "8:30 – 13:00" },
-  { days: "Martes a jueves", hours: "8:30 – 16:00" },
-  { days: "Viernes", hours: "8:30 – 19:30" },
-  { days: "Sábado", hours: "9:00 – 15:00" },
-  { days: "Domingo y festivos", hours: "Cerrado", closed: true },
-];
+/** Horario de invierno (cartel del local). */
+const T = {
+  es: {
+    alt: "Fachada amarilla de Re-Start Coffee con los rótulos de Brunch y Bakery",
+    title: "Te esperamos",
+    hours: "Horario de invierno",
+    schedule: [
+      { days: "Lunes a jueves", hours: "8:30 – 16:00" },
+      { days: "Viernes", hours: "8:30 – 19:30" },
+      { days: "Sábado", hours: "9:00 – 15:00" },
+      { days: "Domingo y festivos", hours: "Cerrado", closed: true },
+    ],
+    note: "Los horarios pueden variar en festivos especiales.",
+    map: "Mapa de Re-Start Coffee en Vilanova i la Geltrú",
+  },
+  ca: {
+    alt: "Façana groga de Re-Start Coffee amb els rètols de Brunch i Bakery",
+    title: "T'esperem",
+    hours: "Horari d'hivern",
+    schedule: [
+      { days: "Dilluns a dijous", hours: "8:30 – 16:00" },
+      { days: "Divendres", hours: "8:30 – 19:30" },
+      { days: "Dissabte", hours: "9:00 – 15:00" },
+      { days: "Diumenge i festius", hours: "Tancat", closed: true },
+    ],
+    note: "Els horaris poden variar en festius especials.",
+    map: "Mapa de Re-Start Coffee a Vilanova i la Geltrú",
+  },
+  en: {
+    alt: "Yellow façade of Re-Start Coffee with the Brunch and Bakery signs",
+    title: "See you soon",
+    hours: "Winter opening hours",
+    schedule: [
+      { days: "Monday to Thursday", hours: "8:30 – 16:00" },
+      { days: "Friday", hours: "8:30 – 19:30" },
+      { days: "Saturday", hours: "9:00 – 15:00" },
+      { days: "Sundays and holidays", hours: "Closed", closed: true },
+    ],
+    note: "Opening hours may change on special holidays.",
+    map: "Map of Re-Start Coffee in Vilanova i la Geltrú",
+  },
+};
 
 const contacts = [
   {
@@ -23,14 +59,17 @@ const contacts = [
   { icon: Instagram, label: "@rscafevng", href: "https://instagram.com/rscafevng", external: true },
 ];
 
-const VisitSection = () => (
+const VisitSection = () => {
+  const t = usePick()(T);
+  const c = useCommon();
+  return (
   <section id="visita" className="scroll-mt-20 bg-paper pb-24 pt-24 md:pt-28">
     <div className="mx-auto grid max-w-7xl gap-14 px-5 md:grid-cols-2 md:gap-16 md:px-10">
       <div data-reveal="" className="rotate-[1.5deg] drop-shadow-[0_10px_18px_rgba(40,30,20,0.2)]">
         <div className="aspect-[4/5] overflow-hidden" style={tornClip(113, undefined, 1.8, 2.5)}>
           <img
             src={fachadaImg}
-            alt="Fachada amarilla de Re-Start Coffee con los rótulos de Brunch y Bakery"
+            alt={t.alt}
             loading="lazy"
             className="h-full w-full object-cover"
           />
@@ -39,14 +78,14 @@ const VisitSection = () => (
 
       <div data-reveal="" style={{ "--reveal-delay": "120ms" } as React.CSSProperties} className="flex flex-col justify-center">
         <h2 className="hand text-[2.4rem] leading-none md:text-[2.8rem]">
-          Te esperamos <HandHeart className="h-[0.65em] w-[0.7em] -translate-y-2" />
+          {t.title} <HandHeart className="h-[0.65em] w-[0.7em] -translate-y-2" />
         </h2>
         <Scribble className="mt-1 w-36 text-ink" />
 
         <div id="horarios" className="mt-10 scroll-mt-28">
-          <h3 className="label-type text-sm font-bold">Horarios</h3>
+          <h3 className="label-type text-sm font-bold">{t.hours}</h3>
           <dl className="mt-4">
-            {schedule.map((s) => (
+            {t.schedule.map((s) => (
               <div
                 key={s.days}
                 className={`flex items-baseline justify-between gap-4 border-b border-dashed border-ink/25 py-3 text-[15px] ${
@@ -58,7 +97,7 @@ const VisitSection = () => (
               </div>
             ))}
           </dl>
-          <p className="mt-3 text-xs text-muted-foreground">Los horarios pueden variar en festivos especiales.</p>
+          <p className="mt-3 text-xs text-muted-foreground">{t.note}</p>
         </div>
 
         <ul className="mt-10 space-y-4">
@@ -82,7 +121,7 @@ const VisitSection = () => (
           rel="noopener noreferrer"
           className="btn-paper mt-10 w-fit bg-ink text-paper-light"
         >
-          Cómo llegar <MapPin size={16} />
+          {c.directions} <MapPin size={16} />
         </a>
       </div>
     </div>
@@ -97,11 +136,12 @@ const VisitSection = () => (
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="Mapa de Re-Start Coffee en Vilanova i la Geltrú"
+          title={t.map}
         />
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default VisitSection;

@@ -17,3 +17,5 @@ export function render(url: string) {
   const head = [h.title, h.priority, h.meta, h.link, h.script].map((x) => x.toString()).join("\n    ");
   return { html, head, htmlAttrs: h.htmlAttributes.toString() };
 }
+
+export { ROUTES, LANGS, href } from "./i18n";

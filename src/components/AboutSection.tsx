@@ -1,52 +1,73 @@
 import barraImg from "@/assets/v2/barra-iluminada.webp";
 import { HandHeart } from "@/components/paper/Paper";
+import { usePick } from "@/i18n";
 
-const AboutSection = () => (
-  <section id="nosotros" className="relative bg-paper-light">
-    <div className="mx-auto grid max-w-7xl md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-      <div data-reveal="" className="flex flex-col justify-center px-5 py-16 md:px-10 md:py-20 lg:pl-10 lg:pr-16">
-        <h2 className="label-type text-xl font-bold leading-snug md:text-2xl">
-          Mucho más
-          <br />
-          que una cafetería
-        </h2>
-        <span aria-hidden="true" className="mt-5 block h-[2px] w-8 bg-ink" />
+const T = {
+  es: {
+    title: ["Mucho más", "que una cafetería"],
+    p1: "Café de especialidad, brunch y repostería artesanal en el corazón de Vilanova i la Geltrú. Un lugar para disfrutar, compartir y resetear el día.",
+    p2: "Trabajamos con distintos tostadores de especialidad, cuidadosamente seleccionados por la calidad, la trazabilidad y el respeto por el origen. Cada taza se prepara con atención al detalle, sin atajos. Somos el sitio de siempre para los de aquí y el descubrimiento favorito para los de fuera.",
+    reviews: "+300 reseñas en Google",
+    alt: "Barra de madera iluminada con la cafetera La Marzocco",
+  },
+  ca: {
+    title: ["Molt més", "que una cafeteria"],
+    p1: "Cafè d'especialitat, brunch i rebosteria artesana al cor de Vilanova i la Geltrú. Un lloc per gaudir, compartir i fer un reset al dia.",
+    p2: "Treballem amb diferents torradors d'especialitat, seleccionats amb cura per la qualitat, la traçabilitat i el respecte per l'origen. Cada tassa es prepara amb atenció al detall, sense dreceres. Som el lloc de sempre per als d'aquí i el descobriment preferit per als de fora.",
+    reviews: "+300 ressenyes a Google",
+    alt: "Barra de fusta il·luminada amb la cafetera La Marzocco",
+  },
+  en: {
+    title: ["Much more", "than a coffee shop"],
+    p1: "Specialty coffee, brunch and artisan baking in the heart of Vilanova i la Geltrú. A place to enjoy, share and reset your day.",
+    p2: "We work with a range of specialty roasters, carefully chosen for quality, traceability and respect for origin. Every cup is made with attention to detail, no shortcuts. We're the go-to spot for locals and a favourite discovery for visitors.",
+    reviews: "300+ Google reviews",
+    alt: "Lit-up wooden counter with the La Marzocco espresso machine",
+  },
+};
 
-        <p className="mt-7 max-w-md text-[15px] leading-[1.9] text-ink/85">
-          Café de especialidad, brunch y repostería artesanal en el corazón de Vilanova i la Geltrú. Un lugar para
-          disfrutar, compartir y resetear el día.
-        </p>
-        <p className="mt-4 max-w-md text-[15px] leading-[1.9] text-ink/85">
-          Trabajamos con granos de especialidad Nomad, uno de los mejores tostadores del país. Cada taza se prepara
-          con atención al detalle, sin atajos. Somos el sitio de siempre para los de aquí y el descubrimiento
-          favorito para los de fuera.
-        </p>
+const AboutSection = () => {
+  const t = usePick()(T);
+  return (
+    <section id="nosotros" className="relative bg-paper-light">
+      <div className="mx-auto grid max-w-7xl md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+        <div data-reveal="" className="flex flex-col justify-center px-5 py-16 md:px-10 md:py-20 lg:pl-10 lg:pr-16">
+          <h2 className="label-type text-xl font-bold leading-snug md:text-2xl">
+            {t.title[0]}
+            <br />
+            {t.title[1]}
+          </h2>
+          <span aria-hidden="true" className="mt-5 block h-[2px] w-8 bg-ink" />
 
-        <p className="hand mt-10 -rotate-[5deg] text-[2rem] md:text-[2.3rem]">
-          Good vibes only <HandHeart className="h-[0.75em] w-[0.8em] -translate-y-3 rotate-12" />
-        </p>
+          <p className="mt-7 max-w-md text-[15px] leading-[1.9] text-ink/85">{t.p1}</p>
+          <p className="mt-4 max-w-md text-[15px] leading-[1.9] text-ink/85">{t.p2}</p>
 
-        <a
-          href="https://maps.app.goo.gl/BL8ZWwjTquyxNPD16"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-8 inline-flex w-fit items-baseline gap-2 border-b border-ink/30 pb-1 text-sm hover:border-ink"
-        >
-          <span className="text-lg font-bold">4.8 ★</span>
-          <span>+300 reseñas en Google</span>
-        </a>
+          <p className="hand mt-10 -rotate-[5deg] text-[2rem] md:text-[2.3rem]">
+            Good vibes only <HandHeart className="h-[0.75em] w-[0.8em] -translate-y-3 rotate-12" />
+          </p>
+
+          <a
+            href="https://maps.app.goo.gl/BL8ZWwjTquyxNPD16"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex w-fit items-baseline gap-2 border-b border-ink/30 pb-1 text-sm hover:border-ink"
+          >
+            <span className="text-lg font-bold">4.8 ★</span>
+            <span>{t.reviews}</span>
+          </a>
+        </div>
+
+        <div className="relative min-h-[420px] md:min-h-[560px]">
+          <img
+            src={barraImg}
+            alt={t.alt}
+            loading="lazy"
+            className="absolute inset-0 h-full w-full object-cover object-[50%_60%]"
+          />
+        </div>
       </div>
-
-      <div className="relative min-h-[420px] md:min-h-[560px]">
-        <img
-          src={barraImg}
-          alt="Barra de madera iluminada con la cafetera La Marzocco"
-          loading="lazy"
-          className="absolute inset-0 h-full w-full object-cover object-[50%_60%]"
-        />
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default AboutSection;

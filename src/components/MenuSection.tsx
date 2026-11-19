@@ -1,37 +1,26 @@
 import type React from "react";
+import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import cafeImg from "@/assets/v2/cafe-latte.webp";
 import bowlImg from "@/assets/v2/bowl-acai.webp";
-import bakeryImg from "@/assets/v2/bolleria.webp";
-import { Scribble, TornEdge, tornClip } from "@/components/paper/Paper";
+import bolleriaImg from "@/assets/v2/bolleria.webp";
+import { nueva } from "@/assets/v2/nuevas";
+import { Brush, HandHeart, Scribble, TornEdge, tornClip } from "@/components/paper/Paper";
+import { href, useCommon, useLang, usePick } from "@/i18n";
 
-const categories = [
-  {
-    title: ["Specialty", "coffee"],
-    img: cafeImg,
-    pos: "55% 60%",
-    zoom: 1,
-    alt: "Café con latte art y vaso de agua sobre tabla de madera",
-    tilt: "-rotate-[1.5deg]",
-    seed: 11,
-    items: [
-      "Café de especialidad",
-      "Espresso y café filtrado",
-      "Flat white y cappuccino",
-      "Matcha latte",
-      "Cold brew y bebidas frías",
-      "Bebidas de temporada",
-    ],
-  },
-  {
-    title: ["Brunch"],
-    img: bowlImg,
-    pos: "50% 50%",
-    zoom: 1,
-    alt: "Bowl de açaí con mango, plátano, arándanos y granola",
-    tilt: "rotate-[1deg]",
-    seed: 23,
-    items: [
+const cookiesImg = nueva("cookies-pistacho", bolleriaImg);
+
+const T = {
+  es: {
+    coffeeAlt: "Café con latte art y vaso de agua sobre tabla de madera",
+    coffeeQ: "¿De clásicos o de los que les gusta probar cosas nuevas?",
+    coffee1:
+      "Desde un cappuccino cremoso hasta un espresso con carácter. Pasando por un V60 para los más curiosos, un macchiato, un irresistible caramel iced latte o un shakerato para darle un twist al día.",
+    coffee2: "¿Más de cold brew, flat white o matcha latte? Aquí hay opciones para todos los gustos y momentos.",
+    coffeeHand: ["Buen café,", "diferentes formas de disfrutarlo."],
+    brunchAlt: "Bowl de açaí con mango, plátano, arándanos y granola",
+    brunch: [
       "Brunch artesanal",
       "Tostadas gourmet",
       "Huevos benedict",
@@ -39,75 +28,183 @@ const categories = [
       "Opciones vegetarianas y sin gluten",
       "Ingredientes frescos y de temporada",
     ],
+    bakeryAlt: "Cookies estilo New York de pistacho, chocolate y Oreo sin gluten",
+    bakeryLead: "New York cookies, brownies, bizcochos y mucho más…",
+    bakeryBy: "Elaboraciones creadas por",
+    fullMenu: "Ver carta completa",
   },
-  {
-    title: ["Bakery"],
-    img: bakeryImg,
-    pos: "40% 50%",
-    zoom: 1,
-    alt: "Napolitanas de chocolate y cruasanes recién horneados",
-    tilt: "-rotate-[1deg]",
-    seed: 37,
-    items: [
-      "Repostería artesanal",
-      "Cookies caseras",
-      "Pancakes",
-      "Tartas de temporada",
-      "Elaboración propia de Macu Bakery",
+  ca: {
+    coffeeAlt: "Cafè amb latte art i got d'aigua sobre una safata de fusta",
+    coffeeQ: "Ets de clàssics o dels que els agrada provar coses noves?",
+    coffee1:
+      "Des d'un cappuccino cremós fins a un espresso amb caràcter. Passant per un V60 per als més curiosos, un macchiato, un irresistible caramel iced latte o un shakerato per donar un toc diferent al dia.",
+    coffee2: "Més de cold brew, flat white o matcha latte? Aquí hi ha opcions per a tots els gustos i moments.",
+    coffeeHand: ["Bon cafè,", "diferents maneres de gaudir-lo."],
+    brunchAlt: "Bowl d'açaí amb mango, plàtan, nabius i granola",
+    brunch: [
+      "Brunch artesà",
+      "Torrades gourmet",
+      "Ous Benedict",
+      "Bowls saludables",
+      "Opcions vegetarianes i sense gluten",
+      "Ingredients frescos i de temporada",
     ],
+    bakeryAlt: "Cookies estil New York de festuc, xocolata i Oreo sense gluten",
+    bakeryLead: "New York cookies, brownies, pa de pessic i molt més…",
+    bakeryBy: "Elaboracions creades per",
+    fullMenu: "Veure la carta completa",
   },
-];
+  en: {
+    coffeeAlt: "Coffee with latte art and a glass of water on a wooden board",
+    coffeeQ: "Classic coffee lover or always up for something new?",
+    coffee1:
+      "From a creamy cappuccino to a bold espresso. A V60 for the curious, a macchiato, an irresistible caramel iced latte or a shakerato to give your day a twist.",
+    coffee2: "More of a cold brew, flat white or matcha latte person? There's something for every taste and every moment.",
+    coffeeHand: ["Good coffee,", "many ways to enjoy it."],
+    brunchAlt: "Açaí bowl with mango, banana, blueberries and granola",
+    brunch: [
+      "Homemade brunch",
+      "Gourmet toasts",
+      "Eggs Benedict",
+      "Healthy bowls",
+      "Vegetarian and gluten-free options",
+      "Fresh, seasonal ingredients",
+    ],
+    bakeryAlt: "Gluten-free New York style cookies with pistachio, chocolate and Oreo",
+    bakeryLead: "New York cookies, brownies, sponge cakes and much more…",
+    bakeryBy: "Baked by",
+    fullMenu: "See the full menu",
+  },
+};
 
-const MenuSection = () => (
-  <section id="carta" className="relative bg-paper pb-20 pt-10 md:pb-28 md:pt-14">
-    <TornEdge side="top" seed={3} className="text-paper" />
-    <div className="mx-auto max-w-7xl px-5 md:px-10">
-      <div className="grid gap-12 md:grid-cols-3 md:gap-8">
-        {categories.map((c, idx) => (
-          <article key={c.title.join(" ")} className="flex flex-col" data-reveal="" style={{ "--reveal-delay": `${idx * 110}ms` } as React.CSSProperties}>
-            <div className={`${c.tilt} drop-shadow-[0_8px_14px_rgba(40,30,20,0.18)]`}>
-              <div className="aspect-[4/3.3] overflow-hidden bg-muted" style={tornClip(c.seed)}>
-                <div className="h-full w-full" style={{ transform: `scale(${c.zoom})`, transformOrigin: "50% 0%" }}>
-                  <img
-                    src={c.img}
-                    alt={c.alt}
-                    loading="lazy"
-                    style={{ objectPosition: c.pos }}
-                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                </div>
-              </div>
-            </div>
-            <h2 className="hand mt-7 text-center text-[2rem] leading-[0.95] md:text-[2.1rem]">
-              {c.title.map((t) => (
-                <span key={t} className="block">
-                  {t}
-                </span>
-              ))}
-            </h2>
-            <Scribble className="mx-auto mt-2 w-20 text-ink" />
-            <ul className="mt-6 space-y-1.5 text-center text-[15px] text-ink/80">
-              {c.items.map((i) => (
+/** Tarjeta con foto rasgada, título manuscrito y contenido libre. */
+const Card = ({
+  idx,
+  img,
+  alt,
+  pos,
+  tilt,
+  seed,
+  title,
+  children,
+}: {
+  idx: number;
+  img: string;
+  alt: string;
+  pos: string;
+  tilt: string;
+  seed: number;
+  title: ReactNode;
+  children: ReactNode;
+}) => (
+  <article
+    className="flex flex-col"
+    data-reveal=""
+    style={{ "--reveal-delay": `${idx * 110}ms` } as React.CSSProperties}
+  >
+    <div className={`${tilt} drop-shadow-[0_8px_14px_rgba(40,30,20,0.18)]`}>
+      <div className="aspect-[4/3.3] overflow-hidden bg-muted" style={tornClip(seed)}>
+        <img
+          src={img}
+          alt={alt}
+          loading="lazy"
+          style={{ objectPosition: pos }}
+          className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+        />
+      </div>
+    </div>
+    <h2 className="hand mt-7 text-center text-[2rem] leading-[0.95] md:text-[2.1rem]">{title}</h2>
+    <Scribble className="mx-auto mt-2 w-20 text-ink" />
+    <div className="mt-6 text-center">{children}</div>
+  </article>
+);
+
+const MenuSection = () => {
+  const t = usePick()(T);
+  const c = useCommon();
+  const lang = useLang();
+
+  return (
+    <section id="carta" className="relative bg-paper pb-20 pt-10 md:pb-28 md:pt-14">
+      <TornEdge side="top" seed={3} className="text-paper" />
+      <div className="mx-auto max-w-7xl px-5 md:px-10">
+        <div className="grid gap-16 md:grid-cols-3 md:gap-8">
+          {/* Specialty coffee */}
+          <Card
+            idx={0}
+            img={cafeImg}
+            alt={t.coffeeAlt}
+            pos="55% 60%"
+            tilt="-rotate-[1.5deg]"
+            seed={11}
+            title={
+              <>
+                <span className="block">Specialty</span> <span className="block">coffee</span>
+              </>
+            }
+          >
+            <p className="mx-auto max-w-sm text-[15px] font-bold leading-relaxed">{t.coffeeQ}</p>
+            <p className="mx-auto mt-4 max-w-sm text-[14.5px] leading-[1.8] text-ink/80">{t.coffee1}</p>
+            <p className="mx-auto mt-3 max-w-sm text-[14.5px] leading-[1.8] text-ink/80">{t.coffee2}</p>
+            <p className="hand mx-auto mt-6 max-w-xs -rotate-2 text-[1.35rem] normal-case leading-tight">
+              {t.coffeeHand[0]}
+              <br />
+              {t.coffeeHand[1]} <HandHeart className="h-[0.8em] w-[0.85em] -translate-y-1" />
+            </p>
+            <Scribble className="mx-auto mt-1 w-40 text-ink" />
+          </Card>
+
+          {/* Brunch */}
+          <Card idx={1} img={bowlImg} alt={t.brunchAlt} pos="50% 50%" tilt="rotate-[1deg]" seed={23} title="Brunch">
+            <ul className="space-y-1.5 text-[15px] text-ink/80">
+              {t.brunch.map((i) => (
                 <li key={i}>{i}</li>
               ))}
             </ul>
-          </article>
-        ))}
-      </div>
+          </Card>
 
-      <div className="mt-14 flex flex-col items-center gap-4">
-        <a
-          href="/Carta.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-paper border border-ink/25 bg-transparent"
-        >
-          Ver carta completa <ArrowRight size={16} />
-        </a>
-        <p className="text-xs text-muted-foreground">En caso de alergias, consulta con el personal.</p>
+          {/* Bakery */}
+          <Card
+            idx={2}
+            img={cookiesImg}
+            alt={t.bakeryAlt}
+            pos="50% 40%"
+            tilt="-rotate-[1deg]"
+            seed={37}
+            title={
+              <>
+                <span className="block">
+                  Bakery <HandHeart className="h-[0.6em] w-[0.65em] -translate-y-3" />
+                </span>{" "}
+                <Brush className="mt-1 text-[0.72em]">Gluten free</Brush>
+              </>
+            }
+          >
+            <p className="label-type mx-auto max-w-xs text-[13.5px] font-bold leading-relaxed">{t.bakeryLead}</p>
+            <p className="mx-auto mt-3 max-w-xs text-[14.5px] leading-[1.8] text-ink/80">
+              {t.bakeryBy}{" "}
+              <Link to={href("macu", lang)} className="whitespace-nowrap underline underline-offset-4 hover:text-ink">
+                Macu Bakery Gluten Free
+              </Link>
+              .
+            </p>
+          </Card>
+        </div>
+
+        <div className="mt-16 flex flex-col items-center gap-4">
+          <a
+            href="/Carta.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-paper border border-ink/25 bg-transparent"
+          >
+            {t.fullMenu} <ArrowRight size={16} />
+          </a>
+          <p className="text-xs text-muted-foreground">{c.allergens}</p>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default MenuSection;

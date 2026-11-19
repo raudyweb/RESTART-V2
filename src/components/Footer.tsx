@@ -2,8 +2,19 @@ import { Instagram, Mail, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 import logoImg from "@/assets/logo-invert.webp";
 import { TornEdge } from "@/components/paper/Paper";
+import { href, useCommon, useLang, usePick } from "@/i18n";
 
-const Footer = () => (
+const T = {
+  es: { nav: "Pie de página", phone: "Teléfono" },
+  ca: { nav: "Peu de pàgina", phone: "Telèfon" },
+  en: { nav: "Footer", phone: "Phone" },
+};
+
+const Footer = () => {
+  const t = usePick()(T);
+  const c = useCommon();
+  const lang = useLang();
+  return (
   <footer className="relative bg-ink text-paper-light">
     <TornEdge side="top" seed={131} className="text-ink" />
     <div className="mx-auto max-w-7xl px-5 py-14 md:px-10">
@@ -16,17 +27,17 @@ const Footer = () => (
           </div>
         </div>
 
-        <nav aria-label="Pie de página" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
+        <nav aria-label={t.nav} className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm">
           <a href="/Carta.pdf" target="_blank" rel="noopener noreferrer" className="hover:underline">
-            Carta
+            {c.menu}
           </a>
-          <Link to="/sobre-nosotros" className="hover:underline">
-            Nosotros
+          <Link to={href("about", lang)} className="hover:underline">
+            {c.about}
           </Link>
-          <Link to="/food-truck" className="hover:underline">
+          <Link to={href("truck", lang)} className="hover:underline">
             Food Truck
           </Link>
-          <Link to="/macu-bakery" className="hover:underline">
+          <Link to={href("macu", lang)} className="hover:underline">
             Macu Bakery
           </Link>
         </nav>
@@ -38,7 +49,7 @@ const Footer = () => (
           <a href="mailto:rscafevng@gmail.com" aria-label="Email" className="text-paper-light/70 hover:text-paper-light">
             <Mail size={20} />
           </a>
-          <a href="tel:+34621306720" aria-label="Teléfono" className="text-paper-light/70 hover:text-paper-light">
+          <a href="tel:+34621306720" aria-label={t.phone} className="text-paper-light/70 hover:text-paper-light">
             <Phone size={20} />
           </a>
         </div>
@@ -52,6 +63,7 @@ const Footer = () => (
       </div>
     </div>
   </footer>
-);
+  );
+};
 
 export default Footer;
