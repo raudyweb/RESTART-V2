@@ -13,12 +13,17 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
 const SITE_URL = (process.env.VITE_SITE_URL || "https://restart-v2.vercel.app").replace(/\/$/, "");
 
-const { render, ROUTES, LANGS, href } = await import(pathToFileURL(path.join(root, "dist-ssr", "entry-server.js")).href);
+const { render, ROUTES, LANGS, href, LEGAL_PAGES } = await import(pathToFileURL(path.join(root, "dist-ssr", "entry-server.js")).href);
 
 // Páginas públicas en los tres idiomas (+ la 404). "/" → index.html, "/ca/food-truck" → ca/food-truck.html
 const PRIORITY = { home: "1.0", about: "0.8", macu: "0.8", truck: "0.7" };
 const routes = [
-  ...ROUTES.map((r) => ({ ...r, url: r.path, file: r.path === "/" ? "index.html" : `${r.path.slice(1)}.html` })),
+  ...ROUTES.map((r) => ({
+    ...r,
+    url: r.path,
+    file: r.path === "/" ? "index.html" : `${r.path.slice(1)}.html`,
+    sitemap: !LEGAL_PAGES.includes(r.page),
+  })),
   { url: "/404", file: "404.html", sitemap: false },
 ];
 const template = fs.readFileSync(path.join(dist, "index.html"), "utf8");

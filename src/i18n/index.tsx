@@ -17,13 +17,19 @@ export const LANG_LABEL: Record<Lang, string> = { es: "Español", ca: "Català",
 export const LANG_SHORT: Record<Lang, string> = { es: "ES", ca: "CA", en: "EN", fr: "FR" };
 export const OG_LOCALE: Record<Lang, string> = { es: "es_ES", ca: "ca_ES", en: "en_GB", fr: "fr_FR" };
 
-export type PageKey = "home" | "about" | "macu" | "truck" | "notFound";
+export type PageKey = "home" | "about" | "macu" | "truck" | "legal" | "privacy" | "cookies" | "notFound";
+
+/** Páginas legales: no van al sitemap ni se indexan. */
+export const LEGAL_PAGES = ["legal", "privacy", "cookies"] as const;
 
 const SLUGS: Record<Exclude<PageKey, "notFound">, Record<Lang, string>> = {
   home: { es: "", ca: "", en: "", fr: "" },
   about: { es: "sobre-nosotros", ca: "sobre-nosaltres", en: "about-us", fr: "a-propos" },
   macu: { es: "macu-bakery", ca: "macu-bakery", en: "macu-bakery", fr: "macu-bakery" },
   truck: { es: "food-truck", ca: "food-truck", en: "food-truck", fr: "food-truck" },
+  legal: { es: "aviso-legal", ca: "avis-legal", en: "legal-notice", fr: "mentions-legales" },
+  privacy: { es: "politica-privacidad", ca: "politica-privacitat", en: "privacy-policy", fr: "politique-confidentialite" },
+  cookies: { es: "politica-cookies", ca: "politica-galetes", en: "cookie-policy", fr: "politique-cookies" },
 };
 
 /** Ruta de una página en un idioma, con ancla opcional: href("about", "ca") → "/ca/sobre-nosaltres" */

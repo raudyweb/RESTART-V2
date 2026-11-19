@@ -5,6 +5,7 @@ import About from "./pages/About.tsx";
 import FoodTruck from "./pages/FoodTruck.tsx";
 import MacuBakery from "./pages/MacuBakery.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import { CookiePolicy, LegalNotice, PrivacyPolicy } from "./pages/Legal.tsx";
 import ScrollToHash from "./components/ScrollToHash";
 import PageTransition from "./components/paper/PageTransition";
 import { LangProvider, ROUTES, type Lang, type PageKey } from "./i18n";
@@ -22,6 +23,9 @@ const PAGES: Record<Exclude<PageKey, "notFound">, ComponentType> = {
   about: About,
   macu: MacuBakery,
   truck: FoodTruck,
+  legal: LegalNotice,
+  privacy: PrivacyPolicy,
+  cookies: CookiePolicy,
 };
 
 const notFoundFor = (lang: Lang) => (

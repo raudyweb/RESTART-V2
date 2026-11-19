@@ -1,4 +1,5 @@
 import type React from "react";
+import MapEmbed from "@/components/paper/MapEmbed";
 import { ArrowDown, Coffee, MapPin, Sandwich, Store, Sun } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -581,16 +582,7 @@ const FoodTruck = () => {
               className="mt-12 h-72 overflow-hidden md:h-96"
               style={tornClip(651, undefined, 1.2, 1.5)}
             >
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.5293779537687!2d1.6928816!3d41.2320253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4986a70234dd9%3A0xe7932b446d313350!2sVilanova%20Park!5e0!3m2!1ses!2ses!4v1782665372822!5m2!1ses!2ses"
-                width="100%"
-                height="100%"
-                style={{ border: 0, filter: "sepia(.25) saturate(.85)" }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={t.mapFrame}
-              />
+              <MapEmbed src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.5293779537687!2d1.6928816!3d41.2320253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4986a70234dd9%3A0xe7932b446d313350!2sVilanova%20Park!5e0!3m2!1ses!2ses!4v1782665372822!5m2!1ses!2ses" title={t.mapFrame} />
             </div>
             <div className="mt-10 flex justify-center">
               <a

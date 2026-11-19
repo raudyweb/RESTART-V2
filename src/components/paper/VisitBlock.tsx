@@ -1,4 +1,5 @@
 import type React from "react";
+import MapEmbed from "@/components/paper/MapEmbed";
 import type { LucideIcon } from "lucide-react";
 import { MapPin } from "lucide-react";
 import type { ReactNode } from "react";
@@ -147,16 +148,7 @@ const VisitBlock = ({
           className="h-72 overflow-hidden md:h-96"
           style={tornClip(427, undefined, 1.2, 1.5)}
         >
-          <iframe
-            src={mapEmbed}
-            width="100%"
-            height="100%"
-            style={{ border: 0, filter: "sepia(.25) saturate(.85)" }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title={mapTitle}
-          />
+          <MapEmbed src={mapEmbed} title={mapTitle} />
         </div>
       </div>
     </section>

@@ -18,4 +18,4 @@ export function render(url: string) {
   return { html, head, htmlAttrs: h.htmlAttributes.toString() };
 }
 
-export { ROUTES, LANGS, href } from "./i18n";
+export { ROUTES, LANGS, href, LEGAL_PAGES } from "./i18n";

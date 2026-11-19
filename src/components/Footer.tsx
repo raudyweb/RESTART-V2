@@ -7,10 +7,10 @@ import { HOURS, formatDaysShort, formatTime } from "@/lib/hours";
 import { href, useCommon, useLang, usePick } from "@/i18n";
 
 const T = {
-  es: { nav: "Pie de página", phone: "Teléfono", hours: "Horario", closed: "D y festivos: cerrado", rights: "Todos los derechos reservados" },
-  ca: { nav: "Peu de pàgina", phone: "Telèfon", hours: "Horari", closed: "Dg i festius: tancat", rights: "Tots els drets reservats" },
-  en: { nav: "Footer", phone: "Phone", hours: "Opening hours", closed: "Sun & holidays: closed", rights: "All rights reserved" },
-  fr: { nav: "Pied de page", phone: "Téléphone", hours: "Horaires", closed: "Dim. et jours fériés : fermé", rights: "Tous droits réservés" },
+  es: { legal: "Aviso legal", privacy: "Privacidad", cookies: "Cookies", nav: "Pie de página", phone: "Teléfono", hours: "Horario", closed: "D y festivos: cerrado", rights: "Todos los derechos reservados" },
+  ca: { legal: "Avís legal", privacy: "Privacitat", cookies: "Galetes", nav: "Peu de pàgina", phone: "Telèfon", hours: "Horari", closed: "Dg i festius: tancat", rights: "Tots els drets reservats" },
+  en: { legal: "Legal notice", privacy: "Privacy", cookies: "Cookies", nav: "Footer", phone: "Phone", hours: "Opening hours", closed: "Sun & holidays: closed", rights: "All rights reserved" },
+  fr: { legal: "Mentions légales", privacy: "Confidentialité", cookies: "Cookies", nav: "Pied de page", phone: "Téléphone", hours: "Horaires", closed: "Dim. et jours fériés : fermé", rights: "Tous droits réservés" },
 };
 
 const Footer = () => {
@@ -94,6 +94,17 @@ const Footer = () => {
         <p>
           © {new Date().getFullYear()} Re-Start Coffee · {t.rights}
         </p>
+        <nav aria-label={t.legal} className="flex flex-wrap justify-center gap-x-4">
+          <Link to={href("legal", lang)} className="inline-block py-2 hover:underline">
+            {t.legal}
+          </Link>
+          <Link to={href("privacy", lang)} className="inline-block py-2 hover:underline">
+            {t.privacy}
+          </Link>
+          <Link to={href("cookies", lang)} className="inline-block py-2 hover:underline">
+            {t.cookies}
+          </Link>
+        </nav>
         <p>
           Web by <span className="text-paper-light/80">Raudy</span>
         </p>
