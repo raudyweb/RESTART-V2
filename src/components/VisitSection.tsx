@@ -2,20 +2,18 @@ import type React from "react";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import fachadaImg from "@/assets/v2/fachada.webp";
 import { HandHeart, KeepLast, Scribble, tornClip } from "@/components/paper/Paper";
-import { useCommon, usePick } from "@/i18n";
+import OpenNow from "@/components/OpenNow";
+import { useCommon, useLang, usePick } from "@/i18n";
+import { HOURS, formatDays, formatTime } from "@/lib/hours";
 
-/** Horario de invierno (cartel del local). */
+/** Textos de la sección. Las horas están en src/lib/hours.ts (un solo sitio para cambiarlas). */
 const T = {
   es: {
     alt: "Fachada amarilla de Re-Start Coffee con los rótulos de Brunch y Bakery",
     title: "Te esperamos",
     hours: "Horario de invierno",
-    schedule: [
-      { days: "Lunes a jueves", hours: "8:30 – 16:00" },
-      { days: "Viernes", hours: "8:30 – 19:30" },
-      { days: "Sábado", hours: "9:00 – 15:00" },
-      { days: "Domingo y festivos", hours: "Cerrado", closed: true },
-    ],
+    closedDays: "Domingo y festivos",
+    closed: "Cerrado",
     note: "Los horarios pueden variar en festivos especiales.",
     map: "Mapa de Re-Start Coffee en Vilanova i la Geltrú",
   },
@@ -23,12 +21,8 @@ const T = {
     alt: "Façana groga de Re-Start Coffee amb els rètols de Brunch i Bakery",
     title: "T'esperem",
     hours: "Horari d'hivern",
-    schedule: [
-      { days: "Dilluns a dijous", hours: "8:30 – 16:00" },
-      { days: "Divendres", hours: "8:30 – 19:30" },
-      { days: "Dissabte", hours: "9:00 – 15:00" },
-      { days: "Diumenge i festius", hours: "Tancat", closed: true },
-    ],
+    closedDays: "Diumenge i festius",
+    closed: "Tancat",
     note: "Els horaris poden variar en festius especials.",
     map: "Mapa de Re-Start Coffee a Vilanova i la Geltrú",
   },
@@ -36,12 +30,8 @@ const T = {
     alt: "Yellow façade of Re-Start Coffee with the Brunch and Bakery signs",
     title: "See you soon",
     hours: "Winter opening hours",
-    schedule: [
-      { days: "Monday to Thursday", hours: "8:30 – 16:00" },
-      { days: "Friday", hours: "8:30 – 19:30" },
-      { days: "Saturday", hours: "9:00 – 15:00" },
-      { days: "Sundays and holidays", hours: "Closed", closed: true },
-    ],
+    closedDays: "Sundays and holidays",
+    closed: "Closed",
     note: "Opening hours may change on special holidays.",
     map: "Map of Re-Start Coffee in Vilanova i la Geltrú",
   },
@@ -49,12 +39,8 @@ const T = {
     alt: "Façade jaune de Re-Start Coffee avec les enseignes Brunch et Bakery",
     title: "À très vite",
     hours: "Horaires d'hiver",
-    schedule: [
-      { days: "Du lundi au jeudi", hours: "8h30 – 16h00" },
-      { days: "Vendredi", hours: "8h30 – 19h30" },
-      { days: "Samedi", hours: "9h00 – 15h00" },
-      { days: "Dimanches et jours fériés", hours: "Fermé", closed: true },
-    ],
+    closedDays: "Dimanches et jours fériés",
+    closed: "Fermé",
     note: "Les horaires peuvent changer lors de certains jours fériés.",
     map: "Plan de Re-Start Coffee à Vilanova i la Geltrú",
   },
@@ -75,6 +61,7 @@ const contacts = [
 const VisitSection = () => {
   const t = usePick()(T);
   const c = useCommon();
+  const lang = useLang();
   return (
   <section id="visita" className="scroll-mt-20 bg-paper pb-24 pt-24 md:pt-28">
     <div className="mx-auto grid max-w-7xl gap-14 px-5 md:grid-cols-2 md:gap-16 md:px-10">
@@ -100,18 +87,23 @@ const VisitSection = () => {
 
         <div id="horarios" className="mt-10 scroll-mt-28">
           <h3 className="label-type text-sm font-bold">{t.hours}</h3>
+          <OpenNow className="mt-4" />
           <dl className="mt-4">
-            {t.schedule.map((s) => (
+            {HOURS.map((h) => (
               <div
-                key={s.days}
-                className={`flex items-baseline justify-between gap-4 border-b border-dashed border-ink/25 py-3 text-[15px] ${
-                  s.closed ? "text-ink/50" : ""
-                }`}
+                key={h.days.join()}
+                className="flex items-baseline justify-between gap-4 border-b border-dashed border-ink/25 py-3 text-[15px]"
               >
-                <dt>{s.days}</dt>
-                <dd className="font-bold">{s.hours}</dd>
+                <dt>{formatDays(h.days, lang)}</dt>
+                <dd className="font-bold">
+                  {formatTime(h.open, lang)} – {formatTime(h.close, lang)}
+                </dd>
               </div>
             ))}
+            <div className="flex items-baseline justify-between gap-4 border-b border-dashed border-ink/25 py-3 text-[15px] text-ink/50">
+              <dt>{t.closedDays}</dt>
+              <dd className="font-bold">{t.closed}</dd>
+            </div>
           </dl>
           <p className="mt-3 text-xs text-muted-foreground">{t.note}</p>
         </div>

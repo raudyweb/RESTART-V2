@@ -21,7 +21,7 @@ const Footer = () => {
     <div className="mx-auto max-w-7xl px-5 py-14 md:px-10">
       <div className="flex flex-col items-center justify-between gap-10 md:flex-row">
         <div className="flex items-center gap-4">
-          <img src={logoImg} alt="" className="h-14 w-14 object-contain" loading="lazy" />
+          <img src={logoImg} alt="Re-Start Coffee" className="h-14 w-14 object-contain" loading="lazy" />
           <div>
             <p className="hand text-2xl">Re-Start Coffee</p>
             <p lang="en" className="label-type mt-1 text-[11px] text-paper-light/60">

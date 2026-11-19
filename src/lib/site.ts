@@ -1,3 +1,4 @@
+import { openingHoursSchema } from "@/lib/hours";
 /**
  * Datos del sitio para SEO.
  * Cuando la web tenga dominio propio, basta con cambiar SITE_URL
@@ -53,11 +54,8 @@ export const cafeSchema = {
   address,
   geo: { "@type": "GeoCoordinates", latitude: BUSINESS.lat, longitude: BUSINESS.lng },
   hasMap: BUSINESS.maps,
-  openingHoursSpecification: [
-    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "08:30", closes: "16:00" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "08:30", closes: "19:30" },
-    { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "09:00", closes: "15:00" },
-  ],
+  // Sale de src/lib/hours.ts, el mismo horario que se ve en la web
+  openingHoursSpecification: openingHoursSchema(),
   amenityFeature: [
     { "@type": "LocationFeatureSpecification", name: "Terraza", value: true },
     { "@type": "LocationFeatureSpecification", name: "Admite perros", value: true },

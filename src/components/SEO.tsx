@@ -9,7 +9,7 @@ type SEOProps = {
   image?: string;
   imageAlt?: string;
   /** Imagen de cabecera a precargar para que aparezca antes. */
-  preloadImage?: string;
+  preloadImage?: string | { href: string; media: string }[];
   /** Datos estructurados schema.org. */
   jsonLd?: object | object[];
   noindex?: boolean;
@@ -68,7 +68,13 @@ const SEO = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={img} />
 
-      {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchPriority="high" />}
+      {typeof preloadImage === "string" && (
+        <link rel="preload" as="image" href={preloadImage} fetchPriority="high" />
+      )}
+      {Array.isArray(preloadImage) &&
+        preloadImage.map((p) => (
+          <link key={p.href} rel="preload" as="image" href={p.href} media={p.media} fetchPriority="high" />
+        ))}
 
       {ld.map((d, i) => (
         <script key={i} type="application/ld+json">

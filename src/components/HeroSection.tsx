@@ -1,7 +1,9 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import heroImg from "@/assets/v2/hero-good-vibes.webp";
+import heroDesktopImg from "@/assets/v2/hero-good-vibes-desktop.webp";
 import { HandHeart, Scribble } from "@/components/paper/Paper";
 import HeroPhoto from "@/components/paper/HeroPhoto";
+import OpenNow from "@/components/OpenNow";
 import { useCommon, usePick } from "@/i18n";
 
 const T = {
@@ -18,8 +20,10 @@ const HeroSection = () => {
   <section className="relative isolate flex min-h-[100svh] items-center overflow-hidden bg-ink text-white">
     <HeroPhoto
       src={heroImg}
+      desktopSrc={heroDesktopImg}
+      imgClassName="hero-neon"
       alt={t.alt}
-      position="50% 38%"
+      position="10% 38%"
       desktopPosition="50% 35%"
       seed={17}
     />
@@ -52,7 +56,9 @@ const HeroSection = () => {
           Gluten free bakery
         </p>
 
-        <div className="mt-9 flex w-full max-w-[300px] flex-col gap-4">
+        <OpenNow tone="light" className="mt-6" />
+
+        <div className="mt-7 flex w-full max-w-[300px] flex-col gap-4">
           <a href="/Carta.pdf" target="_blank" rel="noopener noreferrer" className="btn-paper">
             {t.cta} <ArrowRight size={16} />
           </a>
