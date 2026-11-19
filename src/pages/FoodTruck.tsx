@@ -14,6 +14,9 @@ import {
 } from "@/components/paper/Paper";
 import { PalmSketch } from "@/components/paper/Sketches";
 import { href, useCommon, useLang, usePick } from "@/i18n";
+import { FOOD_TRUCK_HOURS, FOOD_TRUCK_SEASON } from "@/config/food-truck";
+import { formatDays, formatTime } from "@/lib/hours";
+import { Clock, Instagram } from "lucide-react";
 import heroImg from "@/assets/v2/foodtruck/truck-noche.webp";
 import truckImg from "@/assets/v2/foodtruck/truck-dia.webp";
 import logoImg from "@/assets/v2/foodtruck/truck-logo.webp";
@@ -25,6 +28,9 @@ const MAPS =
 
 const T = {
   es: {
+    hoursTitle: "Horario y temporada",
+    seasonLabel: "Temporada",
+    hoursAsk: "Consulta el horario de esta temporada en nuestro Instagram",
     seoTitle:
       "Food Truck Re-Start | Café y desayunos en el Camping Vilanova Park",
     seoDesc:
@@ -90,6 +96,9 @@ const T = {
     mapFrame: "Mapa del Camping Vilanova Park",
   },
   ca: {
+    hoursTitle: "Horari i temporada",
+    seasonLabel: "Temporada",
+    hoursAsk: "Consulta l'horari d'aquesta temporada al nostre Instagram",
     seoTitle: "Food Truck Re-Start | Cafè i esmorzars al Càmping Vilanova Park",
     seoDesc:
       "Re-Start també és al Càmping Vilanova Park: food truck i Food Station amb cafè d'especialitat, esmorzars, bowls i snacks a l'aire lliure a Vilanova i la Geltrú.",
@@ -153,6 +162,9 @@ const T = {
     mapFrame: "Mapa del Càmping Vilanova Park",
   },
   en: {
+    hoursTitle: "Opening hours & season",
+    seasonLabel: "Season",
+    hoursAsk: "Check this season's opening hours on our Instagram",
     seoTitle:
       "Re-Start Food Truck | Coffee & breakfast at Camping Vilanova Park",
     seoDesc:
@@ -215,6 +227,9 @@ const T = {
     mapFrame: "Map of Camping Vilanova Park",
   },
   fr: {
+    hoursTitle: "Horaires et saison",
+    seasonLabel: "Saison",
+    hoursAsk: "Consultez les horaires de cette saison sur notre Instagram",
     seoTitle: "Food Truck Re-Start | Café et petit-déjeuner au Camping Vilanova Park",
     seoDesc:
       "Re-Start est aussi au Camping Vilanova Park : food truck et Food Station avec café de spécialité, petits-déjeuners, bowls et snacks en plein air à Vilanova i la Geltrú.",
@@ -458,6 +473,46 @@ const FoodTruck = () => {
                 );
               })}
             </ul>
+          </div>
+        </section>
+
+        {/* Horario y temporada (datos en src/config/food-truck.ts) */}
+        <section aria-labelledby="horario-truck" className="bg-paper pb-20 md:pb-24">
+          <div className="mx-auto max-w-xl px-5 text-center md:px-10">
+            <Clock size={34} strokeWidth={1.25} className="mx-auto text-truck" aria-hidden="true" />
+            <h2 id="horario-truck" className="hand mt-3 text-[2rem] md:text-[2.3rem]">
+              {t.hoursTitle}
+            </h2>
+            <Scribble className="mx-auto mt-1 w-28 text-ink" />
+            {FOOD_TRUCK_SEASON && (
+              <p className="label-type mt-6 text-sm">
+                {t.seasonLabel}: <strong>{FOOD_TRUCK_SEASON[lang]}</strong>
+              </p>
+            )}
+            {FOOD_TRUCK_HOURS.length > 0 ? (
+              <dl className="mx-auto mt-6 max-w-sm text-left">
+                {FOOD_TRUCK_HOURS.map((h) => (
+                  <div
+                    key={h.days.join()}
+                    className="flex items-baseline justify-between gap-4 border-b border-dashed border-ink/25 py-3 text-[15px]"
+                  >
+                    <dt>{formatDays(h.days, lang)}</dt>
+                    <dd className="font-bold">
+                      {formatTime(h.open, lang)} – {formatTime(h.close, lang)}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            ) : (
+              <a
+                href="https://instagram.com/rscafevng"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 text-[15px] underline underline-offset-4"
+              >
+                <Instagram size={18} aria-hidden="true" /> {t.hoursAsk}: @rscafevng
+              </a>
+            )}
           </div>
         </section>
 
