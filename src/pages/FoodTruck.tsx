@@ -214,6 +214,65 @@ const T = {
       "We're inside Camping Vilanova Park, on the outskirts of Vilanova i la Geltrú and a few minutes from the beach.",
     mapFrame: "Map of Camping Vilanova Park",
   },
+  fr: {
+    seoTitle: "Food Truck Re-Start | Café et petit-déjeuner au Camping Vilanova Park",
+    seoDesc:
+      "Re-Start est aussi au Camping Vilanova Park : food truck et Food Station avec café de spécialité, petits-déjeuners, bowls et snacks en plein air à Vilanova i la Geltrú.",
+    ogAlt: "Food truck Re-Start illuminé la nuit au Camping Vilanova Park",
+    home: "Accueil",
+    heroAlt: "Le food truck Re-Start illuminé la nuit au Camping Vilanova Park",
+    eyebrow: "Re-Start hors les murs",
+    where: "Où nous trouver",
+    quote: "« L'expérience Re-Start, désormais aussi dans le plus grand camping de Vilanova »",
+    intro1:
+      "Après avoir consolidé notre café, nous avons emmené Re-Start au Camping Vilanova Park. Un cadre différent, en plein air, entouré de nature, avec des gens qui recherchent la qualité aussi pendant leurs jours de repos.",
+    intro2:
+      "Nous avons deux points de vente sur le site pour que vous ayez toujours à portée de main un bon café, un vrai petit-déjeuner ou un snack, sans renoncer à rien.",
+    logoAlt: "Côté du food truck avec le logo Re-Start et la devise Eat Love Repeat",
+    spotsTitle: "Deux endroits pour nous trouver",
+    spots: [
+      {
+        title: "Le food truck",
+        text: "Notre camionnette turquoise et son « Eat · Love · Repeat ». Le jour pour le café et le petit-déjeuner ; le soir, avec des lumières et une bonne ambiance.",
+        alt: "Le food truck turquoise de Re-Start au camping",
+      },
+      {
+        title: "Food Station",
+        text: "Notre deuxième point de vente sur le site, pour avoir Re-Start tout près, que vous soyez en emplacement, en bungalow ou en mobil-home.",
+        alt: "Kiosque Food Station avec terrasse au camping",
+      },
+    ],
+    offerTitle: "Re-Start hors les murs",
+    offerText: "La même qualité que toujours, adaptée au camping et pensée pour être savourée en plein air.",
+    details: [
+      {
+        title: "Café de spécialité",
+        text: "La même qualité qu'au café : grains de spécialité, extraction soignée et souci du détail, cette fois en plein air.",
+      },
+      {
+        title: "Brunch et snacks",
+        text: "Petits-déjeuners, tartines, bowls et options légères pour bien commencer la journée sans quitter le camping.",
+      },
+      {
+        title: "Deux points de vente",
+        text: "Le food truck et la Food Station, répartis dans le Camping Vilanova Park pour être toujours près de vous.",
+      },
+      {
+        title: "L'esprit Re-Start",
+        text: "Hors de nos murs mais avec la même essence : un accueil chaleureux, de bons produits et la philosophie qui nous accompagne depuis 2022.",
+      },
+    ],
+    parkTitle: ["Au cœur du", "Camping Vilanova Park"],
+    park1:
+      "Le Camping Vilanova Park est l'un des campings les plus grands et les plus complets de Catalogne, à quelques minutes de la plage et du centre de Vilanova i la Geltrú.",
+    park2:
+      "Nos deux points de vente sont répartis sur le site pour servir aussi bien les campeurs en emplacement que ceux en bungalow ou en mobil-home.",
+    parkAlt: "Piscine et palmiers du Camping Vilanova Park",
+    mapTitle: "Retrouvez-nous au camping",
+    mapText:
+      "Nous sommes à l'intérieur du Camping Vilanova Park, à la sortie de Vilanova i la Geltrú et à quelques minutes de la plage.",
+    mapFrame: "Plan du Camping Vilanova Park",
+  },
 };
 
 const SPOTS = [

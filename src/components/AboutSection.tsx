@@ -24,13 +24,20 @@ const T = {
     reviews: "300+ Google reviews",
     alt: "Lit-up wooden counter with the La Marzocco espresso machine",
   },
+  fr: {
+    title: ["Bien plus", "qu'un café"],
+    p1: "Café de spécialité, brunch et pâtisserie artisanale au cœur de Vilanova i la Geltrú. Un lieu pour savourer, partager et faire un reset dans sa journée.",
+    p2: "Nous travaillons avec plusieurs torréfacteurs de spécialité, soigneusement choisis pour leur qualité, leur traçabilité et leur respect de l'origine. Chaque tasse est préparée avec soin, sans raccourcis. L'adresse de toujours pour les habitués, et la découverte préférée de ceux qui passent.",
+    reviews: "+300 avis sur Google",
+    alt: "Comptoir en bois éclairé avec la machine à espresso La Marzocco",
+  },
 };
 
 const AboutSection = () => {
   const t = usePick()(T);
   return (
     <section id="nosotros" className="relative bg-paper-light">
-      <div className="mx-auto grid max-w-7xl md:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+      <div className="mx-auto grid max-w-7xl lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
         <div data-reveal="" className="flex flex-col justify-center px-5 py-16 md:px-10 md:py-20 lg:pl-10 lg:pr-16">
           <h2 className="label-type text-xl font-bold leading-snug md:text-2xl">
             {t.title[0]}
@@ -57,7 +64,7 @@ const AboutSection = () => {
           </a>
         </div>
 
-        <div className="relative min-h-[420px] md:min-h-[560px]">
+        <div className="relative min-h-[420px] md:min-h-[520px] lg:min-h-[560px]">
           <img
             src={barraImg}
             alt={t.alt}

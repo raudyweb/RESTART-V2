@@ -236,7 +236,7 @@ const MacuBakery = () => {
 
         {/* El obrador */}
         <section className="bg-paper py-20 md:py-28">
-          <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:grid-cols-2 md:px-10">
+          <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:px-10 lg:grid-cols-2">
             <div className="relative mx-auto h-[440px] w-full max-w-md md:h-[520px]">
               <div className="absolute left-0 top-0 w-[58%] -rotate-3 drop-shadow-[0_10px_16px_rgba(40,30,20,0.22)]">
                 <div
@@ -350,8 +350,8 @@ const MacuBakery = () => {
 
         {/* Tienda online y encargos */}
         <section className="bg-paper-light py-20 md:py-24">
-          <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] md:px-10">
-            <div className="order-2 md:order-1">
+          <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:px-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
+            <div className="order-2 lg:order-1">
               <h2 className="hand text-[2.3rem] leading-none md:text-[2.7rem]">
                 {t.homeTitle}
               </h2>
@@ -378,7 +378,7 @@ const MacuBakery = () => {
                 </a>
               </div>
             </div>
-            <div className="order-1 mx-auto w-full max-w-sm rotate-2 drop-shadow-[0_10px_18px_rgba(40,30,20,0.22)] md:order-2">
+            <div className="order-1 mx-auto w-full max-w-sm rotate-2 drop-shadow-[0_10px_18px_rgba(40,30,20,0.22)] lg:order-2">
               <div
                 className="aspect-[4/5] overflow-hidden"
                 style={tornClip(587)}

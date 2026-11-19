@@ -75,6 +75,27 @@ const T = {
     bakeryBy: "Baked by",
     fullMenu: "See the full menu",
   },
+  fr: {
+    coffeeAlt: "Café avec latte art et verre d'eau sur une planche en bois",
+    coffeeQ: "Plutôt classique ou toujours prêt à essayer du nouveau ?",
+    coffee1:
+      "D'un cappuccino crémeux à un espresso de caractère. En passant par un V60 pour les plus curieux, un macchiato, un irrésistible caramel iced latte ou un shakerato pour donner du peps à votre journée.",
+    coffee2: "Plutôt cold brew, flat white ou matcha latte ? Il y en a pour tous les goûts et tous les moments.",
+    coffeeHand: ["Du bon café,", "mille façons de le savourer."],
+    brunchAlt: "Bowl d'açaí avec mangue, banane, myrtilles et granola",
+    brunch: [
+      "Brunch maison",
+      "Tartines gourmandes",
+      "Œufs Bénédicte",
+      "Bowls healthy",
+      "Options végétariennes et sans gluten",
+      "Ingrédients frais et de saison",
+    ],
+    bakeryAlt: "Cookies façon New York sans gluten à la pistache, au chocolat et à l'Oreo",
+    bakeryLead: "New York cookies, brownies, gâteaux et bien plus…",
+    bakeryBy: "Préparés par",
+    fullMenu: "Voir toute la carte",
+  },
 };
 
 /** Tarjeta con foto rasgada, título manuscrito y contenido libre. */
@@ -128,7 +149,7 @@ const MenuSection = () => {
     <section id="carta" className="relative bg-paper pb-20 pt-10 md:pb-28 md:pt-14">
       <TornEdge side="top" seed={3} className="text-paper" />
       <div className="mx-auto max-w-7xl px-5 md:px-10">
-        <div className="grid gap-16 md:grid-cols-3 md:gap-8">
+        <div className="mx-auto grid max-w-lg gap-16 lg:max-w-none lg:grid-cols-3 lg:gap-8">
           {/* Specialty coffee */}
           <Card
             idx={0}

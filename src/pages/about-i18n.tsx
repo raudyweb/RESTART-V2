@@ -380,4 +380,131 @@ export const T = {
     seeMenu: "See the menu",
     seeHours: "Opening hours",
   },
+  fr: {
+    seoTitle: "À propos | Re-Start Coffee, café familial à Vilanova",
+    seoDesc:
+      "Nous sommes une famille passionnée par la restauration : café de spécialité et brunch à Vilanova i la Geltrú, notre boulangerie sans gluten Macu Bakery et deux points de vente au Camping Vilanova Park.",
+    ogAlt: "Comptoir de Re-Start Coffee vu depuis l'arche d'entrée",
+    name: "À propos",
+    home: "Accueil",
+    heroAlt: "Comptoir de Re-Start vu à travers l'arche d'entrée",
+    eyebrow: "Faisons connaissance",
+    title: ["À", "propos"],
+    subtitle: ["Une famille, un café", "et beaucoup d'envie de grandir"],
+    coupleAlt: "Les responsables de Re-Start trinquant avec deux cafés au comptoir",
+    family: "Une vraie famille",
+    whoTitle: "Qui sommes-nous",
+    whoQuote: "« Nous croyons à l'accueil chaleureux, aux produits faits avec amour et à l'envie de toujours progresser »",
+    who: [
+      <>
+        Nous sommes une <strong>famille passionnée par la restauration</strong>, convaincue que les petits détails font la
+        différence. Depuis nos débuts, nous travaillons chaque jour avec l'envie de grandir, de nous améliorer et d'offrir la
+        meilleure expérience possible à ceux qui nous rendent visite.
+      </>,
+      <>
+        Chaque café que nous servons, chaque brunch que nous préparons et chaque recette qui sort de notre boulangerie reflète
+        notre <strong>engagement envers la qualité</strong> et notre passion pour ce métier.
+      </>,
+      <>
+        Nous voulons continuer à évoluer sans perdre notre essence : être un lieu accueillant où savourer un bon café, une
+        excellente cuisine et une <strong>ambiance familiale</strong> qui donne toujours envie de revenir.
+      </>,
+    ],
+    statsLabel: "Re-Start en chiffres",
+    stats: [
+      { big: "4,8 ★", small: "+300 avis sur Google" },
+      { big: "3", small: "projets : café, camping et boulangerie" },
+      { big: "100 %", small: "sans gluten chez Macu" },
+    ],
+    storyTitle: "Notre histoire",
+    story: [
+      <>
+        Tout a commencé par une idée simple mais pleine d'enthousiasme : créer un lieu différent à Vilanova i la Geltrú pour
+        savourer du <strong>café de spécialité, des bowls de yaourt et d'açaí, des tartines et des petits-déjeuners</strong>{" "}
+        préparés avec des produits de qualité.
+      </>,
+      <>
+        Ce qui a commencé comme un modeste café familial a grandi grâce au soutien de nos clients, à notre passion pour la
+        restauration et à notre envie constante de progresser. Aujourd'hui, Re-Start est <strong>bien plus qu'un café</strong>
+        &nbsp;:
+      </>,
+    ],
+    projects: [
+      {
+        tag: "La maison mère",
+        title: "Re-Start Brunch & Coffee",
+        text: "À côté de la place de la Mairie de Vilanova i la Geltrú. C'est toujours le cœur du projet et le lieu où est née notre philosophie : une expérience chaleureuse, des produits de qualité et un service soigné dans les moindres détails.",
+        alt: "Façade jaune de Re-Start Coffee",
+        link: "Itinéraire",
+      },
+      {
+        tag: "Notre propre boulangerie",
+        title: "Macu Bakery Gluten Free",
+        text: "Notre boulangerie artisanale, où nous préparons une pâtisserie sans gluten avec le même engagement envers la qualité que depuis le premier jour.",
+        alt: "Coin Gluten Free de Macu Bakery avec néon",
+        link: "Voir Macu Bakery",
+      },
+      {
+        tag: "En plein air",
+        title: "Camping Vilanova Park",
+        text: "Deux points de vente au sein du camping, avec la même philosophie : qualité, proximité et une expérience unique pour chaque client.",
+        alt: "Food truck turquoise de Re-Start",
+        link: "Voir le Food Truck",
+      },
+    ],
+    evolving: "Toujours en mouvement, avec le même enthousiasme qu'au premier jour",
+    thanks:
+      "Reconnaissants envers tous ceux qui nous accompagnent sur ce chemin, et impatients de continuer à créer des expériences uniques autour du café, du brunch et de la pâtisserie artisanale.",
+    diffTitle: "Qu'est-ce qui nous rend différents ?",
+    diffText:
+      "Pour nous, un café est bien plus qu'un endroit où boire un café. Nous voulons que chaque visite soit une expérience agréable, chaleureuse et mémorable.",
+    diffs: [
+      {
+        title: "Un accueil chaleureux",
+        lead: "Nous sommes une entreprise familiale.",
+        text: "Nous aimons connaître nos clients, les écouter et faire en sorte qu'ils se sentent comme chez eux. La proximité, le souci du détail et le bon service font partie de notre identité.",
+        alt: "Barista de Re-Start préparant un café",
+      },
+      {
+        title: "Une vraie culture du café",
+        lead: "Le café est l'une de nos grandes passions.",
+        text: "En plus d'une large sélection de cafés de spécialité, nous vendons du café en grains et moulu pour profiter de l'expérience Re-Start à la maison. À la carte, des grands classiques aux propositions plus originales :",
+        chips: ["Affogato", "Shakerato", "Iced latte", "Cold brew", "…et bien d'autres"],
+        alt: "Lait versé pour faire du latte art",
+      },
+      {
+        title: "Bien plus qu'un brunch",
+        lead: "Une offre pensée pour chaque moment de la journée.",
+        text: "Des options fraîches et équilibrées, préparées à la minute :",
+        chips: [
+          "Bowls de yaourt et d'açaí",
+          "Pokes",
+          "Œufs Bénédicte",
+          "Tartines gourmandes",
+          "Sandwichs grillés",
+          "Pancakes sucrés et salés",
+        ],
+        alt: "Œufs Bénédicte servis à table",
+      },
+      {
+        title: "Un lieu sain et accueillant",
+        lead: "Qualité, confort et bien-être, main dans la main.",
+        text: "Un endroit lumineux et chaleureux, pensé pour savourer sans se presser un grand café et une cuisine soignée dans les moindres détails.",
+        alt: "Coin lumineux avec mur jaune, papier peint tropical et tables en bois",
+      },
+    ],
+    terraceAlt: "Terrasse de Re-Start dans la rue, avec des fleurs et des gens qui prennent le petit-déjeuner",
+    placeTitle: ["Un emplacement", "privilégié"],
+    place: (
+      <>
+        Nous sommes en plein cœur de Vilanova i la Geltrú, à côté de la <strong>place de la Mairie</strong> : l'endroit
+        idéal pour un petit-déjeuner, un brunch ou une pause dans la journée.
+      </>
+    ),
+    terrace: "Avec terrasse, et dog-friendly.",
+    comeTitle: ["Vous passez", "nous voir ?"],
+    comeText: "Sans réservation et sans chichis : venez, tout simplement. Ouvert du lundi au samedi.",
+    seeMenu: "Voir la carte",
+    seeHours: "Voir les horaires",
+  },
 };

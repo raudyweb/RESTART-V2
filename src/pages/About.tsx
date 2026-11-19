@@ -97,8 +97,8 @@ const About = () => {
           id="quienes"
           className="scroll-mt-20 bg-paper pb-20 pt-16 md:pb-24 md:pt-20"
         >
-          <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-2 md:gap-16 md:px-10">
-            <Reveal className="relative mb-6 md:mb-0">
+          <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:px-10 lg:grid-cols-2 lg:gap-16">
+            <Reveal className="relative mx-auto mb-6 w-full max-w-lg lg:mb-0 lg:max-w-none">
               <div className="-rotate-2 drop-shadow-[0_12px_20px_rgba(40,30,20,0.25)]">
                 <div
                   className="aspect-[4/3] overflow-hidden"
@@ -112,7 +112,7 @@ const About = () => {
                   />
                 </div>
               </div>
-              <p className="hand absolute -bottom-8 right-2 rotate-[-6deg] text-[1.6rem] md:-right-4 md:text-[1.9rem]">
+              <p className="hand absolute -bottom-8 right-2 rotate-[-6deg] text-[1.6rem] md:text-[1.9rem] lg:-right-4">
                 {t.family}{" "}
                 <HandHeart className="h-[0.7em] w-[0.75em] -translate-y-1" />
               </p>
@@ -147,7 +147,7 @@ const About = () => {
           className="relative bg-sage py-12 md:py-14"
         >
           <TornEdge side="top" seed={709} className="text-sage" />
-          <ul className="mx-auto grid max-w-4xl grid-cols-3 gap-x-4 px-5 md:px-10">
+          <ul className="mx-auto grid max-w-4xl grid-cols-3 gap-x-2 px-4 sm:gap-x-4 sm:px-5 md:px-10">
             {t.stats.map((d, i) => (
               <Reveal
                 as="li"
@@ -158,7 +158,7 @@ const About = () => {
                 <p className="hand text-[2rem] leading-none sm:text-[2.4rem] md:text-[2.8rem]">
                   {d.big}
                 </p>
-                <p className="label-type mx-auto mt-3 max-w-[14rem] text-[11px] leading-snug sm:text-[12px] md:text-[13px]">
+                <p className="label-type mx-auto mt-3 max-w-[14rem] text-[10.5px] leading-snug [overflow-wrap:anywhere] sm:text-[12px] md:text-[13px]">
                   {d.small}
                 </p>
               </Reveal>
@@ -188,7 +188,7 @@ const About = () => {
               ))}
             </Reveal>
 
-            <ul className="mt-14 grid gap-14 md:grid-cols-3 md:gap-8">
+            <ul className="mx-auto mt-14 grid max-w-lg gap-14 lg:max-w-none lg:grid-cols-3 lg:gap-8">
               {t.projects.map((p, i) => (
                 <Reveal
                   as="li"
@@ -226,7 +226,7 @@ const About = () => {
                       lang,
                       "hash" in PROJECTS[i] ? PROJECTS[i].hash : undefined,
                     )}
-                    className="mt-4 inline-flex w-fit items-center gap-2 border-b border-ink/30 pb-0.5 text-sm font-bold hover:border-ink"
+                    className="mt-3 inline-flex w-fit items-center gap-2 border-b border-ink/30 pb-0.5 pt-2 text-sm font-bold hover:border-ink"
                   >
                     {p.link} <ArrowRight size={14} />
                   </Link>

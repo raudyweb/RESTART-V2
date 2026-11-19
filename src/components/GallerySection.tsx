@@ -1,6 +1,4 @@
 import salaImg from "@/assets/v2/sala-arcos.webp";
-import tropicalImg from "@/assets/v2/rincon-tropical.webp";
-import arcoImg from "@/assets/v2/arco-barra.webp";
 import barraImg from "@/assets/v2/barra-iluminada.webp";
 import { nueva } from "@/assets/v2/nuevas";
 import { Scribble, tornClip } from "@/components/paper/Paper";
@@ -10,9 +8,6 @@ const PHOTOS = [
   { src: salaImg, tilt: "-rotate-2", seed: 71 },
   { src: nueva("vitrina", null), tilt: "rotate-1", seed: 89 },
   { src: nueva("marzocco", barraImg), tilt: "-rotate-1", seed: 91 },
-  { src: tropicalImg, tilt: "rotate-2", seed: 73 },
-  { src: nueva("marzocco-detalle", null), tilt: "-rotate-[1.5deg]", seed: 93 },
-  { src: arcoImg, tilt: "rotate-1", seed: 79 },
 ];
 
 const T = {
@@ -23,9 +18,6 @@ const T = {
       "Sala con arcos, farolillos y mesas de madera",
       "Vitrina con cookies, brownie y bocadillos en la barra de madera",
       "Cafetera La Marzocco con tazas apiladas",
-      "Rincón con papel tropical, pared amarilla y espejo con contraventanas",
-      "Detalle del logo de La Marzocco en la cafetera",
-      "Vista de la barra a través del arco de entrada",
     ],
   },
   ca: {
@@ -35,9 +27,6 @@ const T = {
       "Sala amb arcs, fanalets i taules de fusta",
       "Vitrina amb cookies, brownie i entrepans a la barra de fusta",
       "Cafetera La Marzocco amb tasses apilades",
-      "Racó amb paper tropical, paret groga i mirall amb finestrons",
-      "Detall del logotip de La Marzocco a la cafetera",
-      "Vista de la barra a través de l'arc d'entrada",
     ],
   },
   en: {
@@ -47,9 +36,15 @@ const T = {
       "Dining room with arches, lanterns and wooden tables",
       "Display case with cookies, brownie and sandwiches on the wooden counter",
       "La Marzocco espresso machine with stacked cups",
-      "Corner with tropical wallpaper, yellow wall and a shuttered mirror",
-      "Close-up of the La Marzocco logo on the espresso machine",
-      "View of the counter through the entrance arch",
+    ],
+  },
+  fr: {
+    title: "Notre coin",
+    text: "Des arches, des lanternes, du bois et beaucoup de lumière. Un endroit où l'on a envie de rester un peu plus.",
+    alts: [
+      "Salle avec arches, lanternes et tables en bois",
+      "Vitrine avec cookies, brownie et sandwichs sur le comptoir en bois",
+      "Machine à espresso La Marzocco avec des tasses empilées",
     ],
   },
 };

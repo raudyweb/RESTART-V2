@@ -26,8 +26,9 @@ const T = {
     macu: "100% gluten-free bakery",
     truck: "At Camping Vilanova Park",
   },
+  fr: { family: "La famille", cafe: "Notre café au 8, carrer dels Escolapis", macu: "Boulangerie 100 % sans gluten", truck: "Au Camping Vilanova Park" },
 };
-const FAMILY_SUFFIX = { es: "", ca: "", en: " family" };
+const FAMILY_SUFFIX = { es: "", ca: "", en: " family", fr: "" };
 
 const projects = [
   {

@@ -17,6 +17,10 @@ const T = {
     aria: "What we're about",
     labels: [["Specialty", "coffee"], ["Gluten-free", "options"], ["Dog-friendly", "terrace"], ["Good vibes", "only"]],
   },
+  fr: {
+    aria: "Ce qui nous définit",
+    labels: [["Café", "de spécialité"], ["Options", "sans gluten"], ["Terrasse", "dog-friendly"], ["Good vibes", "only"]],
+  },
 };
 
 const FeaturesBand = () => {

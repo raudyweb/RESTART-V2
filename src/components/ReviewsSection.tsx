@@ -43,6 +43,17 @@ const T = {
       "One of the best spots in the area. The food is wonderful and the service couldn't be better. You have to come!",
     ],
   },
+  fr: {
+    title: "Ce qu'ils en disent",
+    rating: "4,8 ★ sur Google",
+    count: "Plus de 300 avis",
+    stars: "5 étoiles sur 5",
+    quotes: [
+      "Le meilleur café de Vilanova i la Geltrú. Un endroit très chaleureux, une présentation soignée et un service imbattable. Je recommande vivement !",
+      "Brunch délicieux et excellent café. Ambiance détendue, jolie terrasse et service rapide, toujours avec le sourire.",
+      "L'une des meilleures adresses du coin. La nourriture est délicieuse et le service ne pourrait pas être meilleur. À ne pas manquer !",
+    ],
+  },
 };
 
 const ReviewsSection = () => {
@@ -57,7 +68,7 @@ const ReviewsSection = () => {
           <p className="mt-1 text-sm text-ink/75">{t.count}</p>
         </div>
 
-        <ul className="mt-14 grid gap-8 md:grid-cols-3">
+        <ul className="mx-auto mt-14 grid max-w-xl gap-8 lg:max-w-none lg:grid-cols-3">
           {META.map((r, idx) => (
             <li
               key={r.author}

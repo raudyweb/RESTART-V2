@@ -27,15 +27,21 @@ const T = {
     text: "Local produce, quality ingredients and a cosy space to unwind in Vilanova. Come for breakfast, a slow brunch or simply to take a moment for yourself.",
     cta: "Discover our space",
   },
+  fr: {
+    alt: "Œufs Bénédicte au bacon, avocat et salade sur la table, à côté de la carte",
+    title: "Café, brunch et moments qui ont meilleur goût en bonne compagnie",
+    text: "Produits locaux, ingrédients de qualité et un espace chaleureux pour se poser à Vilanova. Venez pour le petit-déjeuner, un brunch sans se presser ou simplement pour prendre un moment pour vous.",
+    cta: "Découvrez notre espace",
+  },
 };
 
 const StorySection = () => {
   const t = usePick()(T);
   return (
   <section className="relative overflow-hidden bg-paper pb-8 pt-16 md:pt-20">
-    <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 md:grid-cols-2 md:gap-0 md:px-10">
+    <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 md:px-10 lg:grid-cols-2 lg:gap-0">
       {/* Foto rasgada */}
-      <div data-reveal="" className="relative z-10 -rotate-[1.5deg] drop-shadow-[0_10px_18px_rgba(40,30,20,0.2)] md:-mr-10">
+      <div data-reveal="" className="relative z-10 -rotate-[1.5deg] drop-shadow-[0_10px_18px_rgba(40,30,20,0.2)] md:mx-auto md:w-[85%] lg:mx-0 lg:-mr-10 lg:w-auto">
         <div className="aspect-[5/4] overflow-hidden" style={tornClip(59, undefined, 1.8, 2)}>
           <img
             src={brunchImg}
@@ -49,7 +55,7 @@ const StorySection = () => {
       {/* Panel verde */}
       <div data-reveal="" style={{ "--reveal-delay": "120ms" } as React.CSSProperties} className="relative">
         <div
-          className="relative bg-sage-light px-7 pb-14 pt-12 md:pl-20 md:pr-28"
+          className="relative bg-sage-light px-7 pb-14 pt-12 md:px-14 lg:pl-20 lg:pr-28"
           style={tornClip(61, undefined, 1.6, 2)}
         >
           <h2 className="label-type max-w-sm text-base font-bold leading-relaxed md:text-lg">
@@ -63,13 +69,13 @@ const StorySection = () => {
             {t.cta} <ArrowRight size={16} />
           </a>
         </div>
-        <PalmSketch className="pointer-events-none absolute -right-4 -top-10 hidden h-64 text-ink/70 md:block lg:-right-10 lg:h-80" />
+        <PalmSketch className="pointer-events-none absolute -right-4 -top-10 hidden h-64 text-ink/70 lg:-right-10 lg:block lg:h-80" />
       </div>
     </div>
 
     {/* Vilanova */}
     <div className="relative mx-auto mt-8 max-w-7xl px-5 md:px-10">
-      <p className="hand relative z-10 ml-[8%] -rotate-[8deg] text-[1.9rem] leading-[0.95] md:ml-[48%] md:text-[2.2rem]">
+      <p className="hand relative z-10 ml-[8%] -rotate-[8deg] text-[1.9rem] leading-[0.95] md:ml-[40%] md:text-[2.2rem] lg:ml-[48%]">
         Vilanova
         <br />
         good vibes <HandHeart className="h-[0.7em] w-[0.75em] -translate-y-1" />

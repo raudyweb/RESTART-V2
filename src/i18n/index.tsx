@@ -5,24 +5,25 @@ import { createContext, useContext, type ReactNode } from "react";
  * - Español sin prefijo:  /            /sobre-nosotros    /macu-bakery    /food-truck
  * - Catalán con /ca:      /ca          /ca/sobre-nosaltres /ca/macu-bakery /ca/food-truck
  * - Inglés con /en:       /en          /en/about-us       /en/macu-bakery /en/food-truck
+ * - Francés con /fr:      /fr          /fr/a-propos       /fr/macu-bakery /fr/food-truck
  *
- * Cada componente guarda sus textos en un objeto { es, ca, en } y usa `pick(textos)`.
+ * Cada componente guarda sus textos en un objeto { es, ca, en, fr } y usa `pick(textos)`.
  */
-export const LANGS = ["es", "ca", "en"] as const;
+export const LANGS = ["es", "ca", "en", "fr"] as const;
 export type Lang = (typeof LANGS)[number];
 export const DEFAULT_LANG: Lang = "es";
 
-export const LANG_LABEL: Record<Lang, string> = { es: "Español", ca: "Català", en: "English" };
-export const LANG_SHORT: Record<Lang, string> = { es: "ES", ca: "CA", en: "EN" };
-export const OG_LOCALE: Record<Lang, string> = { es: "es_ES", ca: "ca_ES", en: "en_GB" };
+export const LANG_LABEL: Record<Lang, string> = { es: "Español", ca: "Català", en: "English", fr: "Français" };
+export const LANG_SHORT: Record<Lang, string> = { es: "ES", ca: "CA", en: "EN", fr: "FR" };
+export const OG_LOCALE: Record<Lang, string> = { es: "es_ES", ca: "ca_ES", en: "en_GB", fr: "fr_FR" };
 
 export type PageKey = "home" | "about" | "macu" | "truck" | "notFound";
 
 const SLUGS: Record<Exclude<PageKey, "notFound">, Record<Lang, string>> = {
-  home: { es: "", ca: "", en: "" },
-  about: { es: "sobre-nosotros", ca: "sobre-nosaltres", en: "about-us" },
-  macu: { es: "macu-bakery", ca: "macu-bakery", en: "macu-bakery" },
-  truck: { es: "food-truck", ca: "food-truck", en: "food-truck" },
+  home: { es: "", ca: "", en: "", fr: "" },
+  about: { es: "sobre-nosotros", ca: "sobre-nosaltres", en: "about-us", fr: "a-propos" },
+  macu: { es: "macu-bakery", ca: "macu-bakery", en: "macu-bakery", fr: "macu-bakery" },
+  truck: { es: "food-truck", ca: "food-truck", en: "food-truck", fr: "food-truck" },
 };
 
 /** Ruta de una página en un idioma, con ancla opcional: href("about", "ca") → "/ca/sobre-nosaltres" */
@@ -90,8 +91,8 @@ export const COMMON = {
     menu: "Menu",
     about: "About us",
     reviews: "Reviews",
-    hours: "Opening hours",
-    directions: "How to get here",
+    hours: "Hours",
+    directions: "Directions",
     openMenu: "Open menu",
     closeMenu: "Close menu",
     menuDialog: "Menu",
@@ -100,6 +101,21 @@ export const COMMON = {
     language: "Language",
     seeMenu: "See the menu",
     allergens: "If you have any allergies, please ask our staff.",
+  },
+  fr: {
+    menu: "Carte",
+    about: "À propos",
+    reviews: "Avis",
+    hours: "Horaires",
+    directions: "Itinéraire",
+    openMenu: "Ouvrir le menu",
+    closeMenu: "Fermer le menu",
+    menuDialog: "Menu",
+    goHome: "Re-Start Coffee, aller à l'accueil",
+    callUs: "Appelez-nous",
+    language: "Langue",
+    seeMenu: "Voir la carte",
+    allergens: "En cas d'allergies, demandez à notre équipe.",
   },
 } satisfies Record<Lang, Record<string, string>>;
 

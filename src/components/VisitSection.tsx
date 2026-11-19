@@ -1,7 +1,7 @@
 import type React from "react";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import fachadaImg from "@/assets/v2/fachada.webp";
-import { HandHeart, Scribble, tornClip } from "@/components/paper/Paper";
+import { HandHeart, KeepLast, Scribble, tornClip } from "@/components/paper/Paper";
 import { useCommon, usePick } from "@/i18n";
 
 /** Horario de invierno (cartel del local). */
@@ -45,6 +45,19 @@ const T = {
     note: "Opening hours may change on special holidays.",
     map: "Map of Re-Start Coffee in Vilanova i la Geltrú",
   },
+  fr: {
+    alt: "Façade jaune de Re-Start Coffee avec les enseignes Brunch et Bakery",
+    title: "À très vite",
+    hours: "Horaires d'hiver",
+    schedule: [
+      { days: "Du lundi au jeudi", hours: "8h30 – 16h00" },
+      { days: "Vendredi", hours: "8h30 – 19h30" },
+      { days: "Samedi", hours: "9h00 – 15h00" },
+      { days: "Dimanches et jours fériés", hours: "Fermé", closed: true },
+    ],
+    note: "Les horaires peuvent changer lors de certains jours fériés.",
+    map: "Plan de Re-Start Coffee à Vilanova i la Geltrú",
+  },
 };
 
 const contacts = [
@@ -78,7 +91,10 @@ const VisitSection = () => {
 
       <div data-reveal="" style={{ "--reveal-delay": "120ms" } as React.CSSProperties} className="flex flex-col justify-center">
         <h2 className="hand text-[2.4rem] leading-none md:text-[2.8rem]">
-          {t.title} <HandHeart className="h-[0.65em] w-[0.7em] -translate-y-2" />
+          <KeepLast text={t.title}>
+            {" "}
+            <HandHeart className="h-[0.65em] w-[0.7em] -translate-y-2" />
+          </KeepLast>
         </h2>
         <Scribble className="mt-1 w-36 text-ink" />
 
@@ -100,13 +116,13 @@ const VisitSection = () => {
           <p className="mt-3 text-xs text-muted-foreground">{t.note}</p>
         </div>
 
-        <ul className="mt-10 space-y-4">
+        <ul className="mt-8 space-y-1">
           {contacts.map(({ icon: Icon, label, href, external }) => (
             <li key={label}>
               <a
                 href={href}
                 {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="group inline-flex items-start gap-3 text-[15px]"
+                className="group inline-flex items-start gap-3 py-2 text-[15px]"
               >
                 <Icon size={18} strokeWidth={1.6} className="mt-0.5 shrink-0" aria-hidden="true" />
                 <span className="underline-offset-4 group-hover:underline">{label}</span>

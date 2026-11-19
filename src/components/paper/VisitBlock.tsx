@@ -2,10 +2,10 @@ import type React from "react";
 import type { LucideIcon } from "lucide-react";
 import { MapPin } from "lucide-react";
 import type { ReactNode } from "react";
-import { HandHeart, Scribble, tornClip } from "@/components/paper/Paper";
+import { HandHeart, KeepLast, Scribble, tornClip } from "@/components/paper/Paper";
 import { useCommon, usePick } from "@/i18n";
 
-const HOURS_LABEL = { es: "Horario", ca: "Horari", en: "Opening hours" };
+const HOURS_LABEL = { es: "Horario", ca: "Horari", en: "Opening hours", fr: "Horaires" };
 
 export type Contact = {
   icon: LucideIcon;
@@ -71,8 +71,10 @@ const VisitBlock = ({
           className="flex flex-col justify-center"
         >
           <h2 className="hand text-[2.4rem] leading-none md:text-[2.8rem]">
-            {title}{" "}
-            <HandHeart className="h-[0.65em] w-[0.7em] -translate-y-2" />
+            <KeepLast text={title}>
+              {" "}
+              <HandHeart className="h-[0.65em] w-[0.7em] -translate-y-2" />
+            </KeepLast>
           </h2>
           <Scribble className="mt-1 w-36 text-ink" />
           {intro && (
@@ -105,7 +107,7 @@ const VisitBlock = ({
             </div>
           )}
 
-          <ul className="mt-10 space-y-4">
+          <ul className="mt-8 space-y-1">
             {contacts.map(({ icon: Icon, label, href, external }) => (
               <li key={label}>
                 <a
@@ -113,7 +115,7 @@ const VisitBlock = ({
                   {...(external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
-                  className="group inline-flex items-start gap-3 text-[15px]"
+                  className="group inline-flex items-start gap-3 py-2 text-[15px]"
                 >
                   <Icon
                     size={18}

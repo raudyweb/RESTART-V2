@@ -34,6 +34,12 @@ const T = {
       "Specialty coffee, brunch and gluten-free baking next to the Town Hall square in Vilanova i la Geltrú. Barista workshops and coffee beans to take home. Dog-friendly terrace.",
     imageAlt: "Inside Re-Start Coffee with the Good Vibes Only neon sign",
   },
+  fr: {
+    title: "Re-Start Coffee | Café de spécialité et brunch à Vilanova i la Geltrú",
+    description:
+      "Café de spécialité, brunch et pâtisserie sans gluten à côté de la place de la Mairie de Vilanova i la Geltrú. Ateliers barista et café en grains à emporter. Terrasse dog-friendly.",
+    imageAlt: "Intérieur de Re-Start Coffee avec le néon Good Vibes Only",
+  },
 };
 
 const Index = () => {

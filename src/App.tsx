@@ -53,6 +53,7 @@ const App = () => (
         <Route path="/carta" element={<CartaRedirect />} />
         <Route path="/ca/*" element={notFoundFor("ca")} />
         <Route path="/en/*" element={notFoundFor("en")} />
+        <Route path="/fr/*" element={notFoundFor("fr")} />
         <Route path="*" element={notFoundFor("es")} />
       </Routes>
     </PageTransition>

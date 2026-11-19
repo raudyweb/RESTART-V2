@@ -276,6 +276,96 @@ export const T = {
     hoursNote: "Hours as published on macuglutenfree.com. May vary on public holidays.",
     mapTitle: "Map of Macu Gluten Free Bakery",
   },
+  fr: {
+    seoTitle: "Macu Bakery | Boulangerie 100 % sans gluten à Vilanova i la Geltrú",
+    seoDesc:
+      "Pain au levain longue fermentation, cookies façon New York, gâteaux et viennoiseries artisanales 100 % sans gluten à Vilanova i la Geltrú. Boutique en ligne avec livraison et gâteaux sur commande.",
+    ogAlt: "Baguettes sans gluten dans le four de Macu Bakery",
+    ldDesc: "Boulangerie artisanale 100 % sans gluten : pain longue fermentation, cookies façon New York, gâteaux et viennoiseries.",
+    cuisine: ["Boulangerie sans gluten", "Pâtisserie sans gluten"],
+    home: "Accueil",
+    heroAlt: "Baguettes sans gluten en train de dorer dans le four de Macu",
+    eyebrow: "La boulangerie de Re-Start",
+    subtitle: ["Pain et pâtisserie artisanale", "100 % sans gluten"],
+    shop: "Boutique en ligne",
+    visit: "Visiter la boulangerie",
+    logoAlt: "Logo de Macu Gluten Free Bakery",
+    quote: "« Vos douceurs préférées, désormais sans gluten »",
+    intro1:
+      "Macu est la boulangerie de Re-Start et le cœur de notre pâtisserie. Un lieu entièrement dédié au pain et aux douceurs sans gluten, où chaque recette veut prouver que se passer de gluten ne veut pas dire se passer de saveur.",
+    intro2:
+      "Tout ce qui est servi chez Re-Start Brunch & Coffee vient d'ici : fraîcheur, traçabilité et contrôle total de la qualité, du fournil à la table.",
+    ovenTitle: "Tout juste sorti du four",
+    products: [
+      {
+        title: "Pain longue fermentation",
+        text: "Miches et pains cuits chaque jour, avec des fermentations lentes pour une vraie mie, une vraie croûte et du goût.",
+        alt: "Miche de pain sans gluten tout juste sortie du four en vitrine",
+      },
+      {
+        title: "Cookies façon New York",
+        text: "Épais, fondants à l'intérieur et généreux : chocolat, pistache, citron-pavot, caramel salé…",
+        alt: "Plaque de cookies sans gluten avant cuisson",
+      },
+      {
+        title: "Gâteaux et cakes",
+        text: "Gâteaux, cakes, muffins et autres douceurs, aussi sur commande pour vos fêtes.",
+        alt: "Gâteau individuel sans gluten dans son emballage Macu",
+      },
+      {
+        title: "Baguettes et viennoiseries",
+        text: "Baguettes, petits pains et viennoiseries du jour. Ce que Re-Start sert au comptoir sort de cette boulangerie.",
+        alt: "Baguettes sans gluten tout juste sorties du four",
+      },
+    ],
+    workAlts: [
+      "Pétrissage d'une pâte sans gluten au pétrin",
+      "Façonnage des baguettes à la main",
+      "Sortie du four d'une plaque de baguettes",
+    ],
+    workTitle: ["Là où naît toute", "notre pâtisserie"],
+    work1:
+      "Macu n'est pas une gamme spéciale au sein d'une boulangerie classique. C'est un lieu entièrement dédié au sans gluten, où chaque étape est pensée pour la sécurité des personnes cœliaques.",
+    work2:
+      "Cookies, petits pains, gâteaux, pancakes, muffins… Tout est fait à la main, avec des ingrédients choisis et le soin que mérite celui qui doit surveiller ce qu'il mange.",
+    workHand: ["Sans gluten, ça peut être", "aussi bon. Voire meilleur"],
+    whyTitle: "Ce qui rend Macu différente",
+    values: [
+      {
+        title: "100 % sans gluten",
+        text: "Pas une gamme spéciale dans une boulangerie classique : ici, le gluten n'entre pas. Pas de contamination croisée, les personnes cœliaques peuvent manger tranquilles.",
+      },
+      {
+        title: "Fait main",
+        text: "Chaque pièce est fabriquée artisanalement, avec des ingrédients choisis et des recettes pensées pour que le goût et la texture n'aient rien à envier.",
+      },
+      {
+        title: "La boulangerie de Re-Start",
+        text: "Toute la pâtisserie de Re-Start Brunch & Coffee vient de Macu. Fraîcheur et contrôle de la qualité du four jusqu'à la table.",
+      },
+      {
+        title: "Pour tout le monde",
+        text: "Cœliaque ou non, l'idée est la même : que personne n'ait à renoncer à un bon pain ou à une douceur, et que tout le monde puisse partager la même table.",
+      },
+    ],
+    homeTitle: "Emportez Macu chez vous",
+    homeText:
+      "Les cookies et les MACU BOX se commandent sur la boutique en ligne, avec livraison dans toute l'Espagne péninsulaire. Et pour vos fêtes, la boulangerie prépare gâteaux et plateaux sur commande.",
+    order: "Passer commande",
+    bagsAlt: "Sachets de biscuits sans gluten avec l'étiquette Macu",
+    visitTitle: "Venez à la boulangerie",
+    visitIntro:
+      "La boutique est à deux rues de Re-Start. Passez chercher le pain du jour, des cookies ou votre commande.",
+    facadeAlt: "Façade de Macu Gluten Free Bakery avec son enseigne verte",
+    hours: [
+      { days: "Lundi et mardi", hours: "Fermé", closed: true },
+      { days: "Du mercredi au vendredi", hours: "9h30 – 13h30" },
+      { days: "Samedi", hours: "10h00 – 13h00" },
+      { days: "Dimanche", hours: "Fermé", closed: true },
+    ],
+    hoursNote: "Horaires publiés sur macuglutenfree.com. Ils peuvent varier les jours fériés.",
+    mapTitle: "Plan de Macu Gluten Free Bakery",
+  },
 };
 
 export const PRODUCTS = [

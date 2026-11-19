@@ -28,6 +28,13 @@ const T = {
     text: "The link may be wrong or the page may have moved. But the coffee's still hot",
     back: "Back to home",
   },
+  fr: {
+    seo: "Page introuvable | Re-Start Coffee",
+    desc: "Cette page n'existe pas.",
+    title: "Cette page n'existe pas",
+    text: "Le lien est peut-être erroné ou la page a été déplacée. Mais le café est toujours chaud",
+    back: "Retour à l'accueil",
+  },
 };
 
 const NotFound = () => {

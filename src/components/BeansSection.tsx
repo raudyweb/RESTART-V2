@@ -38,6 +38,14 @@ const T = {
     origins: "Ethiopia, Colombia, Uganda, Guatemala, Peru, Costa Rica, Rwanda, Mexico, China and many more…",
     ask: "Ask at the counter for the coffees we have in stock.",
   },
+  fr: {
+    alt: "Sacs de café vert d'Éthiopie, de Colombie et du Guatemala avec une pelle de café torréfié",
+    title: ["Café en grains", "à emporter"],
+    items: ["Pour espresso", "Pour filtre", "En grains ou moulu"],
+    world: "Des quatre coins du monde",
+    origins: "Éthiopie, Colombie, Ouganda, Guatemala, Pérou, Costa Rica, Rwanda, Mexique, Chine et bien plus…",
+    ask: "Demandez au comptoir les cafés disponibles.",
+  },
 };
 
 const ICONS = [
@@ -66,7 +74,7 @@ const BeansSection = () => {
           <Sparks className="h-10 text-macu">
             <BeansDoodle className="h-9 w-14" />
           </Sparks>
-          <h2 id="grano-titulo" className="hand mt-3 text-[2.4rem] leading-[1.05] md:text-[2.8rem]">
+          <h2 id="grano-titulo" className="hand mt-3 text-[2.4rem] leading-[1.05] md:text-[2.2rem] lg:text-[2.8rem]">
             {t.title[0]}{" "}
             <span className="block">
               <Brush>{t.title[1]}</Brush>

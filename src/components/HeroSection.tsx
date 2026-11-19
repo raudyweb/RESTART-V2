@@ -8,6 +8,7 @@ const T = {
   es: { alt: "Pared de Re-Start Coffee con el neón Good Vibes Only", cta: "Descubre nuestra carta" },
   ca: { alt: "Paret de Re-Start Coffee amb el neó Good Vibes Only", cta: "Descobreix la nostra carta" },
   en: { alt: "Re-Start Coffee wall with the Good Vibes Only neon sign", cta: "See our menu" },
+  fr: { alt: "Mur de Re-Start Coffee avec le néon Good Vibes Only", cta: "Découvrez notre carte" },
 };
 
 const HeroSection = () => {
@@ -26,7 +27,7 @@ const HeroSection = () => {
     <div className="mx-auto w-full max-w-7xl px-5 pb-16 pt-28 md:px-10 md:pb-24 md:pt-24">
       <div className="max-w-xl lg:max-w-[min(36rem,42vw)]">
         <h1>
-          <span className="hand block -rotate-[6deg] text-[clamp(3.2rem,9vw,6.2rem)] tracking-wide">
+          <span className="hand block -rotate-[6deg] text-[clamp(3.2rem,9vw,6.2rem)] tracking-wide lg:text-[clamp(3.6rem,6.4vw,6.2rem)]">
             Re-Start
             {" "}
             <span className="block pl-[0.4em]">Coffee</span>
@@ -35,12 +36,14 @@ const HeroSection = () => {
           <span className="label-type mt-6 block text-xs md:text-sm">Vilanova i la Geltrú</span>
         </h1>
 
-        <p className="hand mt-10 text-[clamp(2.4rem,6.4vw,4.4rem)]">
+        <p className="hand mt-10 text-[clamp(2.4rem,6.4vw,4.4rem)] lg:text-[clamp(2.4rem,4.3vw,4.4rem)]">
           Good coffee
           <br />
           Good food
           <br />
-          Good vibes <HandHeart className="ml-1 h-[0.7em] w-[0.75em] -rotate-12 align-baseline" />
+          <span className="whitespace-nowrap">
+            Good vibes <HandHeart className="ml-1 h-[0.7em] w-[0.75em] -rotate-12 align-baseline" />
+          </span>
         </p>
 
         <p className="label-type mt-8 text-sm leading-relaxed md:text-base">

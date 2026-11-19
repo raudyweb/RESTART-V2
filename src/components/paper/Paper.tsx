@@ -179,3 +179,17 @@ export const Sparks = ({
     {children}
   </span>
 );
+
+/** Mantiene la última palabra pegada a lo que va detrás (p. ej. un corazón) para que no salte sola de línea. */
+export const KeepLast = ({ text, children }: { text: string; children: React.ReactNode }) => {
+  const i = text.lastIndexOf(" ");
+  return (
+    <>
+      {text.slice(0, i + 1)}
+      <span className="whitespace-nowrap">
+        {text.slice(i + 1)}
+        {children}
+      </span>
+    </>
+  );
+};

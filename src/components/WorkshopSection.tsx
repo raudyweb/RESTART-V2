@@ -2,7 +2,7 @@ import type React from "react";
 import { Clock, Phone, Users } from "lucide-react";
 import latteImg from "@/assets/v2/nosotros/latte-art.webp";
 import { nueva } from "@/assets/v2/nuevas";
-import { Brush, HandHeart, Sparks, tornClip } from "@/components/paper/Paper";
+import { Brush, HandHeart, KeepLast, Sparks, tornClip } from "@/components/paper/Paper";
 import {
   CupDoodle,
   CurvedArrow,
@@ -59,6 +59,21 @@ const T = {
     share: "A different experience to share",
     gift: "A great gift to enjoy with anyone you like",
     cta: "Book your workshop",
+  },
+  fr: {
+    alt: "Barista de Re-Start versant du lait pour dessiner une feuille en latte art",
+    title: "Atelier barista",
+    text: "Profitez du meilleur atelier barista pour vous initier à cet univers fascinant et épater vos invités avec les techniques apprises pendant l'atelier.",
+    duration: ["Durée", "1 h 30"],
+    minimum: ["Minimum", "2 personnes"],
+    items: [
+      "Passez derrière le comptoir et glissez-vous dans la peau d'un barista.",
+      "Préparez des cafés classiques comme un vrai professionnel.",
+      "Apprenez à chauffer et texturer le lait pour obtenir la mousse parfaite.",
+    ],
+    share: "Une expérience différente à partager",
+    gift: "Un super cadeau à partager avec qui vous voulez",
+    cta: "Réservez votre atelier",
   },
 };
 
@@ -140,7 +155,10 @@ const WorkshopSection = () => {
         <div className="flex items-end gap-2">
           <CurvedArrow className="hidden h-10 w-14 text-ink/70 md:block" />
           <p className="hand max-w-[15rem] rotate-[-6deg] text-center text-[1.25rem] normal-case leading-snug">
-            {t.gift} <HandHeart className="h-[0.8em] w-[0.85em] -translate-y-0.5" />
+            <KeepLast text={t.gift}>
+              {" "}
+              <HandHeart className="h-[0.8em] w-[0.85em] -translate-y-0.5" />
+            </KeepLast>
           </p>
         </div>
       </div>
