@@ -8,93 +8,86 @@ import bolleriaImg from "@/assets/v2/bolleria.webp";
 import { nueva } from "@/assets/v2/nuevas";
 import { Brush, HandHeart, Scribble, TornEdge, tornClip } from "@/components/paper/Paper";
 import { href, useCommon, useLang, usePick } from "@/i18n";
+import { CarouselNav, useSnapCarousel } from "@/components/paper/Carousel";
 
 const cookiesImg = nueva("cookies-pistacho", bolleriaImg);
 
 const T = {
   es: {
+    card: "tarjeta",
     coffeeAlt: "Café con latte art y vaso de agua sobre tabla de madera",
     coffeeQ: "¿De clásicos o de los que les gusta probar cosas nuevas?",
     coffee1:
-      "Desde un cappuccino cremoso hasta un espresso con carácter. Pasando por un V60 para los más curiosos, un macchiato, un irresistible caramel iced latte o un shakerato para darle un twist al día.",
-    coffee2: "¿Más de cold brew, flat white o matcha latte? Aquí hay opciones para todos los gustos y momentos.",
+      "Del cappuccino cremoso al espresso con carácter, pasando por V60, caramel iced latte, shakerato, cold brew o matcha latte.",
+    coffee2: "",
     coffeeHand: ["Buen café,", "diferentes formas de disfrutarlo."],
     brunchAlt: "Bowl de açaí con mango, plátano, arándanos y granola",
     brunch: [
       "Brunch artesanal",
       "Tostadas gourmet",
       "Huevos benedict",
-      "Bowls saludables",
-      "Opciones vegetarianas y sin gluten",
-      "Ingredientes frescos y de temporada",
+      "Bowls y opciones sin gluten",
     ],
     bakeryAlt: "Cookies estilo New York de pistacho, chocolate y Oreo sin gluten",
     bakeryLead: "New York cookies, brownies, bizcochos y mucho más…",
     bakeryBy: "Elaboraciones creadas por",
-    fullMenu: "Ver carta completa",
   },
   ca: {
+    card: "targeta",
     coffeeAlt: "Cafè amb latte art i got d'aigua sobre una safata de fusta",
     coffeeQ: "Ets de clàssics o dels que els agrada provar coses noves?",
     coffee1:
-      "Des d'un cappuccino cremós fins a un espresso amb caràcter. Passant per un V60 per als més curiosos, un macchiato, un irresistible caramel iced latte o un shakerato per donar un toc diferent al dia.",
-    coffee2: "Més de cold brew, flat white o matcha latte? Aquí hi ha opcions per a tots els gustos i moments.",
+      "Del cappuccino cremós a l'espresso amb caràcter, passant per V60, caramel iced latte, shakerato, cold brew o matcha latte.",
+    coffee2: "",
     coffeeHand: ["Bon cafè,", "diferents maneres de gaudir-lo."],
     brunchAlt: "Bowl d'açaí amb mango, plàtan, nabius i granola",
     brunch: [
       "Brunch artesà",
       "Torrades gourmet",
       "Ous Benedict",
-      "Bowls saludables",
-      "Opcions vegetarianes i sense gluten",
-      "Ingredients frescos i de temporada",
+      "Bowls i opcions sense gluten",
     ],
     bakeryAlt: "Cookies estil New York de festuc, xocolata i Oreo sense gluten",
     bakeryLead: "New York cookies, brownies, pa de pessic i molt més…",
     bakeryBy: "Elaboracions creades per",
-    fullMenu: "Veure la carta completa",
   },
   en: {
+    card: "card",
     coffeeAlt: "Coffee with latte art and a glass of water on a wooden board",
     coffeeQ: "Classic coffee lover or always up for something new?",
     coffee1:
-      "From a creamy cappuccino to a bold espresso. A V60 for the curious, a macchiato, an irresistible caramel iced latte or a shakerato to give your day a twist.",
-    coffee2: "More of a cold brew, flat white or matcha latte person? There's something for every taste and every moment.",
+      "From a creamy cappuccino to a bold espresso, plus V60, caramel iced latte, shakerato, cold brew and matcha latte.",
+    coffee2: "",
     coffeeHand: ["Good coffee,", "many ways to enjoy it."],
     brunchAlt: "Açaí bowl with mango, banana, blueberries and granola",
     brunch: [
       "Homemade brunch",
       "Gourmet toasts",
       "Eggs Benedict",
-      "Healthy bowls",
-      "Vegetarian and gluten-free options",
-      "Fresh, seasonal ingredients",
+      "Bowls and gluten-free options",
     ],
     bakeryAlt: "Gluten-free New York style cookies with pistachio, chocolate and Oreo",
     bakeryLead: "New York cookies, brownies, sponge cakes and much more…",
     bakeryBy: "Baked by",
-    fullMenu: "See the full menu",
   },
   fr: {
+    card: "carte",
     coffeeAlt: "Café avec latte art et verre d'eau sur une planche en bois",
     coffeeQ: "Plutôt classique ou toujours prêt à essayer du nouveau ?",
     coffee1:
-      "D'un cappuccino crémeux à un espresso de caractère. En passant par un V60 pour les plus curieux, un macchiato, un irrésistible caramel iced latte ou un shakerato pour donner du peps à votre journée.",
-    coffee2: "Plutôt cold brew, flat white ou matcha latte ? Il y en a pour tous les goûts et tous les moments.",
+      "Du cappuccino crémeux à l'espresso de caractère, en passant par V60, caramel iced latte, shakerato, cold brew ou matcha latte.",
+    coffee2: "",
     coffeeHand: ["Du bon café,", "mille façons de le savourer."],
     brunchAlt: "Bowl d'açaí avec mangue, banane, myrtilles et granola",
     brunch: [
       "Brunch maison",
       "Tartines gourmandes",
       "Œufs Bénédicte",
-      "Bowls healthy",
-      "Options végétariennes et sans gluten",
-      "Ingrédients frais et de saison",
+      "Bowls et options sans gluten",
     ],
     bakeryAlt: "Cookies façon New York sans gluten à la pistache, au chocolat et à l'Oreo",
     bakeryLead: "New York cookies, brownies, gâteaux et bien plus…",
     bakeryBy: "Préparés par",
-    fullMenu: "Voir toute la carte",
   },
 };
 
@@ -108,6 +101,7 @@ const Card = ({
   seed,
   title,
   children,
+  cta,
 }: {
   idx: number;
   img: string;
@@ -117,9 +111,10 @@ const Card = ({
   seed: number;
   title: ReactNode;
   children: ReactNode;
+  cta?: string;
 }) => (
   <article
-    className="flex flex-col"
+    className="flex w-[82vw] max-w-sm shrink-0 snap-center flex-col lg:w-auto lg:max-w-none"
     data-reveal=""
     style={{ "--reveal-delay": `${idx * 110}ms` } as React.CSSProperties}
   >
@@ -136,7 +131,12 @@ const Card = ({
     </div>
     <h2 className="hand mt-7 text-center text-[2rem] leading-[0.95] md:text-[2.1rem]">{title}</h2>
     <Scribble className="mx-auto mt-2 w-20 text-ink" />
-    <div className="mt-6 text-center">{children}</div>
+    <div className="mb-8 mt-6 text-center">{children}</div>
+    {cta && (
+      <a href="/Carta.pdf" target="_blank" rel="noopener noreferrer" className="btn-paper mx-auto mt-auto w-fit border border-ink/25 bg-transparent">
+        {cta} <ArrowRight size={16} />
+      </a>
+    )}
   </article>
 );
 
@@ -144,12 +144,13 @@ const MenuSection = () => {
   const t = usePick()(T);
   const c = useCommon();
   const lang = useLang();
+  const { ref, index, count, go } = useSnapCarousel<HTMLDivElement>();
 
   return (
     <section id="carta" className="relative bg-paper pb-20 pt-10 md:pb-28 md:pt-14">
       <TornEdge side="top" seed={3} className="text-paper" />
       <div className="mx-auto max-w-7xl px-5 md:px-10">
-        <div className="mx-auto grid max-w-lg gap-16 lg:max-w-none lg:grid-cols-3 lg:gap-8">
+        <div ref={ref} className="no-scrollbar relative -mx-5 flex snap-x snap-mandatory items-stretch gap-6 overflow-x-auto px-[9vw] py-4 md:-mx-10 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0">
           {/* Specialty coffee */}
           <Card
             idx={0}
@@ -158,6 +159,7 @@ const MenuSection = () => {
             pos="55% 60%"
             tilt="-rotate-[1.5deg]"
             seed={11}
+            cta={c.seeMenu}
             title={
               <>
                 <span lang="en">
@@ -168,7 +170,7 @@ const MenuSection = () => {
           >
             <p className="mx-auto max-w-sm text-[15px] font-bold leading-relaxed">{t.coffeeQ}</p>
             <p className="mx-auto mt-4 max-w-sm text-[14.5px] leading-[1.8] text-ink/80">{t.coffee1}</p>
-            <p className="mx-auto mt-3 max-w-sm text-[14.5px] leading-[1.8] text-ink/80">{t.coffee2}</p>
+            {t.coffee2 && <p className="mx-auto mt-3 max-w-sm text-[14.5px] leading-[1.8] text-ink/80">{t.coffee2}</p>}
             <p className="hand mx-auto mt-6 max-w-xs -rotate-2 text-[1.35rem] normal-case leading-tight">
               {t.coffeeHand[0]}
               <br />
@@ -178,7 +180,7 @@ const MenuSection = () => {
           </Card>
 
           {/* Brunch */}
-          <Card idx={1} img={bowlImg} alt={t.brunchAlt} pos="50% 50%" tilt="rotate-[1deg]" seed={23} title="Brunch">
+          <Card idx={1} img={bowlImg} alt={t.brunchAlt} pos="50% 50%" tilt="rotate-[1deg]" seed={23} title="Brunch" cta={c.seeMenu}>
             <ul className="space-y-1.5 text-[15px] text-ink/80">
               {t.brunch.map((i) => (
                 <li key={i}>{i}</li>
@@ -194,6 +196,7 @@ const MenuSection = () => {
             pos="50% 40%"
             tilt="-rotate-[1deg]"
             seed={37}
+            cta={c.seeMenu}
             title={
               <>
                 <span lang="en" className="block">
@@ -216,15 +219,8 @@ const MenuSection = () => {
           </Card>
         </div>
 
-        <div className="mt-16 flex flex-col items-center gap-4">
-          <a
-            href="/Carta.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-paper border border-ink/25 bg-transparent"
-          >
-            {t.fullMenu} <ArrowRight size={16} />
-          </a>
+        <CarouselNav index={index} count={count} go={go} label={t.card} className="mt-2 lg:hidden" />
+        <div className="mt-8 flex flex-col items-center gap-4">
           <p className="text-xs text-muted-foreground">{c.allergens}</p>
         </div>
       </div>

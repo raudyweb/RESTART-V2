@@ -5,28 +5,24 @@ import { usePick } from "@/i18n";
 const T = {
   es: {
     title: ["Mucho más", "que una cafetería"],
-    p1: "Café de especialidad, brunch y repostería artesanal en el corazón de Vilanova i la Geltrú. Un lugar para disfrutar, compartir y resetear el día.",
     p2: "Trabajamos con distintos tostadores de especialidad, cuidadosamente seleccionados por la calidad, la trazabilidad y el respeto por el origen. Cada taza se prepara con atención al detalle, sin atajos. Somos el sitio de siempre para los de aquí y el descubrimiento favorito para los de fuera.",
     reviews: "+300 reseñas en Google",
     alt: "Barra de madera iluminada con la cafetera La Marzocco",
   },
   ca: {
     title: ["Molt més", "que una cafeteria"],
-    p1: "Cafè d'especialitat, brunch i rebosteria artesana al cor de Vilanova i la Geltrú. Un lloc per gaudir, compartir i fer un reset al dia.",
     p2: "Treballem amb diferents torradors d'especialitat, seleccionats amb cura per la qualitat, la traçabilitat i el respecte per l'origen. Cada tassa es prepara amb atenció al detall, sense dreceres. Som el lloc de sempre per als d'aquí i el descobriment preferit per als de fora.",
     reviews: "+300 ressenyes a Google",
     alt: "Barra de fusta il·luminada amb la cafetera La Marzocco",
   },
   en: {
     title: ["Much more", "than a coffee shop"],
-    p1: "Specialty coffee, brunch and artisan baking in the heart of Vilanova i la Geltrú. A place to enjoy, share and reset your day.",
     p2: "We work with a range of specialty roasters, carefully chosen for quality, traceability and respect for origin. Every cup is made with attention to detail, no shortcuts. We're the go-to spot for locals and a favourite discovery for visitors.",
     reviews: "300+ Google reviews",
     alt: "Lit-up wooden counter with the La Marzocco espresso machine",
   },
   fr: {
     title: ["Bien plus", "qu'un café"],
-    p1: "Café de spécialité, brunch et pâtisserie artisanale au cœur de Vilanova i la Geltrú. Un lieu pour savourer, partager et faire un reset dans sa journée.",
     p2: "Nous travaillons avec plusieurs torréfacteurs de spécialité, soigneusement choisis pour leur qualité, leur traçabilité et leur respect de l'origine. Chaque tasse est préparée avec soin, sans raccourcis. L'adresse de toujours pour les habitués, et la découverte préférée de ceux qui passent.",
     reviews: "+300 avis sur Google",
     alt: "Comptoir en bois éclairé avec la machine à espresso La Marzocco",
@@ -46,8 +42,7 @@ const AboutSection = () => {
           </h2>
           <span aria-hidden="true" className="mt-5 block h-[2px] w-8 bg-ink" />
 
-          <p className="mt-7 max-w-md text-[15px] leading-[1.9] text-ink/85">{t.p1}</p>
-          <p className="mt-4 max-w-md text-[15px] leading-[1.9] text-ink/85">{t.p2}</p>
+          <p className="mt-7 max-w-md text-[15px] leading-[1.9] text-ink/85">{t.p2}</p>
 
           <p className="hand mt-10 -rotate-[5deg] text-[2rem] md:text-[2.3rem]">
             <span lang="en">Good vibes only</span> <HandHeart className="h-[0.75em] w-[0.8em] -translate-y-3 rotate-12" />
