@@ -315,7 +315,7 @@ const FoodTruck = () => {
             <>
               Camping Vilanova Park
               <br />
-              Eat · Love · Repeat
+              <span lang="en">Eat · Love · Repeat</span>
             </>
           }
         >
@@ -495,7 +495,7 @@ const FoodTruck = () => {
                 {t.park2}
               </p>
               <p className="hand mt-9 -rotate-3 text-[1.7rem] md:text-[2rem]">
-                Camping good vibes{" "}
+                Camping <span lang="en">good vibes</span>{" "}
                 <HandHeart className="h-[0.7em] w-[0.75em] -translate-y-1" />
               </p>
               <PalmSketch className="pointer-events-none absolute -right-20 -top-32 hidden h-48 text-ink/45 xl:block" />

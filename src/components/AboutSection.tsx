@@ -50,7 +50,7 @@ const AboutSection = () => {
           <p className="mt-4 max-w-md text-[15px] leading-[1.9] text-ink/85">{t.p2}</p>
 
           <p className="hand mt-10 -rotate-[5deg] text-[2rem] md:text-[2.3rem]">
-            Good vibes only <HandHeart className="h-[0.75em] w-[0.8em] -translate-y-3 rotate-12" />
+            <span lang="en">Good vibes only</span> <HandHeart className="h-[0.75em] w-[0.8em] -translate-y-3 rotate-12" />
           </p>
 
           <a

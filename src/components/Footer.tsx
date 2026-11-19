@@ -24,7 +24,9 @@ const Footer = () => {
           <img src={logoImg} alt="" className="h-14 w-14 object-contain" loading="lazy" />
           <div>
             <p className="hand text-2xl">Re-Start Coffee</p>
-            <p className="label-type mt-1 text-[11px] text-paper-light/60">Brunch · Coffee · Bakery</p>
+            <p lang="en" className="label-type mt-1 text-[11px] text-paper-light/60">
+              Brunch · Coffee · Bakery
+            </p>
           </div>
         </div>
 

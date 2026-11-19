@@ -78,7 +78,7 @@ const StorySection = () => {
       <p className="hand relative z-10 ml-[8%] -rotate-[8deg] text-[1.9rem] leading-[0.95] md:ml-[40%] md:text-[2.2rem] lg:ml-[48%]">
         Vilanova
         <br />
-        good vibes <HandHeart className="h-[0.7em] w-[0.75em] -translate-y-1" />
+        <span lang="en">good vibes</span> <HandHeart className="h-[0.7em] w-[0.75em] -translate-y-1" />
       </p>
       <SeafrontSketch className="-mt-14 h-28 w-full text-ink/60 md:-mt-16 md:h-32" />
     </div>

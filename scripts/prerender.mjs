@@ -26,7 +26,7 @@ const template = fs.readFileSync(path.join(dist, "index.html"), "utf8");
 for (const r of routes) {
   const { html, head, htmlAttrs } = render(r.url);
   const page = template
-    .replace('<html lang="es">', `<html ${htmlAttrs || 'lang="es"'}>`)
+    .replace(/<html[^>]*>/, `<html ${htmlAttrs || 'lang="es" translate="no"'}>`)
     .replace("<!--app-head-->", head)
     .replace("<!--app-html-->", html);
   fs.mkdirSync(path.dirname(path.join(dist, r.file)), { recursive: true });

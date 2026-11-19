@@ -36,7 +36,7 @@ const HeroSection = () => {
           <span className="label-type mt-6 block text-xs md:text-sm">Vilanova i la Geltrú</span>
         </h1>
 
-        <p className="hand mt-10 text-[clamp(2.4rem,6.4vw,4.4rem)] lg:text-[clamp(2.4rem,4.3vw,4.4rem)]">
+        <p lang="en" className="hand mt-10 text-[clamp(2.4rem,6.4vw,4.4rem)] lg:text-[clamp(2.4rem,4.3vw,4.4rem)]">
           Good coffee
           <br />
           Good food
@@ -46,7 +46,7 @@ const HeroSection = () => {
           </span>
         </p>
 
-        <p className="label-type mt-8 text-sm leading-relaxed md:text-base">
+        <p lang="en" className="label-type mt-8 text-sm leading-relaxed md:text-base">
           Specialty coffee · Brunch
           <br />
           Gluten free bakery

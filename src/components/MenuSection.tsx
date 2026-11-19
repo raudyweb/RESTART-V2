@@ -160,7 +160,9 @@ const MenuSection = () => {
             seed={11}
             title={
               <>
-                <span className="block">Specialty</span> <span className="block">coffee</span>
+                <span lang="en">
+                  <span className="block">Specialty</span> <span className="block">coffee</span>
+                </span>
               </>
             }
           >
@@ -194,10 +196,12 @@ const MenuSection = () => {
             seed={37}
             title={
               <>
-                <span className="block">
+                <span lang="en" className="block">
                   Bakery <HandHeart className="h-[0.6em] w-[0.65em] -translate-y-3" />
                 </span>{" "}
-                <Brush className="mt-1 text-[0.72em]">Gluten free</Brush>
+                <Brush className="mt-1 text-[0.72em]">
+                  <span lang="en">Gluten free</span>
+                </Brush>
               </>
             }
           >

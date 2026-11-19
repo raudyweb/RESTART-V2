@@ -35,7 +35,7 @@ const SEO = ({
 
   return (
     <Helmet prioritizeSeoTags>
-      <html lang={lang} />
+      <html lang={lang} translate="no" />
       <title>{title}</title>
       <meta name="description" content={description} />
       {indexable ? <link rel="canonical" href={url} /> : <meta name="robots" content="noindex, follow" />}
