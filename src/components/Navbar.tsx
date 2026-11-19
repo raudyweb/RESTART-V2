@@ -139,7 +139,7 @@ const Navbar = () => {
     <>
       <nav
         className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-          solid ? "bg-paper/95 text-ink shadow-[0_1px_0_hsl(var(--border))] backdrop-blur" : "bg-transparent text-white"
+          solid ? "bg-paper text-ink shadow-[0_1px_0_hsl(var(--border))]" : "bg-transparent text-white"
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-10">
@@ -154,7 +154,7 @@ const Navbar = () => {
             }`}
           >
             {/* El logo aparece junto con la barra crema; sobre la foto no se muestra */}
-            <img src={logoDark} alt="" className="h-14 w-[45px] object-contain md:h-16 md:w-[52px]" />
+            <img src={logoDark} alt="Re-Start Coffee" className="h-14 w-[45px] object-contain md:h-16 md:w-[52px]" />
           </Link>
 
           <div className="flex items-center gap-4 lg:gap-8">

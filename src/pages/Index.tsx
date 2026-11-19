@@ -10,6 +10,7 @@ import VisitSection from "@/components/VisitSection";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import heroImg from "@/assets/v2/hero-good-vibes.webp";
+import heroDesktopImg from "@/assets/v2/hero-good-vibes-desktop.webp";
 import WorkshopSection from "@/components/WorkshopSection";
 import BeansSection from "@/components/BeansSection";
 import { SITE_URL, cafeSchema } from "@/lib/site";
@@ -51,7 +52,10 @@ const Index = () => {
       description={t.description}
       image="/og/inicio-v2.jpg"
       imageAlt={t.imageAlt}
-      preloadImage={heroImg}
+      preloadImage={[
+        { href: heroImg, media: "(max-width: 1023px)" },
+        { href: heroDesktopImg, media: "(min-width: 1024px)" },
+      ]}
       jsonLd={[{ ...cafeSchema, "@id": `${SITE_URL}/#cafe` }]}
     />
     <Navbar />
