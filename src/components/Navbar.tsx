@@ -68,16 +68,17 @@ const Navbar = () => {
   const c = useCommon();
   const home = href("home", lang);
 
+  // Barra de escritorio. "xl": solo desde 1280 px para que quepa todo en 1024 px; en el menú completo salen siempre.
   const mainLinks = [
     { label: c.menu, href: "/Carta.pdf", external: true },
-    { label: c.about, href: href("about", lang) },
-    { label: c.reviews, href: href("home", lang, "opiniones") },
+    { label: c.workshop, href: href("home", lang, "taller") },
+    { label: c.beans, href: href("home", lang, "cafe-en-grano") },
+    { label: c.about, href: href("about", lang), xl: true },
+    { label: c.reviews, href: href("home", lang, "opiniones"), xl: true },
     { label: c.hours, href: href("home", lang, "horarios") },
     { label: c.directions, href: href("home", lang, "mapa") },
   ];
   const extraLinks = [
-    { label: c.workshop, href: href("home", lang, "taller") },
-    { label: c.beans, href: href("home", lang, "cafe-en-grano") },
     { label: "Food Truck", href: href("truck", lang) },
     { label: "Macu Bakery", href: href("macu", lang) },
   ];
@@ -161,12 +162,12 @@ const Navbar = () => {
           </Link>
 
           <div className="flex items-center gap-4 lg:gap-8">
-            <ul className="hidden items-center gap-8 lg:flex">
+            <ul className="hidden items-center gap-5 lg:flex xl:gap-7">
               {mainLinks.map((l) => (
-                <li key={l.label}>
+                <li key={l.label} className={"xl" in l && l.xl ? "hidden xl:block" : undefined}>
                   <NavItem
                     l={l}
-                    className="label-type text-[13px] underline-offset-[6px] hover:underline"
+                    className="label-type text-[12.5px] underline-offset-[6px] hover:underline xl:text-[13px]"
                   />
                 </li>
               ))}
@@ -186,7 +187,7 @@ const Navbar = () => {
 
       {/* Menú completo */}
       <div
-        className={`fixed inset-0 z-[60] transition ${open ? "visible" : "invisible"}`}
+        className={`fixed inset-0 z-[60] overflow-hidden transition ${open ? "visible" : "invisible"}`}
         aria-hidden={!open}
       >
         <div

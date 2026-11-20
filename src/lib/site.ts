@@ -6,7 +6,7 @@ import { openingHoursSchema } from "@/lib/hours";
  * TODO: cuando tengamos dominio propio, cambiar DEFAULT_SITE_URL (o definir VITE_SITE_URL
  * en Cloudflare/Vercel) y volver a publicar.
  */
-export const DEFAULT_SITE_URL = "https://restart-v2.vercel.app";
+export const DEFAULT_SITE_URL = "https://restart-v2.pages.dev";
 export const SITE_URL = (import.meta.env.VITE_SITE_URL || DEFAULT_SITE_URL).replace(/\/$/, "");
 
 export const SITE_NAME = "Re-Start Coffee";

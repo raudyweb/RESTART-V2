@@ -165,3 +165,10 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Que la página nunca se pueda arrastrar de lado en el móvil */
+html,
+body {
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
