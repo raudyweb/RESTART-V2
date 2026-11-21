@@ -91,7 +91,7 @@ const ReviewsSection = () => {
         {/* Móvil y tablet: carrusel deslizable; escritorio: las 3 en fila */}
         <ul
           ref={ref}
-          className="no-scrollbar relative -mx-5 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-[9vw] py-4 md:-mx-10 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0"
+          className="no-scrollbar relative -mx-5 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x touch-pan-y px-[9vw] py-6 md:-mx-10 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0"
         >
           {META.map((r, idx) => (
             <li

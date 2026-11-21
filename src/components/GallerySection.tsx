@@ -82,7 +82,7 @@ const GallerySection = () => {
       <ul
         ref={ref}
         data-reveal=""
-        className="no-scrollbar relative mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-[16vw] py-4 md:mx-auto md:grid md:max-w-6xl md:grid-cols-3 md:gap-8 md:overflow-visible md:px-10"
+        className="no-scrollbar relative mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x touch-pan-y px-[16vw] py-6 md:mx-auto md:grid md:max-w-6xl md:grid-cols-3 md:gap-8 md:overflow-visible md:px-10"
       >
         {PHOTOS.map((p, i) =>
           !p.src ? null : (

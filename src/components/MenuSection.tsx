@@ -150,7 +150,7 @@ const MenuSection = () => {
     <section id="carta" className="relative bg-paper pb-20 pt-10 md:pb-28 md:pt-14">
       <TornEdge side="top" seed={3} className="text-paper" />
       <div className="mx-auto max-w-7xl px-5 md:px-10">
-        <div ref={ref} className="no-scrollbar relative -mx-5 flex snap-x snap-mandatory items-stretch gap-6 overflow-x-auto px-[9vw] py-4 md:-mx-10 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0">
+        <div ref={ref} className="no-scrollbar relative -mx-5 flex snap-x snap-mandatory items-stretch gap-6 overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x touch-pan-y px-[9vw] py-6 md:-mx-10 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0">
           {/* Specialty coffee */}
           <Card
             idx={0}
