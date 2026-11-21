@@ -133,7 +133,7 @@ const Card = ({
     <Scribble className="mx-auto mt-2 w-20 text-ink" />
     <div className="mb-8 mt-6 text-center">{children}</div>
     {cta && (
-      <a href="/Carta.pdf" target="_blank" rel="noopener noreferrer" className="btn-paper mx-auto mt-auto w-fit border border-ink/25 bg-transparent">
+      <a href="/Carta.pdf" target="_blank" rel="noopener noreferrer" className="btn-paper mx-auto w-fit border border-ink/25 bg-transparent lg:mt-auto">
         {cta} <ArrowRight size={16} />
       </a>
     )}
@@ -144,13 +144,13 @@ const MenuSection = () => {
   const t = usePick()(T);
   const c = useCommon();
   const lang = useLang();
-  const { ref, index, count, go } = useSnapCarousel<HTMLDivElement>();
+  const { ref, index, count, go } = useSnapCarousel<HTMLDivElement>({ autoHeight: true });
 
   return (
     <section id="carta" className="relative bg-paper pb-20 pt-10 md:pb-28 md:pt-14">
       <TornEdge side="top" seed={3} className="text-paper" />
       <div className="mx-auto max-w-7xl px-5 md:px-10">
-        <div ref={ref} className="no-scrollbar relative -mx-5 flex snap-x snap-mandatory items-stretch gap-6 overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x touch-pan-y px-[9vw] py-6 md:-mx-10 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0">
+        <div ref={ref} className="no-scrollbar relative -mx-5 flex snap-x snap-mandatory items-start gap-6 transition-[height] duration-300 lg:items-stretch overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x touch-pan-y px-[9vw] py-6 md:-mx-10 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0">
           {/* Specialty coffee */}
           <Card
             idx={0}

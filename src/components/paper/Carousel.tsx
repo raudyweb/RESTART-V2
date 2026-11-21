@@ -13,8 +13,13 @@ const T = {
  * Carrusel con scroll-snap: la lista se desliza con el dedo y este hook dice qué elemento
  * está centrado y permite ir a uno concreto (para los puntos y las flechas).
  * La lista (ul) debe ser `relative` para que las posiciones se midan respecto a ella.
+ *
+ * autoHeight: mientras funciona como carrusel (móvil/tablet), la altura se ajusta a la tarjeta
+ * que está a la vista, así una tarjeta corta no deja un hueco vacío debajo.
  */
-export const useSnapCarousel = <T extends HTMLElement = HTMLUListElement>() => {
+export const useSnapCarousel = <T extends HTMLElement = HTMLUListElement>({
+  autoHeight = false,
+}: { autoHeight?: boolean } = {}) => {
   const ref = useRef<T>(null);
   const [index, setIndex] = useState(0);
   const [count, setCount] = useState(0);
@@ -51,6 +56,30 @@ export const useSnapCarousel = <T extends HTMLElement = HTMLUListElement>() => {
       window.removeEventListener("resize", onScroll);
     };
   }, []);
+
+  // Altura = la de la tarjeta visible (más el relleno del carrusel). En escritorio (sin scroll) no se toca.
+  useEffect(() => {
+    const el = ref.current;
+    if (!autoHeight || !el) return;
+    const fit = () => {
+      const isCarousel = getComputedStyle(el).overflowX !== "visible";
+      const it = el.children[index] as HTMLElement | undefined;
+      if (!isCarousel || !it) {
+        el.style.height = "";
+        return;
+      }
+      const cs = getComputedStyle(el);
+      el.style.height = `${it.offsetHeight + parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom)}px`;
+    };
+    fit();
+    const ro = new ResizeObserver(fit);
+    Array.from(el.children).forEach((c) => ro.observe(c));
+    window.addEventListener("resize", fit);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", fit);
+    };
+  }, [autoHeight, index]);
 
   const go = useCallback((i: number) => {
     const el = ref.current;

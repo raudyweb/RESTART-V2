@@ -72,7 +72,7 @@ const T = {
 
 const ReviewsSection = () => {
   const t = usePick()(T);
-  const { ref, index, count, go } = useSnapCarousel();
+  const { ref, index, count, go } = useSnapCarousel({ autoHeight: true });
   return (
     <section id="opiniones" className="relative scroll-mt-20 bg-sage py-20 md:py-24">
       <TornEdge side="top" seed={97} className="text-sage" />
@@ -91,7 +91,7 @@ const ReviewsSection = () => {
         {/* Móvil y tablet: carrusel deslizable; escritorio: las 3 en fila */}
         <ul
           ref={ref}
-          className="no-scrollbar relative -mx-5 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x touch-pan-y px-[9vw] py-6 md:-mx-10 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0"
+          className="no-scrollbar relative -mx-5 mt-12 flex snap-x snap-mandatory items-start gap-5 transition-[height] duration-300 overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x touch-pan-y px-[9vw] py-6 md:-mx-10 lg:mx-0 lg:grid lg:grid-cols-3 lg:gap-8 lg:overflow-visible lg:px-0"
         >
           {META.map((r, idx) => (
             <li
