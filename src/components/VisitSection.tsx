@@ -2,6 +2,7 @@ import type React from "react";
 import MapEmbed from "@/components/paper/MapEmbed";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import fachadaImg from "@/assets/v2/fachada.webp";
+import terrazaImg from "@/assets/v2/terraza-mesa.webp";
 import { HandHeart, KeepLast, Scribble, tornClip } from "@/components/paper/Paper";
 import OpenNow from "@/components/OpenNow";
 import { useCommon, useLang, usePick } from "@/i18n";
@@ -11,6 +12,7 @@ import { HOURS, formatDays, formatTime } from "@/lib/hours";
 const T = {
   es: {
     alt: "Fachada amarilla de Re-Start Coffee con los rótulos de Brunch y Bakery",
+    terraceAlt: "Mesa de la terraza de Re-Start con un plato de brunch, en la calle peatonal con Macu Bakery al fondo",
     title: "Te esperamos",
     hours: "Horario de invierno",
     closedDays: "Domingo y festivos",
@@ -20,6 +22,7 @@ const T = {
   },
   ca: {
     alt: "Façana groga de Re-Start Coffee amb els rètols de Brunch i Bakery",
+    terraceAlt: "Taula de la terrassa de Re-Start amb un plat de brunch, al carrer de vianants amb Macu Bakery al fons",
     title: "T'esperem",
     hours: "Horari d'hivern",
     closedDays: "Diumenge i festius",
@@ -29,6 +32,7 @@ const T = {
   },
   en: {
     alt: "Yellow façade of Re-Start Coffee with the Brunch and Bakery signs",
+    terraceAlt: "Table on the Re-Start terrace with a brunch plate, on the pedestrian street with Macu Bakery behind",
     title: "See you soon",
     hours: "Winter opening hours",
     closedDays: "Sundays and holidays",
@@ -38,6 +42,7 @@ const T = {
   },
   fr: {
     alt: "Façade jaune de Re-Start Coffee avec les enseignes Brunch et Bakery",
+    terraceAlt: "Table de la terrasse de Re-Start avec une assiette de brunch, dans la rue piétonne avec Macu Bakery au fond",
     title: "À très vite",
     hours: "Horaires d'hiver",
     closedDays: "Dimanches et jours fériés",
@@ -66,14 +71,17 @@ const VisitSection = () => {
   return (
   <section id="visita" className="scroll-mt-20 bg-paper pb-24 pt-24 md:pt-28">
     <div className="mx-auto grid max-w-7xl gap-14 px-5 md:grid-cols-2 md:gap-16 md:px-10">
-      <div data-reveal="" className="rotate-[1.5deg] drop-shadow-[0_10px_18px_rgba(40,30,20,0.2)]">
-        <div className="aspect-[4/5] overflow-hidden" style={tornClip(113, undefined, 1.8, 2.5)}>
-          <img
-            src={fachadaImg}
-            alt={t.alt}
-            loading="lazy"
-            className="h-full w-full object-cover"
-          />
+      {/* Terraza como foto principal y la fachada encima, pequeña, para reconocer el local */}
+      <div data-reveal="" className="relative pb-10 pl-6 md:pb-14 md:pl-10">
+        <div className="rotate-[1.5deg] drop-shadow-[0_10px_18px_rgba(40,30,20,0.2)]">
+          <div className="aspect-[4/5] overflow-hidden" style={tornClip(113, undefined, 1.8, 2.5)}>
+            <img src={terrazaImg} alt={t.terraceAlt} loading="lazy" className="h-full w-full object-cover" />
+          </div>
+        </div>
+        <div className="absolute bottom-0 left-0 w-[42%] -rotate-3 drop-shadow-[0_10px_16px_rgba(40,30,20,0.3)]">
+          <div className="aspect-[4/5] overflow-hidden" style={tornClip(131, undefined, 2, 3)}>
+            <img src={fachadaImg} alt={t.alt} loading="lazy" className="h-full w-full object-cover" />
+          </div>
         </div>
       </div>
 

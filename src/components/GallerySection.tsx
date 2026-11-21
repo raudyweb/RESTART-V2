@@ -1,5 +1,7 @@
 import salaImg from "@/assets/v2/sala-arcos.webp";
 import barraImg from "@/assets/v2/barra-iluminada.webp";
+import terrazaCalleImg from "@/assets/v2/terraza-calle.webp";
+import terrazaImg from "@/assets/v2/terraza-tostada.webp";
 import { nueva } from "@/assets/v2/nuevas";
 import { Scribble, tornClip } from "@/components/paper/Paper";
 import { CarouselNav, useSnapCarousel } from "@/components/paper/Carousel";
@@ -9,6 +11,8 @@ const PHOTOS = [
   { src: salaImg, tilt: "-rotate-2", seed: 71 },
   { src: nueva("vitrina", null), tilt: "rotate-1", seed: 89 },
   { src: nueva("marzocco", barraImg), tilt: "-rotate-1", seed: 91 },
+  { src: terrazaCalleImg, tilt: "-rotate-1", seed: 101 },
+  { src: terrazaImg, tilt: "rotate-2", seed: 97 },
 ];
 
 const T = {
@@ -20,6 +24,8 @@ const T = {
       "Sala con arcos, farolillos y mesas de madera",
       "Vitrina con cookies, brownie y bocadillos en la barra de madera",
       "Cafetera La Marzocco con tazas apiladas",
+      "Terraza de Re-Start en la calle peatonal, con mesas de madera, sombrillas y plantas",
+      "Tostada de salmón con ensalada en una mesa de la terraza",
     ],
   },
   ca: {
@@ -30,6 +36,8 @@ const T = {
       "Sala amb arcs, fanalets i taules de fusta",
       "Vitrina amb cookies, brownie i entrepans a la barra de fusta",
       "Cafetera La Marzocco amb tasses apilades",
+      "Terrassa de Re-Start al carrer de vianants, amb taules de fusta, para-sols i plantes",
+      "Torrada de salmó amb amanida en una taula de la terrassa",
     ],
   },
   en: {
@@ -40,6 +48,8 @@ const T = {
       "Dining room with arches, lanterns and wooden tables",
       "Display case with cookies, brownie and sandwiches on the wooden counter",
       "La Marzocco espresso machine with stacked cups",
+      "Re-Start terrace on the pedestrian street, with wooden tables, parasols and plants",
+      "Smoked salmon toast with salad at a table on the terrace",
     ],
   },
   fr: {
@@ -50,6 +60,8 @@ const T = {
       "Salle avec arches, lanternes et tables en bois",
       "Vitrine avec cookies, brownie et sandwichs sur le comptoir en bois",
       "Machine à espresso La Marzocco avec des tasses empilées",
+      "Terrasse de Re-Start dans la rue piétonne, avec tables en bois, parasols et plantes",
+      "Tartine au saumon fumé et salade sur une table de la terrasse",
     ],
   },
 };
@@ -78,17 +90,17 @@ const GallerySection = () => {
         </div>
       </div>
 
-      {/* Móvil: carrusel deslizable con puntos; desde tablet, las 3 fotos en fila */}
+      {/* Móvil: carrusel deslizable con puntos; desde tablet: 3 de dentro en una fila y 2 de la terraza debajo, centradas */}
       <ul
         ref={ref}
         data-reveal=""
-        className="no-scrollbar relative mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x touch-pan-y px-[16vw] py-6 md:mx-auto md:grid md:max-w-6xl md:grid-cols-3 md:gap-8 md:overflow-visible md:px-10"
+        className="no-scrollbar relative mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x touch-pan-y px-[16vw] py-6 md:mx-auto md:max-w-6xl md:flex-wrap md:justify-center md:gap-8 md:overflow-visible md:px-10"
       >
         {PHOTOS.map((p, i) =>
           !p.src ? null : (
             <li
               key={p.seed}
-              className={`w-[68vw] shrink-0 snap-center md:w-auto ${p.tilt} drop-shadow-[0_8px_14px_rgba(40,30,20,0.18)]`}
+              className={`w-[68vw] shrink-0 snap-center md:w-[calc((100%-4rem)/3)] ${p.tilt} drop-shadow-[0_8px_14px_rgba(40,30,20,0.18)]`}
             >
               <div
                 className="aspect-[3/4] overflow-hidden"
