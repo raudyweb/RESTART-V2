@@ -20,7 +20,6 @@ const T = {
     coffee1:
       "Del cappuccino cremoso al espresso con carácter, pasando por V60, caramel iced latte, shakerato, cold brew o matcha latte.",
     coffee2: "",
-    coffeeHand: ["Buen café,", "diferentes formas de disfrutarlo."],
     brunchAlt: "Bowl de açaí con mango, plátano, arándanos y granola",
     brunch: [
       "Brunch artesanal",
@@ -39,7 +38,6 @@ const T = {
     coffee1:
       "Del cappuccino cremós a l'espresso amb caràcter, passant per V60, caramel iced latte, shakerato, cold brew o matcha latte.",
     coffee2: "",
-    coffeeHand: ["Bon cafè,", "diferents maneres de gaudir-lo."],
     brunchAlt: "Bowl d'açaí amb mango, plàtan, nabius i granola",
     brunch: [
       "Brunch artesà",
@@ -58,7 +56,6 @@ const T = {
     coffee1:
       "From a creamy cappuccino to a bold espresso, plus V60, caramel iced latte, shakerato, cold brew and matcha latte.",
     coffee2: "",
-    coffeeHand: ["Good coffee,", "many ways to enjoy it."],
     brunchAlt: "Açaí bowl with mango, banana, blueberries and granola",
     brunch: [
       "Homemade brunch",
@@ -77,7 +74,6 @@ const T = {
     coffee1:
       "Du cappuccino crémeux à l'espresso de caractère, en passant par V60, caramel iced latte, shakerato, cold brew ou matcha latte.",
     coffee2: "",
-    coffeeHand: ["Du bon café,", "mille façons de le savourer."],
     brunchAlt: "Bowl d'açaí avec mangue, banane, myrtilles et granola",
     brunch: [
       "Brunch maison",
@@ -171,12 +167,6 @@ const MenuSection = () => {
             <p className="mx-auto max-w-sm text-[15px] font-bold leading-relaxed">{t.coffeeQ}</p>
             <p className="font-prose mx-auto mt-4 max-w-sm text-[14.5px] leading-[1.8] text-ink/80">{t.coffee1}</p>
             {t.coffee2 && <p className="font-prose mx-auto mt-3 max-w-sm text-[14.5px] leading-[1.8] text-ink/80">{t.coffee2}</p>}
-            <p className="hand mx-auto mt-6 max-w-xs -rotate-2 text-[1.35rem] normal-case leading-tight">
-              {t.coffeeHand[0]}
-              <br />
-              {t.coffeeHand[1]} <HandHeart className="h-[0.8em] w-[0.85em] -translate-y-1" />
-            </p>
-            <Scribble className="mx-auto mt-1 w-40 text-ink" />
           </Card>
 
           {/* Brunch */}
