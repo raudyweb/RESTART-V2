@@ -158,17 +158,33 @@
   }
 }
 
-/* Carruseles: se deslizan con el dedo pero sin barra de scroll visible */
+/* Carruseles: se deslizan con el dedo pero sin barra de scroll visible.
+   overscroll-behavior-x: contain → al llegar al final del carrusel, el gesto no arrastra la página. */
 .no-scrollbar {
   scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-/* Que la página nunca se pueda arrastrar de lado en el móvil */
+/* Que la página solo se mueva arriba y abajo en el móvil (nunca de lado ni en diagonal).
+   clip recorta sin convertir html/body en contenedores con scroll propio (lo que en iOS
+   provoca movimientos raros); en navegadores antiguos sin "clip" se usa hidden. */
 html,
 body {
-  overflow-x: hidden;
+  max-width: 100%;
+  overflow-x: clip;
   overscroll-behavior-x: none;
+}
+body {
+  position: relative;
+}
+@supports not (overflow-x: clip) {
+  html,
+  body,
+  .overflow-x-clip {
+    overflow-x: hidden;
+  }
 }
