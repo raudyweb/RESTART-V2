@@ -15,19 +15,24 @@ const T = {
  * La lista (ul) debe ser `relative` para que las posiciones se midan respecto a ella.
  *
  * autoHeight: mientras funciona como carrusel (móvil/tablet), la altura se ajusta a la tarjeta
- * que está a la vista, así una tarjeta corta no deja un hueco vacío debajo.
+ * que está a la vista, así una tarjeta corta no deja un hueco vacío debajo. El ajuste se hace
+ * al terminar de deslizar (no durante el gesto), para que el deslizamiento sea fluido.
  */
 export const useSnapCarousel = <T extends HTMLElement = HTMLUListElement>({
   autoHeight = false,
 }: { autoHeight?: boolean } = {}) => {
   const ref = useRef<T>(null);
   const [index, setIndex] = useState(0);
+  // Tarjeta en la que el carrusel se ha detenido (para la altura: nunca cambia a mitad del gesto)
+  const [settled, setSettled] = useState(0);
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     let frame = 0;
+    let idle = 0;
+    let current = 0;
     const measure = () => {
       frame = 0;
       const items = Array.from(el.children) as HTMLElement[];
@@ -42,17 +47,29 @@ export const useSnapCarousel = <T extends HTMLElement = HTMLUListElement>({
           best = i;
         }
       });
+      current = best;
       setIndex(best);
+    };
+    // Fin del deslizamiento: "scrollend" donde existe y, si no, 150 ms sin scroll
+    const settle = () => {
+      window.clearTimeout(idle);
+      setSettled(current);
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(measure);
+      window.clearTimeout(idle);
+      idle = window.setTimeout(settle, 150);
     };
     measure();
+    settle();
     el.addEventListener("scroll", onScroll, { passive: true });
+    el.addEventListener("scrollend", settle);
     window.addEventListener("resize", onScroll);
     return () => {
       cancelAnimationFrame(frame);
+      window.clearTimeout(idle);
       el.removeEventListener("scroll", onScroll);
+      el.removeEventListener("scrollend", settle);
       window.removeEventListener("resize", onScroll);
     };
   }, []);
@@ -63,7 +80,7 @@ export const useSnapCarousel = <T extends HTMLElement = HTMLUListElement>({
     if (!autoHeight || !el) return;
     const fit = () => {
       const isCarousel = getComputedStyle(el).overflowX !== "visible";
-      const it = el.children[index] as HTMLElement | undefined;
+      const it = el.children[settled] as HTMLElement | undefined;
       if (!isCarousel || !it) {
         el.style.height = "";
         return;
@@ -79,7 +96,7 @@ export const useSnapCarousel = <T extends HTMLElement = HTMLUListElement>({
       ro.disconnect();
       window.removeEventListener("resize", fit);
     };
-  }, [autoHeight, index]);
+  }, [autoHeight, settled]);
 
   const go = useCallback((i: number) => {
     const el = ref.current;
